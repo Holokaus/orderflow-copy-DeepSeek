@@ -1,0 +1,33 @@
+2026-06-02 19:43:45.881 | INFO     | main:run_paper:521 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 19:43:45.889 | INFO     | main:run_paper:531 -   Loaded strategy: absorption
+2026-06-02 19:43:45.889 | INFO     | main:run_paper:531 -   Loaded strategy: stacked_imbalance
+2026-06-02 19:43:45.889 | INFO     | data.exchange_connector:connect:139 - Connecting to binance (attempt 1/5)...
+2026-06-02 19:43:48.500 | INFO     | data.exchange_connector:connect:141 - Connected to binance
+2026-06-02 19:43:48.500 | WARNING  | data.exchange_connector:_get_ws_urls:592 - Testnet has low liquidity and frequent gaps. Use production endpoints (testnet=False) for realistic data.
+2026-06-02 19:43:50.384 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 19:43:50.909 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343319109
+2026-06-02 19:43:50.909 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 20:12:21.788 | WARNING  | data.exchange_connector:start_websocket:531 - WebSocket closed (code=1006) on wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-02 20:12:23.491 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 20:12:25.182 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343485631
+2026-06-02 20:12:25.183 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 20:16:34.481 | WARNING  | data.exchange_connector:start_websocket:531 - WebSocket closed (code=1006) on wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-02 20:16:37.298 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 20:16:38.926 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343516494
+2026-06-02 20:16:38.926 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 20:21:20.854 | WARNING  | data.exchange_connector:start_websocket:531 - WebSocket closed (code=1006) on wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-02 20:21:26.427 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 20:21:27.693 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343539830
+2026-06-02 20:21:27.694 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 20:25:14.765 | WARNING  | data.exchange_connector:start_websocket:531 - WebSocket closed (code=1006) on wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-02 20:25:17.493 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 20:25:18.946 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343567342
+2026-06-02 20:25:18.946 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 20:38:41.256 | WARNING  | data.exchange_connector:start_websocket:531 - WebSocket closed (code=1006) on wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-02 20:38:42.862 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 20:38:44.074 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343640801
+2026-06-02 20:38:44.074 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 20:43:04.584 | WARNING  | data.exchange_connector:start_websocket:531 - WebSocket closed (code=1006) on wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-02 20:43:07.326 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 20:43:08.730 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343657531
+2026-06-02 20:43:08.730 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0

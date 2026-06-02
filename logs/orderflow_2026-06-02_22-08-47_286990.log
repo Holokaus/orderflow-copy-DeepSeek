@@ -1,0 +1,145 @@
+2026-06-02 22:08:51.301 | INFO     | main:run_paper:521 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 22:08:51.328 | INFO     | main:run_paper:531 -   Loaded strategy: absorption
+2026-06-02 22:08:51.329 | INFO     | main:run_paper:531 -   Loaded strategy: stacked_imbalance
+2026-06-02 22:08:51.330 | INFO     | data.exchange_connector:connect:139 - Connecting to binance (attempt 1/5)...
+2026-06-02 22:08:55.470 | INFO     | data.exchange_connector:connect:141 - Connected to binance
+2026-06-02 22:08:57.253 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 22:08:57.776 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343991334
+2026-06-02 22:08:57.777 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 22:10:32.040 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9645 TP=3.9275 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:10:32.041 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:32.048 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:32.092 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9645 TP=3.9275 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:10:32.092 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:32.095 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:32.988 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0265 | SL=2.9635 TP=3.9265 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:10:32.989 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:32.990 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:33.089 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0265 | SL=2.9635 TP=3.9265 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:10:33.090 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:33.091 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:33.189 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0265 | SL=2.9635 TP=3.9265 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:10:33.190 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:33.191 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:33.289 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0265 | SL=2.9635 TP=3.9265 | Regime=UNKNOWN | Score=4.52
+2026-06-02 22:10:33.290 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:33.291 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:37.407 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0225 | SL=2.9595 TP=3.9225 | Regime=UNKNOWN | Score=3.96
+2026-06-02 22:10:37.408 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:37.410 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:37.504 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0225 | SL=2.9595 TP=3.9225 | Regime=UNKNOWN | Score=3.96
+2026-06-02 22:10:37.505 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:37.508 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:37.589 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0225 | SL=2.9595 TP=3.9225 | Regime=UNKNOWN | Score=3.96
+2026-06-02 22:10:37.590 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:37.591 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:37.735 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9605 TP=3.9235 | Regime=UNKNOWN | Score=3.96
+2026-06-02 22:10:37.736 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:37.739 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:37.796 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9605 TP=3.9235 | Regime=UNKNOWN | Score=4.03
+2026-06-02 22:10:37.797 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:37.799 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:37.904 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9605 TP=3.9235 | Regime=UNKNOWN | Score=4.06
+2026-06-02 22:10:37.905 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:37.908 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:38.023 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9605 TP=3.9235 | Regime=UNKNOWN | Score=4.06
+2026-06-02 22:10:38.024 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:38.027 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:38.097 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9605 TP=3.9235 | Regime=UNKNOWN | Score=4.06
+2026-06-02 22:10:38.098 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:38.099 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:38.202 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9605 TP=3.9235 | Regime=UNKNOWN | Score=4.06
+2026-06-02 22:10:38.204 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:38.206 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:38.689 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9605 TP=3.9235 | Regime=UNKNOWN | Score=4.06
+2026-06-02 22:10:38.690 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:38.691 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:38.797 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9605 TP=3.9235 | Regime=UNKNOWN | Score=4.06
+2026-06-02 22:10:38.798 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'SignalType' is not defined
+2026-06-02 22:10:38.800 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 630, in _on_paper_order_book
+    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                              ^^^^^^^^^^
+NameError: name 'SignalType' is not defined
+
+2026-06-02 22:10:44.726 | INFO     | data.exchange_connector:disconnect:170 - Disconnected from exchange

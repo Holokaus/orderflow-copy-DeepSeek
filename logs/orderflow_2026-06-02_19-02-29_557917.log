@@ -1,0 +1,4 @@
+2026-06-02 19:02:34.125 | INFO     | main:run_paper:521 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 19:02:34.160 | INFO     | main:run_paper:531 -   Loaded strategy: absorption
+2026-06-02 19:02:34.162 | INFO     | main:run_paper:531 -   Loaded strategy: stacked_imbalance
+2026-06-02 19:02:44.320 | INFO     | data.exchange_connector:disconnect:148 - Disconnected from exchange

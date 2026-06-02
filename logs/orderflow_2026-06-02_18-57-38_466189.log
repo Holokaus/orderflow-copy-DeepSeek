@@ -1,0 +1,3 @@
+2026-06-02 18:57:42.484 | INFO     | main:run_paper:521 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 18:57:42.526 | INFO     | main:run_paper:531 -   Loaded strategy: absorption
+2026-06-02 18:57:42.528 | INFO     | main:run_paper:531 -   Loaded strategy: stacked_imbalance

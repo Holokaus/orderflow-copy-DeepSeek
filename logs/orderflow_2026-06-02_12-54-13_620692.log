@@ -1,0 +1,8 @@
+2026-06-02 12:54:32.105 | INFO     | main:run_paper:517 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 12:54:32.154 | INFO     | main:run_paper:527 -   Loaded strategy: absorption
+2026-06-02 12:54:32.154 | INFO     | main:run_paper:527 -   Loaded strategy: stacked_imbalance
+2026-06-02 12:54:38.035 | INFO     | data.exchange_connector:connect:134 - Connected to binance
+2026-06-02 12:54:38.036 | WARNING  | data.exchange_connector:_get_ws_urls:570 - Testnet has low liquidity and frequent gaps. Use production endpoints (testnet=False) for realistic data.
+2026-06-02 12:54:38.681 | INFO     | data.exchange_connector:start_websocket:474 - WebSocket connected: wss://stream.testnet.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 12:54:39.136 | INFO     | data.exchange_connector:_fetch_rest_snapshot:296 - Snapshot loaded: 1000b/1000a, lastUpdateId=6340971793
+2026-06-02 12:54:39.136 | INFO     | data.exchange_connector:_fetch_rest_snapshot:334 - Book re-initialized. Total resyncs so far: 0

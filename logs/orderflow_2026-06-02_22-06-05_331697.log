@@ -1,0 +1,198 @@
+2026-06-02 22:06:09.331 | INFO     | main:run_paper:521 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 22:06:09.351 | INFO     | main:run_paper:531 -   Loaded strategy: absorption
+2026-06-02 22:06:09.352 | INFO     | main:run_paper:531 -   Loaded strategy: stacked_imbalance
+2026-06-02 22:06:09.352 | INFO     | data.exchange_connector:connect:139 - Connecting to binance (attempt 1/5)...
+2026-06-02 22:06:12.630 | INFO     | data.exchange_connector:connect:141 - Connected to binance
+2026-06-02 22:06:14.405 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 22:06:14.887 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343982231
+2026-06-02 22:06:14.888 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 22:06:14.984 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:14.986 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:15.084 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:15.085 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:15.384 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:15.386 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:15.487 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:15.488 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:15.586 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:15.588 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:15.686 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:15.689 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:15.786 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:15.788 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:15.900 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:15.902 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:15.986 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:15.988 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:16.086 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:16.088 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:16.186 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:16.188 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:16.386 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:16.388 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:17.198 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:17.200 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:17.291 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:17.293 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:17.387 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:17.389 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:17.587 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:17.589 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:17.689 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:17.691 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:17.856 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:17.858 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:17.891 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:17.894 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:18.086 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:18.088 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:18.208 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:18.211 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:18.383 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:18.384 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:18.495 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:18.497 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:18.599 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:18.600 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:18.689 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:18.691 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:18.786 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:18.788 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:18.987 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'Side' is not defined
+2026-06-02 22:06:18.988 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 585, in _on_paper_order_book
+    side = Side.BUY if side_str == 'buy' else Side.SELL
+           ^^^^
+NameError: name 'Side' is not defined
+
+2026-06-02 22:06:25.028 | INFO     | data.exchange_connector:disconnect:170 - Disconnected from exchange

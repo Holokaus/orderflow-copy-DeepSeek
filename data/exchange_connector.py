@@ -42,6 +42,7 @@ class ExchangeConfig:
     testnet: bool = False
     rate_limit: bool = True
     ws_base_url: str = ""  # Optional override for WebSocket base URL
+    use_futures: bool = True  # Force futures mode (0.02%/0.05% fees, leverage available)
     use_futures_stream: bool = False  # Use futures stream instead of spot (higher liquidity)
 
 
@@ -81,8 +82,9 @@ class ExchangeConnector:
             'secret': config.api_secret,
             'sandbox': config.testnet,
             'enableRateLimit': config.rate_limit,
+            'timeout': 30000,  # Increase timeout to 30 seconds (default is 10s)
             'options': {
-                'defaultType': 'future' if 'future' in config.exchange_id else 'spot'
+                'defaultType': 'future' if config.use_futures else 'spot'
             }
         })
 
@@ -129,9 +131,30 @@ class ExchangeConnector:
         self._last_resync_time: float = 0.0  # Monotonic time of last REST re-sync
 
     async def connect(self):
-        """Initialize connection"""
-        await self.rest_client.load_markets()
-        logger.info(f"Connected to {self.config.exchange_id}")
+        """Initialize connection with retry logic"""
+        max_retries = 5
+        retry_delay = 2  # Start with 2 seconds
+        
+        for attempt in range(1, max_retries + 1):
+            try:
+                logger.info(f"Connecting to {self.config.exchange_id} (attempt {attempt}/{max_retries})...")
+                await self.rest_client.load_markets()
+                logger.info(f"Connected to {self.config.exchange_id}")
+                return
+            except Exception as e:
+                if attempt == max_retries:
+                    logger.error(f"Failed to connect after {max_retries} attempts: {e}")
+                    raise
+                
+                error_msg = str(e).lower()
+                if "timeout" in error_msg or "connection" in error_msg:
+                    logger.warning(f"Connection timeout/failed (attempt {attempt}/{max_retries}). "
+                                 f"Retrying in {retry_delay}s...")
+                    await asyncio.sleep(retry_delay)
+                    retry_delay = min(retry_delay * 2, 30)  # Exponential backoff, max 30s
+                else:
+                    # Non-timeout errors should fail immediately
+                    raise
 
     async def disconnect(self):
         """Close all connections properly."""

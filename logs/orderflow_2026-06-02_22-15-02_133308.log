@@ -1,0 +1,1337 @@
+2026-06-02 22:15:07.018 | INFO     | main:run_paper:525 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 22:15:07.050 | INFO     | main:run_paper:535 -   Loaded strategy: absorption
+2026-06-02 22:15:07.050 | INFO     | main:run_paper:535 -   Loaded strategy: stacked_imbalance
+2026-06-02 22:15:07.050 | INFO     | data.exchange_connector:connect:139 - Connecting to binance (attempt 1/5)...
+2026-06-02 22:15:11.506 | INFO     | data.exchange_connector:connect:141 - Connected to binance
+2026-06-02 22:15:11.994 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 22:15:12.404 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6344005734
+2026-06-02 22:15:12.404 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 22:15:27.248 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:27.248 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:27.263 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:27.326 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:27.326 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:27.326 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:27.499 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:27.499 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:27.515 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:27.573 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:27.573 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:27.580 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:27.654 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:27.654 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:27.654 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:27.826 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:27.826 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:27.826 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:27.921 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:27.921 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:27.921 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:28.215 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:28.215 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:28.215 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:28.328 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:28.328 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:28.328 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.037 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:29.037 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.037 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.235 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:29.243 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.246 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.357 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:29.358 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.359 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.557 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:29.557 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.557 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.638 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:29.638 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.652 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.762 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:29.762 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.762 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.858 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:29.858 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.867 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.914 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.71
+2026-06-02 22:15:29.915 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.919 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:29.924 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:29.924 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:29.932 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:30.027 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:30.027 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:30.031 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:30.316 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:30.316 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:30.316 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:30.424 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:30.426 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:30.426 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:30.524 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9945 TP=3.5295 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:30.530 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:30.532 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:30.730 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:30.730 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:30.730 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:30.820 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:30.820 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:30.832 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:30.928 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:30.928 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:30.931 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:31.059 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:31.059 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:31.059 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:31.335 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:31.342 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:31.343 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:31.529 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:31.530 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:31.532 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:31.629 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:31.629 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:31.642 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:31.822 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:31.824 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:31.824 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:31.922 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:31.925 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:31.926 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:32.215 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:32.215 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:32.231 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:32.326 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:32.330 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:32.333 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:32.631 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9955 TP=3.5305 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:15:32.631 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:32.636 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:32.834 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0315 | SL=2.9895 TP=3.6315 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:32.834 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:32.834 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:32.929 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9885 TP=3.6305 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:32.929 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:32.929 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.030 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9885 TP=3.6305 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.030 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.030 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.130 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9885 TP=3.6305 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.131 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.131 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.234 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9885 TP=3.6305 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.234 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.234 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.326 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0305 | SL=2.9885 TP=3.6305 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.326 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.326 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.440 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9875 TP=3.6295 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.440 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.444 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.517 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9875 TP=3.6295 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.517 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.533 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.627 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9875 TP=3.6295 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.627 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.631 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.726 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9875 TP=3.6295 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.726 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.726 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:33.830 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9875 TP=3.6295 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:33.830 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:33.838 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:34.021 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9875 TP=3.6295 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:34.034 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:34.035 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:34.289 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0295 | SL=2.9875 TP=3.6295 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:34.304 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:34.305 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:34.828 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:34.828 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:34.828 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:34.921 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:34.921 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:34.926 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:35.021 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=6.77
+2026-06-02 22:15:35.021 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:35.027 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:35.111 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.67
+2026-06-02 22:15:35.111 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:35.111 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:35.245 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:35.245 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:35.247 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:35.412 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.51
+2026-06-02 22:15:35.412 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:35.427 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:35.522 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.51
+2026-06-02 22:15:35.522 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:35.522 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:35.823 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.51
+2026-06-02 22:15:35.823 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:35.823 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:36.017 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.51
+2026-06-02 22:15:36.017 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:36.017 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:36.426 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.51
+2026-06-02 22:15:36.426 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:36.431 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:36.916 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.51
+2026-06-02 22:15:36.916 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:36.932 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:37.126 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.51
+2026-06-02 22:15:37.126 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:37.126 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:37.226 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.51
+2026-06-02 22:15:37.230 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:37.232 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:37.313 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:37.313 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:37.329 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:37.425 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0295 | SL=2.9875 TP=3.6295 | Regime=UNKNOWN | Score=7.71
+2026-06-02 22:15:37.425 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:37.425 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:37.521 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0290 | SL=2.9870 TP=3.6290 | Regime=UNKNOWN | Score=7.65
+2026-06-02 22:15:37.521 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:37.534 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:37.616 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0290 | SL=2.9870 TP=3.6290 | Regime=UNKNOWN | Score=7.65
+2026-06-02 22:15:37.616 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:37.633 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:37.727 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:37.727 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:37.727 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:37.822 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:37.822 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:37.825 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:38.423 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:38.423 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:38.431 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:38.723 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:38.723 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:38.729 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:38.818 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:38.818 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:38.830 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:40.120 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:40.120 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:40.125 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:40.420 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:40.424 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:40.425 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:40.522 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:40.522 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:40.522 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:40.620 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:40.620 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:40.629 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:40.720 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:40.720 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:40.725 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:40.821 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:40.821 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:40.825 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:40.922 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:40.922 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:40.928 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:41.021 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:41.021 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:41.021 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:41.128 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:41.128 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:41.128 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:41.224 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:41.224 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:41.224 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:41.322 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:41.322 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:41.330 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:41.924 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:41.924 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:41.924 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:42.557 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:42.557 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:42.557 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:42.826 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:42.826 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:42.826 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:43.027 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0285 | SL=2.9865 TP=3.6285 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:43.027 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:43.030 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:43.127 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:43.127 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:43.132 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:43.228 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:43.228 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:43.228 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:43.346 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:43.346 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:43.357 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:43.428 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:43.441 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:43.445 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:43.528 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0275 | SL=2.9855 TP=3.6275 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:43.528 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:43.528 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:43.918 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0265 | SL=2.9845 TP=3.6265 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:43.930 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:43.930 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:44.031 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0265 | SL=2.9845 TP=3.6265 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:44.031 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:44.031 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:44.122 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0265 | SL=2.9845 TP=3.6265 | Regime=UNKNOWN | Score=7.50
+2026-06-02 22:15:44.122 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:44.130 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:44.423 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=5.80
+2026-06-02 22:15:44.431 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:44.434 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:44.521 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=6.30
+2026-06-02 22:15:44.529 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:44.531 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:44.631 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=6.25
+2026-06-02 22:15:44.631 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:44.631 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:44.719 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=6.03
+2026-06-02 22:15:44.719 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:44.732 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:44.813 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=6.08
+2026-06-02 22:15:44.829 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:44.829 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:44.924 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=5.94
+2026-06-02 22:15:44.924 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:44.924 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.018 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=5.80
+2026-06-02 22:15:45.018 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.032 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.114 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=5.80
+2026-06-02 22:15:45.128 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.128 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.222 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=4.67
+2026-06-02 22:15:45.222 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.233 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.348 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=4.63
+2026-06-02 22:15:45.364 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.364 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.443 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:45.443 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.443 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.521 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:45.532 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.534 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.624 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:45.624 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.624 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.719 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:45.719 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.719 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:45.812 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:45.828 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:45.828 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:46.522 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:46.522 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:46.522 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:46.616 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:46.632 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:46.632 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:46.726 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:46.726 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:46.726 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:46.913 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:46.929 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:46.929 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:47.023 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:47.023 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:47.023 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:47.608 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:47.608 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:47.621 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:47.624 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:47.624 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:47.640 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:47.918 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:47.918 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:47.918 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:48.221 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:48.221 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:48.221 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:48.322 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:48.332 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:48.335 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:49.074 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:49.074 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:49.074 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:49.483 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:49.483 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:49.483 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:49.546 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:49.548 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:49.548 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:50.115 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:50.115 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:50.131 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:50.226 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:50.226 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:50.226 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:50.321 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:50.321 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:50.321 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:50.416 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:50.416 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:50.432 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:50.527 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:50.527 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:50.534 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:50.623 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:50.623 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:50.632 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:50.866 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:50.866 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:50.878 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:50.928 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:50.928 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:50.928 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:51.322 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:51.322 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:51.335 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:51.717 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:51.717 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:51.717 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:51.733 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:51.736 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:51.736 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:51.876 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:51.876 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:51.876 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:51.924 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:51.924 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:51.924 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:52.447 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:52.447 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:52.457 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:52.937 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:52.937 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:52.950 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:54.120 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:54.120 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:54.120 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:54.780 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:54.780 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:54.793 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:55.808 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=7.62
+2026-06-02 22:15:55.808 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:55.808 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:56.950 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.62
+2026-06-02 22:15:56.958 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:56.958 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:57.021 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=5.00
+2026-06-02 22:15:57.021 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:57.021 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:57.241 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=5.00
+2026-06-02 22:15:57.241 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:57.241 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:57.431 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.51
+2026-06-02 22:15:57.431 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:57.435 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:57.525 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.56
+2026-06-02 22:15:57.525 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:57.525 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:57.746 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.29
+2026-06-02 22:15:57.746 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:57.746 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:59.136 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.31
+2026-06-02 22:15:59.136 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:59.143 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:59.216 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.37
+2026-06-02 22:15:59.216 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:59.232 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:59.421 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.19
+2026-06-02 22:15:59.421 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:59.434 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:15:59.816 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.19
+2026-06-02 22:15:59.816 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:15:59.832 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:00.023 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.16
+2026-06-02 22:16:00.023 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:00.038 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:00.117 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.06
+2026-06-02 22:16:00.117 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:00.117 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:00.403 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.06
+2026-06-02 22:16:00.419 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:00.419 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:00.427 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.01
+2026-06-02 22:16:00.436 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:00.438 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:00.529 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.01
+2026-06-02 22:16:00.529 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:00.539 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:00.671 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.01
+2026-06-02 22:16:00.671 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:00.681 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:00.813 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.01
+2026-06-02 22:16:00.829 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:00.831 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:00.924 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.01
+2026-06-02 22:16:00.924 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:00.940 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:01.020 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=4.01
+2026-06-02 22:16:01.020 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:01.036 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:01.225 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=3.87
+2026-06-02 22:16:01.225 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:01.225 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:01.432 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=3.83
+2026-06-02 22:16:01.432 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:01.446 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:01.527 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0245 | SL=2.9545 TP=4.0245 | Regime=UNKNOWN | Score=3.83
+2026-06-02 22:16:01.527 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:01.530 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:02.152 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=3.71
+2026-06-02 22:16:02.159 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:02.162 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:02.223 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=3.71
+2026-06-02 22:16:02.223 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:02.223 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:02.317 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=3.71
+2026-06-02 22:16:02.317 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:02.317 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:02.523 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=3.71
+2026-06-02 22:16:02.523 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:02.531 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:02.628 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=3.71
+2026-06-02 22:16:02.628 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:02.628 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:03.261 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0235 | SL=2.9535 TP=4.0235 | Regime=UNKNOWN | Score=3.71
+2026-06-02 22:16:03.276 | ERROR    | main:_on_paper_order_book:693 - Paper trading error: name 'RiskAction' is not defined
+2026-06-02 22:16:03.276 | ERROR    | main:_on_paper_order_book:695 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 645, in _on_paper_order_book
+    if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                       ^^^^^^^^^^
+NameError: name 'RiskAction' is not defined
+
+2026-06-02 22:16:08.513 | INFO     | data.exchange_connector:disconnect:170 - Disconnected from exchange

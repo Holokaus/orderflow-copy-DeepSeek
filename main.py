@@ -32,12 +32,16 @@ logger.add(
 
 from config.settings import settings, Settings
 from core.feature_engine import FeatureEngine, FeatureConfig
-from core.data_structures import OrderFlowState, Signal
+from core.data_structures import (
+    OrderFlowState, Signal, PriceLevel, OrderBook, Side, Trade, SignalType,
+    OrderType, Regime, FootprintBar, VolumeProfile, Imbalance, Absorption,
+    LiquiditySweep, IcebergOrder
+)
 from knowledge.llm_advisor import LLMAdvisor, LLMProvider
 from knowledge.strategy_library import get_all_strategies, get_strategy
 from optimization.optuna_optimizer import StrategyOptimizer
 from backtesting.engine import BacktestEngine, WalkForwardValidator
-from execution.risk_manager import RiskManager, RiskLimits
+from execution.risk_manager import RiskManager, RiskLimits, RiskAction
 from execution.order_manager import OrderManager
 from data.exchange_connector import ExchangeConnector, ExchangeConfig
 from data.data_recorder import DataRecorder
@@ -95,7 +99,7 @@ class OrderFlowSystem:
         else:
             logger.info(f"LLM advisor ready: {self.llm_advisor.provider.value}")
     
-    def _init_components(self, mode: str) -> None:
+    def _init_components(self, mode: str, testnet: bool = None) -> None:
         """Initialize components based on mode"""
         # Feature engine always needed
         self.feature_engine = FeatureEngine(FeatureConfig(
@@ -103,6 +107,7 @@ class OrderFlowSystem:
         ))
         
         if mode in ['paper', 'live']:
+
             self.risk_manager = RiskManager(
                 limits=RiskLimits(
                     max_position_size=self.settings.trading.max_position_size,
@@ -113,10 +118,13 @@ class OrderFlowSystem:
             self.order_manager = OrderManager()
         
         if mode in ['record', 'paper', 'live']:
+            use_testnet = testnet if testnet is not None else (mode == 'paper')
             self.exchange = ExchangeConnector(ExchangeConfig(
                 exchange_id=self.settings.trading.exchange.value,
-                testnet=(mode == 'paper')
+                testnet=use_testnet,
             ))
+        
+
         
         if mode == 'record':
             self.data_recorder = DataRecorder(
@@ -512,11 +520,11 @@ class OrderFlowSystem:
     
     # ==================== PAPER TRADING ====================
     
-    async def run_paper(self, strategy_names: list, params: dict = None) -> None:
+    async def run_paper(self, strategy_names: list, params: dict = None, testnet: bool = None) -> None:
         """Run paper trading with one or more strategies"""
         logger.info(f"Starting paper trading: {strategy_names}")
         
-        self._init_components('paper')
+        self._init_components('paper', testnet=testnet)
         
         # Load all strategies
         self.paper_strategies = []
@@ -1028,7 +1036,7 @@ def main():
     
     elif args.mode == 'paper':
         strategies = [s.strip() for s in args.strategy.split(',')]
-        asyncio.run(system.run_paper(strategies))
+        asyncio.run(system.run_paper(strategies, testnet=False))  # production data for paper
     
     elif args.mode == 'live':
         asyncio.run(system.run_live(args.strategy, {}))

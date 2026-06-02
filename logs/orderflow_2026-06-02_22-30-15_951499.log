@@ -1,0 +1,93 @@
+2026-06-02 22:30:20.337 | INFO     | main:run_paper:525 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 22:30:20.357 | INFO     | main:run_paper:535 -   Loaded strategy: absorption
+2026-06-02 22:30:20.357 | INFO     | main:run_paper:535 -   Loaded strategy: stacked_imbalance
+2026-06-02 22:30:20.358 | INFO     | data.exchange_connector:connect:139 - Connecting to binance (attempt 1/5)...
+2026-06-02 22:30:23.715 | INFO     | data.exchange_connector:connect:141 - Connected to binance
+2026-06-02 22:30:25.642 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 22:30:26.164 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6344079747
+2026-06-02 22:30:26.165 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 22:30:37.530 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: STRONG_BUY @ 3.0045 | SL=2.9835 TP=3.3050 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:30:37.532 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0333% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:37.533 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0333% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:37.719 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 3.0005 | SL=2.9585 TP=3.6005 | Regime=UNKNOWN | Score=3.76
+2026-06-02 22:30:37.721 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0333% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:37.722 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0333% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:39.829 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9975 | SL=2.9415 TP=3.7975 | Regime=UNKNOWN | Score=5.96
+2026-06-02 22:30:39.830 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:39.831 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:44.492 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.9095 TP=4.1935 | Regime=UNKNOWN | Score=8.76
+2026-06-02 22:30:44.492 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:44.493 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:44.592 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.9095 TP=4.1935 | Regime=UNKNOWN | Score=8.90
+2026-06-02 22:30:44.593 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:44.593 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:44.694 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.9095 TP=4.1935 | Regime=UNKNOWN | Score=8.91
+2026-06-02 22:30:44.695 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:44.695 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:44.791 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.9095 TP=4.1935 | Regime=UNKNOWN | Score=9.06
+2026-06-02 22:30:44.792 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:44.792 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.091 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=4.50
+2026-06-02 22:30:45.092 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.093 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.214 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=4.68
+2026-06-02 22:30:45.214 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.215 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.398 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=4.90
+2026-06-02 22:30:45.399 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.399 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.502 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=4.86
+2026-06-02 22:30:45.503 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.504 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.596 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=4.86
+2026-06-02 22:30:45.597 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.597 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.691 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=5.48
+2026-06-02 22:30:45.692 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.693 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.892 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9945 | SL=2.8965 TP=4.3945 | Regime=UNKNOWN | Score=4.71
+2026-06-02 22:30:45.893 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.893 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.997 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9945 | SL=2.8965 TP=4.3945 | Regime=UNKNOWN | Score=4.72
+2026-06-02 22:30:45.998 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:45.999 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.097 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9945 | SL=2.8965 TP=4.3945 | Regime=UNKNOWN | Score=4.73
+2026-06-02 22:30:46.099 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.099 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.197 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=5.50
+2026-06-02 22:30:46.198 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.199 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.324 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9945 | SL=2.8965 TP=4.3945 | Regime=UNKNOWN | Score=4.86
+2026-06-02 22:30:46.326 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.327 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.398 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9945 | SL=2.8965 TP=4.3945 | Regime=UNKNOWN | Score=4.94
+2026-06-02 22:30:46.398 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.399 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.498 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9945 | SL=2.8965 TP=4.3945 | Regime=UNKNOWN | Score=4.94
+2026-06-02 22:30:46.500 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.501 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.597 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9945 | SL=2.8965 TP=4.3945 | Regime=UNKNOWN | Score=5.18
+2026-06-02 22:30:46.599 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.599 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.908 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9940 | SL=2.8960 TP=4.3940 | Regime=UNKNOWN | Score=5.22
+2026-06-02 22:30:46.910 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0668% is 6.7x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:46.911 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0668% is 6.7x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.000 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=5.45
+2026-06-02 22:30:47.002 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.002 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.110 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=5.50
+2026-06-02 22:30:47.111 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.113 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.275 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=5.49
+2026-06-02 22:30:47.276 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.278 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.301 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=5.49
+2026-06-02 22:30:47.302 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.303 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.413 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=5.45
+2026-06-02 22:30:47.415 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.415 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.540 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.9935 | SL=2.8955 TP=4.3935 | Regime=UNKNOWN | Score=5.43
+2026-06-02 22:30:47.542 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:47.543 | INFO     | main:_on_paper_order_book:661 - [stacked_imbalance] Fee filter: Spread 0.0334% is 3.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 22:30:53.421 | INFO     | data.exchange_connector:disconnect:170 - Disconnected from exchange

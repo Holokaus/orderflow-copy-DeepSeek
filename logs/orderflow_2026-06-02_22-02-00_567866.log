@@ -1,0 +1,679 @@
+2026-06-02 22:02:05.870 | INFO     | main:run_paper:521 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 22:02:05.897 | INFO     | main:run_paper:531 -   Loaded strategy: absorption
+2026-06-02 22:02:05.897 | INFO     | main:run_paper:531 -   Loaded strategy: stacked_imbalance
+2026-06-02 22:02:05.898 | INFO     | data.exchange_connector:connect:139 - Connecting to binance (attempt 1/5)...
+2026-06-02 22:02:09.322 | INFO     | data.exchange_connector:connect:141 - Connected to binance
+2026-06-02 22:02:11.213 | INFO     | data.exchange_connector:start_websocket:496 - WebSocket connected: wss://stream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 22:02:11.692 | INFO     | data.exchange_connector:_fetch_rest_snapshot:318 - Snapshot loaded: 1000b/1000a, lastUpdateId=6343965078
+2026-06-02 22:02:11.693 | INFO     | data.exchange_connector:_fetch_rest_snapshot:356 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 22:02:11.698 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:11.702 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:11.788 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:11.790 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:11.890 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:11.893 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:11.990 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:11.993 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:12.176 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:12.179 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:12.202 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:12.204 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:12.286 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:12.288 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:12.487 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:12.488 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:12.587 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:12.589 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:12.711 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:12.713 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:12.788 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:12.791 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:12.886 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:12.888 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:13.011 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:13.013 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:13.085 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:13.086 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:13.287 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:13.289 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:13.386 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:13.388 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:13.592 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:13.594 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:13.930 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:13.933 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:13.995 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:13.997 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.116 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.118 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.185 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.187 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.394 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.395 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.412 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.413 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.526 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.528 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.587 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.589 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.772 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.774 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.783 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.785 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.985 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.988 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:14.991 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:14.992 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:15.183 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:15.185 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:15.187 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:15.188 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:15.410 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:15.412 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:15.600 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:15.601 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:15.796 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:15.797 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.001 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.002 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.004 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.005 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.210 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.211 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.217 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.219 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.288 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.289 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.423 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.425 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.486 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.488 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.608 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.609 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.689 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.691 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:16.893 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:16.895 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:17.475 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:17.478 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:17.481 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:17.483 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:17.487 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:17.489 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:17.503 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:17.505 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:17.653 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:17.655 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:17.731 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:17.733 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:17.855 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:17.858 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:17.904 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:17.907 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:18.084 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:18.085 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:18.485 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:18.487 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:18.669 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:18.671 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:19.281 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:19.284 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:19.290 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:19.294 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:19.485 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:19.488 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:19.491 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:19.494 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:19.787 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:19.789 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:19.989 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:19.992 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:20.095 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:20.097 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:20.211 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:20.213 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:20.287 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:20.289 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:20.396 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:20.397 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:20.484 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:20.485 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:20.788 | ERROR    | main:_on_paper_order_book:689 - Paper trading error: name 'PriceLevel' is not defined
+2026-06-02 22:02:20.790 | ERROR    | main:_on_paper_order_book:691 - Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in _on_paper_order_book
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy-DeepSeek\main.py", line 571, in <listcomp>
+    bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+            ^^^^^^^^^^
+NameError: name 'PriceLevel' is not defined
+
+2026-06-02 22:02:26.718 | INFO     | data.exchange_connector:disconnect:170 - Disconnected from exchange
