@@ -1,0 +1,14 @@
+2026-05-26 00:35:24.436 | INFO     | __main__:run_backtest:231 - Running backtest: absorption from 2026-03-25 00:00:00 to 2026-03-26 00:00:00
+2026-05-26 00:35:24.437 | INFO     | __main__:_load_backtest_data:289 - Loading pre-merged data: ./data/backtests/BTCUSDT_20260325_merged.parquet
+2026-05-26 00:35:28.813 | INFO     | core.feature_precomputer:precompute_all:75 - [FeaturePrecomputer] Detected 10 depth levels; summing 10 levels for bid_depth_10/ask_depth_10
+2026-05-26 00:35:28.818 | WARNING  | core.feature_precomputer:precompute_all:87 - [FeaturePrecomputer] WARNING: Mean bid_depth_10 = 3 < 1000 (unrealistic for XRP/USDT). Check data loading.
+2026-05-26 00:35:37.151 | INFO     | core.feature_precomputer:precompute_all:213 - [FeaturePrecomputer] Precomputed 11 base features for 752500 ticks in 1 pass
+2026-05-26 00:35:37.156 | INFO     | backtesting.engine:run:396 - DEPTH CHECK: Has depth=True, Levels=10
+2026-05-26 00:35:37.157 | INFO     | backtesting.engine:run:400 - ✓ Depth data loaded successfully (10 levels per row)
+2026-05-26 00:59:20.004 | INFO     | __main__:run_backtest:261 - Backtest Results:
+2026-05-26 00:59:20.005 | INFO     | __main__:run_backtest:262 -   Total Return: 0.00%
+2026-05-26 00:59:20.005 | INFO     | __main__:run_backtest:263 -   Sharpe Ratio: 0.00
+2026-05-26 00:59:20.005 | INFO     | __main__:run_backtest:264 -   Win Rate: 0.0%
+2026-05-26 00:59:20.006 | INFO     | __main__:run_backtest:265 -   Max Drawdown: 0.00%
+2026-05-26 00:59:20.006 | INFO     | __main__:run_backtest:266 -   Total Trades: 0
+2026-05-26 00:59:20.006 | INFO     | __main__:run_backtest:267 -   Profit Factor: 0.00

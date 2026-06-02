@@ -1,0 +1,37 @@
+{
+  "delta_divergence_60s": {
+    "freq_1": 22.932330827067666,
+    "freq_0": 77.06766917293233,
+    "count": 266
+  },
+  "cvd_price_divergence": {
+    "freq_1": 69.17293233082707,
+    "freq_0": 30.82706766917293,
+    "count": 266
+  },
+  "book_trade_agreement": {
+    "freq_1": 0.0,
+    "freq_0": 100.0,
+    "count": 266
+  },
+  "pressure_confirmed": {
+    "freq_1": 41.72932330827068,
+    "freq_0": 58.27067669172933,
+    "count": 266
+  },
+  "in_value_area": {
+    "freq_1": 21.428571428571427,
+    "freq_0": 78.57142857142857,
+    "count": 266
+  },
+  "buying_exhaustion": {
+    "freq_1": 18.796992481203006,
+    "freq_0": 81.203007518797,
+    "count": 266
+  },
+  "selling_exhaustion": {
+    "freq_1": 5.263157894736842,
+    "freq_0": 94.73684210526315,
+    "count": 266
+  }
+}

@@ -1,0 +1,1592 @@
+﻿python : INFO     | Loading test data from C:\Users\A\Downloads\New-folder-orde
+rflow-copy\orderflow-copy\data\backtests\XRPUSDT_market_data_20260328.parquet
+At line:1 char:1
++ python test_depth_fix.py 2>&1 | Out-File -FilePath test_output.txt -E ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (INFO     | Load...0260328.parquet 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+INFO     | Loaded 1000 rows for testing
+INFO     | Found 20 bid_size levels: ['bid_size_0', 'bid_size_1', 
+'bid_size_2', 'bid_size_3', 'bid_size_4']...
+INFO     | Found 20 ask_size levels: ['ask_size_0', 'ask_size_1', 
+'ask_size_2', 'ask_size_3', 'ask_size_4']...
+INFO     | [FeaturePrecomputer] Detected 20 depth levels; summing 10 levels 
+for bid_depth_10/ask_depth_10
+INFO     | [FeaturePrecomputer] Precomputed 11 base features for 1000 ticks in 
+1 pass
+INFO     | bid_depth_10 shape: (1000,)
+INFO     | bid_depth_10 min: 143448.60
+INFO     | bid_depth_10 max: 364152.50
+INFO     | bid_depth_10 mean: 218399.14
+INFO     | bid_depth_10 median: 203219.80
+INFO     | \u2713 Mean bid_depth_10 = 218399 >= 1000 (realistic!)
+INFO     | Percentage of ticks with bid_depth_10 > 1000: 100.0%
+INFO     | \u2713 Depth calculation test PASSED
+INFO     | Loading test data from C:\Users\A\Downloads\New-folder-orderflow-cop
+y\orderflow-copy\data\backtests\XRPUSDT_market_data_20260328.parquet
+INFO     | Loaded 1000 rows for testing
+DEBUG    | [FeeAwareFilter] Initialized with total cost threshold: 0.3500% 
+(entry=0.1000%, exit=0.1000%, spread=0.0500%, min_profit=0.1000%)
+INFO     | Running backtest...
+DEBUG    | Running backtest with 1000 data points
+INFO     | [FeaturePrecomputer] Detected 20 depth levels; summing 10 levels 
+for bid_depth_10/ask_depth_10
+INFO     | [FeaturePrecomputer] Precomputed 11 base features for 1000 ticks in 
+1 pass
+INFO     | DEPTH CHECK: Has depth=True, Levels=20
+INFO     | \u2713 Depth data loaded successfully (20 levels per row)
+DEBUG    | DEBUG Row 0: Has depth=True, Levels=20, Best bid=1.325600028038025, 
+Best ask=1.325700044631958
+DEBUG    | DEBUG Row 1: Has depth=True, Levels=20, Best bid=1.325600028038025, 
+Best ask=1.325700044631958
+DEBUG    | DEBUG Row 2: Has depth=True, Levels=20, Best bid=1.325600028038025, 
+Best ask=1.325700044631958
+DEBUG    | DEBUG Row 3: Has depth=True, Levels=20, Best bid=1.325600028038025, 
+Best ask=1.325700044631958
+DEBUG    | DEBUG Row 4: Has depth=True, Levels=20, Best bid=1.325600028038025, 
+Best ask=1.325700044631958
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.UNKNOWN, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+DEBUG    | [TestStrategy] Evaluating - Regime: Regime.RANGING, Features: 106
+DEBUG    | [TestStrategy] Stats: satisfied=0/0, score=0.00, required_ok=True
+DEBUG    | [TestStrategy] REJECTED: Score 0.00 < threshold 2.0
+INFO     | \u2713 Backtest completed successfully
+INFO     | Total trades: 0
+INFO     | Winning trades: 0
+INFO     | Losing trades: 0
+INFO     | Total return: 0.00
+INFO     | Total return %: 0.00%
+WARNING  | No trades were executed. Checking if this is due to LOW_LIQUIDITY...
+WARNING  | This might be expected for a simple strategy with no entry signals.
+INFO     | \u2713 Backtest execution test PASSED
+
+================================================================================
+TESTING FEATUREPRECOMPUTER DEPTH FIX
+================================================================================
+
+================================================================================
+TEST 1: Depth Calculation
+================================================================================
+
+================================================================================
+TEST 2: Backtest Execution
+================================================================================
+
+================================================================================
+TEST SUMMARY
+================================================================================
+Traceback (most recent call last):
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy\test_dept
+h_fix.py", line 209, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "C:\Users\A\Downloads\New-folder-orderflow-copy\orderflow-copy\test_dept
+h_fix.py", line 200, in main
+    print(f"{name}: {status}")
+  File 
+"C:\Users\A\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", 
+line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in 
+position 19: character maps to <undefined>

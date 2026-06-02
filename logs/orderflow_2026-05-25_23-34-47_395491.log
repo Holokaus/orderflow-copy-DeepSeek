@@ -1,0 +1,13 @@
+2026-05-25 23:34:53.154 | INFO     | __main__:run_backtest:231 - Running backtest: absorption from 2026-03-29 00:00:00 to 2026-03-30 00:00:00
+2026-05-25 23:34:53.154 | INFO     | __main__:_load_backtest_data:289 - Loading pre-merged data: ./data/backtests/XRPUSDT_20260329_merged.parquet
+2026-05-25 23:34:53.939 | INFO     | core.feature_precomputer:precompute_all:75 - [FeaturePrecomputer] Detected 10 depth levels; summing 10 levels for bid_depth_10/ask_depth_10
+2026-05-25 23:34:54.269 | INFO     | core.feature_precomputer:precompute_all:213 - [FeaturePrecomputer] Precomputed 11 base features for 26836 ticks in 1 pass
+2026-05-25 23:34:54.269 | INFO     | backtesting.engine:run:396 - DEPTH CHECK: Has depth=True, Levels=10
+2026-05-25 23:34:54.269 | INFO     | backtesting.engine:run:400 - ✓ Depth data loaded successfully (10 levels per row)
+2026-05-25 23:35:18.451 | INFO     | __main__:run_backtest:261 - Backtest Results:
+2026-05-25 23:35:18.451 | INFO     | __main__:run_backtest:262 -   Total Return: 0.00%
+2026-05-25 23:35:18.451 | INFO     | __main__:run_backtest:263 -   Sharpe Ratio: 0.00
+2026-05-25 23:35:18.451 | INFO     | __main__:run_backtest:264 -   Win Rate: 0.0%
+2026-05-25 23:35:18.451 | INFO     | __main__:run_backtest:265 -   Max Drawdown: 0.00%
+2026-05-25 23:35:18.451 | INFO     | __main__:run_backtest:266 -   Total Trades: 0
+2026-05-25 23:35:18.451 | INFO     | __main__:run_backtest:267 -   Profit Factor: 0.00

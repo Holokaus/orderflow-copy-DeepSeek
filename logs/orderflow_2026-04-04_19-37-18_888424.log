@@ -1,0 +1,9 @@
+2026-04-04 19:37:24.349 | INFO     | data.exchange_connector:connect:134 - Connected to binance
+2026-04-04 19:37:24.352 | ERROR    | data.exchange_connector:test_connectivity:806 - ✗ REST API FAILED: binance does not have market symbol absorption
+2026-04-04 19:37:33.807 | WARNING  | data.exchange_connector:test_connectivity:828 - ⚠ WebSocket stream.binance.com:443 timeout (no data in 2s)
+2026-04-04 19:37:48.806 | WARNING  | data.exchange_connector:test_connectivity:828 - ⚠ WebSocket stream.binance.com:9443 timeout (no data in 2s)
+2026-04-04 19:37:58.652 | WARNING  | data.exchange_connector:test_connectivity:828 - ⚠ WebSocket data-stream.binance.vision timeout (no data in 2s)
+2026-04-04 19:38:08.595 | WARNING  | data.exchange_connector:test_connectivity:828 - ⚠ WebSocket stream1.binance.com:443 timeout (no data in 2s)
+2026-04-04 19:38:18.546 | WARNING  | data.exchange_connector:test_connectivity:828 - ⚠ WebSocket stream2.binance.com:443 timeout (no data in 2s)
+2026-04-04 19:38:28.363 | WARNING  | data.exchange_connector:test_connectivity:828 - ⚠ WebSocket stream3.binance.com:443 timeout (no data in 2s)
+2026-04-04 19:38:28.366 | INFO     | data.exchange_connector:disconnect:148 - Disconnected from exchange
