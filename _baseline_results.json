@@ -1,0 +1,28 @@
+{
+  "Absorption": {
+    "trades": 9,
+    "win_rate": 0.6666666666666666,
+    "ev_pct": 0.00202272105206398,
+    "profit_factor": 1.6037424792946335,
+    "sharpe": 0.0,
+    "avg_win_pct": 0.007514123189470846,
+    "avg_loss_pct": -0.008960083222749752,
+    "exit_reasons": {
+      "book_pressure_collapse": 3,
+      "stop_loss": 6
+    }
+  },
+  "StackedImbalance": {
+    "trades": 8,
+    "win_rate": 0.75,
+    "ev_pct": 0.0029266279888624444,
+    "profit_factor": 2.356092340166698,
+    "sharpe": 0.0,
+    "avg_win_pct": 0.006811683904986473,
+    "avg_loss_pct": -0.00872853975950964,
+    "exit_reasons": {
+      "book_pressure_collapse": 4,
+      "stop_loss": 4
+    }
+  }
+}

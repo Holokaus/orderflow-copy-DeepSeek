@@ -482,6 +482,13 @@ class BacktestEngine:
                         self.equity_curve.append((timestamp, self._calculate_equity_fast()))
                     continue
 
+                # Loss streak cooldown: skip signal after 2 consecutive losses
+                recent_trades = self.closed_trades[-2:]
+                if len(recent_trades) == 2 and all(t.pnl <= 0 for t in recent_trades):
+                    if tick_idx % equity_every == 0:
+                        self.equity_curve.append((timestamp, self._calculate_equity_fast()))
+                    continue
+
                 signal = strategy.evaluate(state)
 
                 if signal and signal.is_actionable:
