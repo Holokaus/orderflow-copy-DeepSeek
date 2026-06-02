@@ -41,6 +41,7 @@ from execution.risk_manager import RiskManager, RiskLimits
 from execution.order_manager import OrderManager
 from data.exchange_connector import ExchangeConnector, ExchangeConfig
 from data.data_recorder import DataRecorder
+from core.fee_aware_filter import LiveFeeAwareFilter
 
 
 class OrderFlowSystem:
@@ -73,6 +74,17 @@ class OrderFlowSystem:
         # State
         self.running = False
         self.current_state: Optional[OrderFlowState] = None
+
+        # Paper trading state
+        self.paper_strategies: list = []
+        self.paper_position = None
+        self.paper_closed_trades: list = []
+        self.paper_consecutive_losses = 0
+        self.paper_last_trade_time = None
+        self.paper_entry_timestamp = None
+        self._pending_trades: list = []
+        self.paper_initial_capital = 100.0
+        self.paper_capital = 100.0
     
     def _init_llm(self) -> None:
         """Initialize LLM advisor with automatic failover"""
@@ -500,50 +512,301 @@ class OrderFlowSystem:
     
     # ==================== PAPER TRADING ====================
     
-    async def run_paper(self, strategy_name: str, params: dict = None) -> None:
-        """Run paper trading"""
-        logger.info(f"Starting paper trading: {strategy_name}")
+    async def run_paper(self, strategy_names: list, params: dict = None) -> None:
+        """Run paper trading with one or more strategies"""
+        logger.info(f"Starting paper trading: {strategy_names}")
         
         self._init_components('paper')
         
-        strategy = get_strategy(strategy_name)
-        if not strategy:
-            logger.error(f"Unknown strategy: {strategy_name}")
+        # Load all strategies
+        self.paper_strategies = []
+        for name in strategy_names:
+            strat = get_strategy(name)
+            if strat:
+                self.paper_strategies.append((name, strat))
+                logger.info(f"  Loaded strategy: {name}")
+            else:
+                logger.warning(f"Unknown strategy: {name}")
+        
+        if not self.paper_strategies:
+            logger.error("No valid strategies loaded")
             return
+        
+        # Create paper-specific FeatureEngine
+        self.paper_feature_engine = FeatureEngine(
+            FeatureConfig(
+                windows=self.settings.trading.feature_windows,
+                tick_size=self.settings.trading.tick_size,
+            )
+        )
         
         await self.exchange.connect()
         
-        self.exchange.on_order_book_update = lambda ob: self._on_market_data(ob, None, strategy, params)
-        self.exchange.on_trade = lambda t: self._on_market_data(None, t, strategy, params)
+        self.exchange.on_order_book_update = self._on_paper_order_book
+        self.exchange.on_trade = self._on_paper_trade
         
         self.running = True
         
         await self.exchange.start_websocket(self.settings.trading.symbol)
     
-    async def _on_market_data(
-        self,
-        order_book: dict,
-        trade: dict,
-        strategy,
-        params: dict
-    ) -> None:
-        """Process market data update"""
-        # On-chain regime check (gated by config)
-        if self.settings.onchain.enabled and self.onchain_connector and self.onchain_filter:
-            try:
-                metrics = self.onchain_connector.get_latest_metrics()
-                if metrics:
-                    should_halt, reason = self.onchain_filter.should_halt_new_positions(metrics)
-                    if should_halt:
-                        logger.warning(f"On-chain filter halted trading: {reason}")
-                        await asyncio.sleep(60)  # Wait 1 minute before retry
-                        return
-            except Exception as e:
-                logger.error(f"On-chain check failed: {e}")
-        
-        # Simplified - would need proper state management
-        pass
+    async def _on_paper_trade(self, trade: dict) -> None:
+        """Buffer incoming trades for next order book tick."""
+        self._pending_trades.append(trade)
+
+    async def _on_paper_order_book(self, order_book: dict) -> None:
+        """Process order book update: full paper trading tick."""
+        if not self.running or not self.paper_strategies:
+            return
+
+        try:
+            ts = datetime.now()
+
+            # 1) Convert raw order book dict -> OrderBook
+            bids_raw = order_book.get('bids', [])
+            asks_raw = order_book.get('asks', [])
+            bids = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+                    for p, s in bids_raw[:20] if float(p) > 0 and float(s) > 0]
+            asks = [PriceLevel(price=float(p), size=float(s), timestamp=ts)
+                    for p, s in asks_raw[:20] if float(p) > 0 and float(s) > 0]
+            bids.sort(key=lambda l: l.price, reverse=True)
+            asks.sort(key=lambda l: l.price)
+            ob = OrderBook(timestamp=ts, bids=bids, asks=asks)
+
+            # 2) Convert pending trades -> List[Trade]
+            trades = []
+            for t in self._pending_trades:
+                price = float(t.get('price', 0))
+                size = float(t.get('size', 0))
+                side_str = str(t.get('side', 'buy')).lower().strip()
+                side = Side.BUY if side_str == 'buy' else Side.SELL
+                if price > 0 and size > 0:
+                    trades.append(Trade(timestamp=ts, price=price, size=size, side=side))
+            self._pending_trades.clear()
+
+            # 3) Skip if no best bid/ask
+            if not ob.best_bid or not ob.best_ask or ob.mid_price <= 0:
+                return
+
+            # 4) Update FeatureEngine
+            state = self.paper_feature_engine.update(ob, trades)
+
+            # 5) Mark-to-market existing position
+            if self.paper_position:
+                self._update_paper_position(state)
+                self._update_paper_trailing_stop(state)
+
+                if self.paper_entry_timestamp is not None:
+                    exit_reason = self._check_paper_exit(state, ts)
+                    if exit_reason:
+                        self._close_paper_trade(state, ts, exit_reason)
+
+            # 6) Evaluate strategies (only when flat)
+            if self.paper_position:
+                return
+
+            # 6a) Cooldown check
+            if self.paper_last_trade_time is not None:
+                elapsed = (ts - self.paper_last_trade_time).total_seconds()
+                if elapsed < self.settings.trading.min_time_between_trades_sec:
+                    return
+
+            # 6b) Loss streak cooldown: skip after 2 consecutive losses
+            if self.paper_consecutive_losses >= 2:
+                return
+
+            # 6c) Evaluate each strategy
+            mid = ob.mid_price
+            for strat_name, strat in self.paper_strategies:
+                signal = strat.evaluate(state)
+
+                if not signal or not signal.is_actionable:
+                    continue
+
+                # Long-only gate
+                if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                    continue
+
+                # Entry price (long: ask + slippage)
+                entry_price = ob.best_ask.price * (1 + self.settings.trading.slippage_estimate_pct)
+
+                # Risk check via RiskManager
+                risk_action, adjusted_signal, reason = self.risk_manager.check_signal(
+                    signal, mid, ts
+                )
+
+                if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
+                    logger.info(f"[{strat_name}] Risk {risk_action.name}: {reason}")
+                    continue
+
+                # Fee-aware filter
+                if signal.entry_price > 0 and signal.take_profit != signal.entry_price:
+                    predicted_move = abs(signal.take_profit - signal.entry_price) / signal.entry_price
+                else:
+                    predicted_move = 0.002
+
+                fee_check = self.order_manager.validate_signal_with_fee_filter(
+                    signal, predicted_move, signal.confidence,
+                    ob.best_bid.price, ob.best_ask.price, ob.mid_price
+                )
+
+                if fee_check['status'] == 'REJECTED':
+                    logger.info(f"[{strat_name}] Fee filter: {fee_check['reason']}")
+                    continue
+
+                # Position sizing
+                sig = adjusted_signal or signal
+                pos_value = self.paper_capital * sig.position_size
+                size = pos_value / entry_price
+
+                logger.info(f"[{strat_name}] PAPER ENTRY @ {entry_price:.4f} | "
+                           f"SL: {sig.stop_loss:.4f} | TP: {sig.take_profit:.4f} | "
+                           f"Size: {size:.4f}")
+
+                # Store position
+                self.paper_position = {
+                    'strategy': strat_name,
+                    'entry_time': ts,
+                    'entry_price': entry_price,
+                    'size': size,
+                    'allocated': pos_value,
+                    'stop_loss': sig.stop_loss,
+                    'take_profit': sig.take_profit,
+                    'trailing_activation': strat.trailing_stop_activation_pct,
+                    'trailing_active': False,
+                    'trailing_stop_price': 0.0,
+                    'highest_price': entry_price,
+                    'entry_fee': pos_value * self.settings.trading.fee_pct,
+                }
+                self.paper_entry_timestamp = ts
+                self.paper_capital -= pos_value + (pos_value * self.settings.trading.fee_pct)
+                break  # Only one strategy per tick
+
+        except Exception as e:
+            logger.error(f"Paper trading error: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
     
+    # ------------------------------------------------------------------
+    # Paper position management (mirrors BacktestEngine logic)
+    # ------------------------------------------------------------------
+
+    def _update_paper_position(self, state: OrderFlowState) -> None:
+        """Mark-to-market for paper position."""
+        pos = self.paper_position
+        if not pos:
+            return
+        book = state.order_book
+        mid = book.mid_price
+        mark = book.best_bid.price if book.best_bid else mid
+        pos['unrealized_pnl'] = (mark - pos['entry_price']) * pos['size']
+        pos['highest_price'] = max(pos['highest_price'], mid)
+
+    def _update_paper_trailing_stop(self, state: OrderFlowState) -> None:
+        """Trailing stop logic for paper position."""
+        pos = self.paper_position
+        if not pos or pos['trailing_activation'] <= 0:
+            return
+
+        book = state.order_book
+        mark = book.best_bid.price if book.best_bid else book.mid_price
+        move_pct = (mark - pos['entry_price']) / pos['entry_price']
+
+        if move_pct >= pos['trailing_activation']:
+            pos['trailing_active'] = True
+            trail_distance = pos['trailing_activation'] * 0.5
+            new_stop = mark * (1 - trail_distance)
+            if new_stop > pos.get('trailing_stop_price', 0):
+                pos['trailing_stop_price'] = new_stop
+                pos['stop_loss'] = max(pos['stop_loss'], new_stop)
+
+    def _check_paper_exit(self, state: OrderFlowState, ts: datetime) -> str:
+        """Check exit conditions for paper position. Returns reason or None."""
+        pos = self.paper_position
+        if not pos:
+            return None
+
+        # Guard: never exit on same tick as entry
+        if self.paper_entry_timestamp is not None and ts == self.paper_entry_timestamp:
+            return None
+
+        book = state.order_book
+        exit_price = book.best_bid.price if book.best_bid else book.mid_price
+
+        hold_sec = (ts - pos['entry_time']).total_seconds()
+
+        # Hard stop loss
+        if exit_price <= pos['stop_loss']:
+            return 'stop_loss'
+
+        # Take profit
+        if exit_price >= pos['take_profit']:
+            return 'take_profit'
+
+        # Flow-based exits (require min hold)
+        if hold_sec < 1200:  # 20 min minimum
+            return None
+
+        net_pressure = state.features.get('net_pressure', 0)
+        if net_pressure < -0.5:
+            bid_depth = state.features.get('bid_depth_10', 0)
+            ask_depth = state.features.get('ask_depth_10', 0)
+            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.3:
+                return 'book_pressure_collapse'
+
+        return None
+
+    def _close_paper_trade(self, state: OrderFlowState, ts: datetime, reason: str) -> None:
+        """Close paper position and record trade."""
+        pos = self.paper_position
+        if not pos:
+            return
+
+        book = state.order_book
+        best_bid = book.best_bid.price if book.best_bid else book.mid_price
+        best_ask = book.best_ask.price if book.best_ask else book.mid_price
+
+        adverse_slip = (self.settings.trading.slippage_estimate_pct + 0.0003
+                       if reason == 'stop_loss' else self.settings.trading.slippage_estimate_pct)
+        exit_price = best_bid * (1 - adverse_slip)
+
+        gross_pnl = (exit_price - pos['entry_price']) * pos['size']
+        exit_value = exit_price * pos['size']
+        exit_fee = exit_value * self.settings.trading.fee_pct
+        net_pnl = gross_pnl - exit_fee
+        notional = pos['entry_price'] * pos['size']
+        pnl_pct = net_pnl / notional if notional > 0 else 0.0
+        duration = (ts - pos['entry_time']).total_seconds()
+
+        self.paper_capital += (pos['allocated'] - pos.get('entry_fee', 0)) + net_pnl
+
+        trade_record = {
+            'exit_time': ts,
+            'exit_price': exit_price,
+            'entry_price': pos['entry_price'],
+            'exit_reason': reason,
+            'pnl': net_pnl,
+            'pnl_pct': pnl_pct,
+            'strategy': pos['strategy'],
+            'duration_seconds': duration,
+            'entry_time': pos['entry_time'],
+        }
+        self.paper_closed_trades.append(trade_record)
+
+        # Update consecutive loss counter
+        if net_pnl <= 0:
+            self.paper_consecutive_losses += 1
+        else:
+            self.paper_consecutive_losses = 0
+
+        self.paper_last_trade_time = ts
+        self.paper_position = None
+        self.paper_entry_timestamp = None
+
+        equity = self.paper_capital
+        logger.info(f"[{pos['strategy']}] PAPER EXIT: {reason} | "
+                   f"PnL: {net_pnl:.4f}$ ({pnl_pct*100:+.3f}%) | "
+                   f"Eq: {equity:.2f}$ | Dur: {duration:.0f}s")
+
     # ==================== LIVE TRADING ====================
     
     async def run_live(self, strategy_name: str, params: dict) -> None:
@@ -764,7 +1027,8 @@ def main():
             print("="*50)
     
     elif args.mode == 'paper':
-        asyncio.run(system.run_paper(args.strategy))
+        strategies = [s.strip() for s in args.strategy.split(',')]
+        asyncio.run(system.run_paper(strategies))
     
     elif args.mode == 'live':
         asyncio.run(system.run_live(args.strategy, {}))
