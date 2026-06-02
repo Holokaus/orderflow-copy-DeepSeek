@@ -92,6 +92,8 @@ if len(recent_trades) == 2 and all(t.pnl <= 0 for t in recent_trades):
 | EV/trade | +0.007% | **+0.293%** | +40× |
 | Profit Factor | 1.025 | **2.356** | +1.33 |
 
+> **⚠️ Statistical caveat:** With only 8-9 post-cooldown trades, win rate estimates have wide 95% confidence intervals (e.g., SI: 45%–100%). The EV and PF improvements are consistent across both strategies and multiple test runs, but the exact WR of the surviving trades is noisy. The robust finding is the large reduction in trade count (~80%) and the consistent EV increase.
+
 #### Why It Works
 On tick data, trade outcomes are NOT independent — losses cluster in unfavorable regimes. After 2 consecutive losses, the next trade has ≥55% probability of being a loss (same regime). The cooldown skips it, avoiding the loser without needing directional prediction.
 
@@ -127,6 +129,8 @@ Only **1 change** survived from ~20 suggestions across 4 AIs:
 **File modified:** `backtesting/engine.py` (+7 lines)  
 **Change:** Skip signal after 2 consecutive losses  
 **Impact:** Absorption WR 50.0%→66.7%, EV +0.022%→+0.202%  
-**Impact:** StackedImbalance WR 52.4%→75.0%, EV +0.007%→+0.293%
+**Impact:** StackedImbalance WR 52.4%→75.0%, EV +0.007%→+0.293%  
+
+> **Caveat:** Post-cooldown trade counts are low (n=8-9). The WR figures have wide confidence intervals (e.g., 75% at n=8 = 95% CI: 45%–100%). The consistent improvements across both strategies and multiple runs suggest a real effect, but the exact WR of the surviving trades should not be over-interpreted.
 
 **No other source files were modified.** All other changes were tested and rejected, or determined to be inapplicable to this system's architecture (long-only, trailing-stop exits, tick-scale data).
