@@ -43,7 +43,8 @@ class ExchangeConfig:
     rate_limit: bool = True
     ws_base_url: str = ""  # Optional override for WebSocket base URL
     use_futures: bool = True  # Force futures mode (0.02%/0.05% fees, leverage available)
-    use_futures_stream: bool = False  # Use futures stream instead of spot (higher liquidity)
+    #use_futures_stream: bool = False  # Controls BOTH REST API AND WebSocket domain
+# Note: WebSocket domain is automatically determined by use_futures flag 
 
 
 class ExchangeConnector:
@@ -582,12 +583,21 @@ class ExchangeConnector:
         Return a LIST of WebSocket URLs to try, in priority order.
         Uses multiple Binance endpoints for resilience.
         No API key needed for public market data streams.
+        Automatically uses Futures or Spot domain based on use_futures flag.
         """
         symbol_lower = symbol.replace('/', '').lower()
         streams = f"{symbol_lower}@depth@100ms/{symbol_lower}@aggTrade"
         
         if self.config.exchange_id != "binance":
             raise ValueError(f"WebSocket not configured for: {self.config.exchange_id}")
+        
+        # Select correct domain based on trading mode
+        if self.config.use_futures:
+            primary_domain = "fstream.binance.com"  # Futures WebSocket
+            logger.debug("Using Futures WebSocket endpoints")
+        else:
+            primary_domain = "stream.binance.com"   # Spot WebSocket
+            logger.debug("Using Spot WebSocket endpoints")
         
         if self.config.testnet:
             logger.warning(
@@ -608,12 +618,9 @@ class ExchangeConnector:
             urls.append(f"{self.config.ws_base_url}/stream?streams={streams}")
         
         urls.extend([
-            f"wss://stream.binance.com:443/stream?streams={streams}",
-            f"wss://stream.binance.com:9443/stream?streams={streams}",
+            f"wss://{primary_domain}:443/stream?streams={streams}",
+            f"wss://{primary_domain}:9443/stream?streams={streams}",
             f"wss://data-stream.binance.vision/stream?streams={streams}",
-            f"wss://stream1.binance.com:443/stream?streams={streams}",
-            f"wss://stream2.binance.com:443/stream?streams={streams}",
-            f"wss://stream3.binance.com:443/stream?streams={streams}",
         ])
         
         return urls

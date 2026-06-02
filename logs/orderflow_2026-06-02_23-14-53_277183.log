@@ -1,0 +1,12 @@
+2026-06-02 23:15:09.303 | INFO     | main:run_paper:525 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-02 23:15:09.323 | INFO     | main:run_paper:535 -   Loaded strategy: absorption
+2026-06-02 23:15:09.324 | INFO     | main:run_paper:535 -   Loaded strategy: stacked_imbalance
+2026-06-02 23:15:09.324 | INFO     | data.exchange_connector:connect:140 - Connecting to binance (attempt 1/5)...
+2026-06-02 23:15:13.935 | INFO     | data.exchange_connector:connect:142 - Connected to binance
+2026-06-02 23:15:15.762 | INFO     | data.exchange_connector:start_websocket:497 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-02 23:15:16.221 | INFO     | data.exchange_connector:_fetch_rest_snapshot:319 - Snapshot loaded: 1000b/1000a, lastUpdateId=10692224340556
+2026-06-02 23:15:16.222 | INFO     | data.exchange_connector:_fetch_rest_snapshot:357 - Book re-initialized. Total resyncs so far: 0
+2026-06-02 23:15:16.407 | ERROR    | data.exchange_connector:_apply_diff_if_valid:400 - GAP DETECTED: expected U=10692224340813, got U=10692224347888, missing 7075 updates
+2026-06-02 23:15:16.407 | WARNING  | data.exchange_connector:_backfill_gap:434 - Cannot backfill L2 gap 10692224340813-10692224347887, forcing re-sync
+2026-06-02 23:15:17.780 | INFO     | data.exchange_connector:_backfill_gap:439 - Backfilled 0 trades for gap period
+2026-06-02 23:17:51.370 | INFO     | data.exchange_connector:disconnect:171 - Disconnected from exchange
