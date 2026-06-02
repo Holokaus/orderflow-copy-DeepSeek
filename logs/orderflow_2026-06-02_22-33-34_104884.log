@@ -38833,3 +38833,39 @@
 2026-06-02 23:11:42.569 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9925 TP=4.5975 | Regime=ACCUMULATION | Score=7.00
 2026-06-02 23:11:42.575 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
 2026-06-02 23:11:42.576 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:42.664 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9925 TP=4.5975 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:42.665 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:42.666 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:42.759 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9925 TP=4.5975 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:42.761 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:42.762 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:42.855 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0970 | SL=2.9850 TP=4.6970 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:42.855 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0646% is 6.5x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:42.856 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0646% is 6.5x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:42.966 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9855 TP=4.6975 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:42.966 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:42.966 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.090 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9855 TP=4.6975 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:43.112 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.127 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.190 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9855 TP=4.6975 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:43.191 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.191 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.269 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9855 TP=4.6975 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:43.273 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.275 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.381 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9855 TP=4.6975 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:43.385 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.386 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.485 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0975 | SL=2.9855 TP=4.6975 | Regime=ACCUMULATION | Score=7.00
+2026-06-02 23:11:43.486 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:43.487 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:45.470 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0990 | SL=2.9870 TP=4.6990 | Regime=ACCUMULATION | Score=6.05
+2026-06-02 23:11:45.470 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0645% is 6.5x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:45.471 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0645% is 6.5x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:51.073 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0995 | SL=2.9875 TP=4.6995 | Regime=ACCUMULATION | Score=6.77
+2026-06-02 23:11:51.073 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:51.074 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:52.166 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 3.0995 | SL=2.9875 TP=4.6995 | Regime=ACCUMULATION | Score=6.08
+2026-06-02 23:11:52.167 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-02 23:11:52.167 | INFO     | main:_on_paper_order_book:661 - [absorption] Fee filter: Spread 0.0323% is 3.2x expected 0.0100%. Likely illiquidity. Reject.
