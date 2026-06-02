@@ -647,23 +647,22 @@ def create_delta_divergence_strategy() -> StrategyDefinition:
             StrategyCondition(
                 feature="spread_bps",
                 operator=">",
-                threshold=8.0  # Reject wide spreads
+                threshold=15.0
             ),
             StrategyCondition(
                 feature="bid_depth_10",
                 operator="<",
-                threshold=150000.0  # XRP-specific: reject thin bids
+                threshold=5000.0
             ),
             StrategyCondition(
                 feature="ask_depth_10",
                 operator="<",
-                threshold=150000.0  # XRP-specific: reject thin asks
+                threshold=5000.0
             ),
         ],
         
         min_conditions_satisfied=2,
         min_score_threshold=2.5,
-        # FIX 2: 3:1 risk/reward ratio
         stop_loss_atr_mult=2.0,
         take_profit_atr_mult=6.0,
         allowed_regimes=[Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION]
@@ -729,26 +728,24 @@ def create_liquidity_sweep_strategy() -> StrategyDefinition:
             StrategyCondition(
                 feature="spread_bps",
                 operator=">",
-                threshold=8.0  # Reject wide spreads
+                threshold=15.0
             ),
             StrategyCondition(
                 feature="bid_depth_10",
                 operator="<",
-                threshold=150000.0  # XRP-specific: reject thin bids
+                threshold=5000.0
             ),
             StrategyCondition(
                 feature="ask_depth_10",
                 operator="<",
-                threshold=150000.0  # XRP-specific: reject thin asks
+                threshold=5000.0
             ),
         ],
         
         min_conditions_satisfied=2,
         min_score_threshold=2.5,
-        # FIX 2: 3:1 risk/reward ratio
         stop_loss_atr_mult=2.0,
         take_profit_atr_mult=6.0,
-        # Note: LOW_LIQUIDITY regime handled by FIX 3 in evaluate()
         allowed_regimes=[Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION]
     )
 
@@ -911,17 +908,17 @@ def create_value_area_strategy() -> StrategyDefinition:
             StrategyCondition(
                 feature="spread_bps",
                 operator=">",
-                threshold=8.0  # Reject wide spreads
+                threshold=15.0
             ),
             StrategyCondition(
                 feature="bid_depth_10",
                 operator="<",
-                threshold=150000.0  # XRP-specific: reject thin bids
+                threshold=5000.0
             ),
             StrategyCondition(
                 feature="ask_depth_10",
                 operator="<",
-                threshold=150000.0  # XRP-specific: reject thin asks
+                threshold=5000.0
             ),
         ],
         
