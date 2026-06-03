@@ -63,7 +63,7 @@ class ExchangeConnector:
     # --------------- Connection health constants ---------------
     MAX_RECONNECT_DELAY = 30          # seconds
     INITIAL_RECONNECT_DELAY = 1       # seconds
-    STALE_CONNECTION_TIMEOUT = 60     # seconds – force reconnect if silent
+    STALE_CONNECTION_TIMEOUT = 45     # seconds – reduced from 60s for faster recovery
     BOOK_DEPTH_LIMIT = 1000           # levels to request in REST snapshot
     EMIT_BOOK_DEPTH = 20              # levels to emit to callbacks
 
@@ -316,13 +316,16 @@ class ExchangeConnector:
                 self._last_update_id = snap.get('nonce', 0)
                 self._prev_final_update_id = 0
                 self._pending_gap = None
+                self._health_metrics['resyncs'] += 1
 
                 logger.info(
-                    f"Snapshot loaded: {len(self._local_bids)}b/{len(self._local_asks)}a, "
-                    f"lastUpdateId={self._last_update_id}"
+                    f"✅ Snapshot loaded: {len(self._local_bids)}b/{len(self._local_asks)}a, "
+                    f"lastUpdateId={self._last_update_id} [Resync #{self._health_metrics['resyncs']}]"
                 )
 
-                # Search buffer for valid first event
+                # CRITICAL: After re-sync, aggressively discard old buffered events
+                # to prevent re-sync death spiral. Only keep events that are NEWER
+                # than the snapshot we just fetched.
                 target = self._last_update_id + 1
                 valid_idx = None
                 
@@ -330,33 +333,48 @@ class ExchangeConnector:
                     u_first = evt.get('U', 0)
                     u_final = evt.get('u', 0)
                     
+                    # Skip all events older than or equal to snapshot
                     if u_final <= self._last_update_id:
                         continue
                     
+                    # Found first event that could bridge to our snapshot
                     if u_first <= target <= u_final:
                         valid_idx = idx
-                        logger.info(f"Valid event at buffer[{idx}]: U={u_first}, u={u_final}")
+                        logger.info(f"Found bridging event at buffer[{idx}]: U={u_first}, u={u_final}")
                         break
+                    # If gap in buffer, clear it entirely — it's stale
                     elif u_first > target:
                         gap_size = u_first - target
-                        logger.warning(f"Gap in buffer: missing {gap_size} updates, clearing")
+                        logger.warning(
+                            f"Gap in buffer: expected U={target}, got U={u_first} (gap={gap_size}). "
+                            f"Discarding all {len(self._event_buffer)} buffered events."
+                        )
                         self._event_buffer.clear()
                         break
                 
+                # Apply only the new events from valid_idx onward
                 if valid_idx is not None:
+                    old_buffer_size = len(self._event_buffer)
                     applied = 0
                     for evt in self._event_buffer[valid_idx:]:
                         if not self._apply_diff_if_valid(evt):
+                            # Stop applying if validation fails
                             break
                         applied += 1
-                    logger.info(f"Applied {applied} buffered events")
+                    logger.info(
+                        f"Applied {applied}/{old_buffer_size} buffered events "
+                        f"(discarded {old_buffer_size - applied - valid_idx})"
+                    )
+                else:
+                    logger.info(
+                        f"No bridging event in buffer. Discarding all {len(self._event_buffer)} events."
+                    )
                 
-                if self._event_buffer:
-                    logger.debug(f"Discarding {len(self._event_buffer)} stale buffered events after snapshot")
+                # CRITICAL: Clear buffer after processing to prevent re-applying stale events
                 self._event_buffer.clear()
                 self._book_initialised = True
                 logger.info(
-                    f"Book re-initialized. Total resyncs so far: {self._health_metrics['resyncs']}"
+                    f"✅ Book synchronized. Total resyncs: {self._health_metrics['resyncs']}"
                 )
 
             except Exception as e:
@@ -367,11 +385,11 @@ class ExchangeConnector:
         """
         Apply Binance Spot depthUpdate with strict validation.
         
-        Rules:
+        Rules (per Binance docs):
         - First event: U <= lastUpdateId+1 AND u >= lastUpdateId+1
-        - Subsequent: U == prev_u + 1 (strict continuity)
+        - Subsequent: U == prev_u + 1 (strict continuity) — ANY gap triggers immediate re-sync
         
-        Returns True if applied, False if rejected (triggers re-sync or gap fill).
+        Returns True if applied, False if rejected (triggers re-sync).
         """
         event_first_id = data.get('U', 0)
         event_final_id = data.get('u', 0)
@@ -391,20 +409,22 @@ class ExchangeConnector:
             if not (event_first_id <= self._last_update_id + 1 <= event_final_id):
                 logger.debug(
                     f"First event rejected: U={event_first_id}, u={event_final_id}, "
-                    f"need U<={self._last_update_id + 1} <= u"
+                    f"need U<={self._last_update_id + 1} <= u — triggering re-sync"
                 )
                 return False
         else:
-            # Strict continuity check
+            # Strict continuity check — ANY gap means order book is broken
             if event_first_id != self._prev_final_update_id + 1:
                 gap_size = event_first_id - self._prev_final_update_id - 1
                 logger.error(
-                    f"GAP DETECTED: expected U={self._prev_final_update_id + 1}, "
-                    f"got U={event_first_id}, missing {gap_size} updates"
+                    f"❌ GAP DETECTED: expected U={self._prev_final_update_id + 1}, "
+                    f"got U={event_first_id}, missing {gap_size} updates — TRIGGERING RE-SYNC"
                 )
                 self._health_metrics['gaps_detected'] += 1
                 self._health_metrics['last_gap_time'] = datetime.now(timezone.utc)
-                self._pending_gap = (self._prev_final_update_id + 1, event_first_id - 1)
+                # Immediately mark book as stale — don't try to backfill
+                self._book_initialised = False
+                self._last_resync_time = time.monotonic()
                 return False
         
         # Apply diffs
@@ -426,24 +446,15 @@ class ExchangeConnector:
         self._health_metrics['events_applied'] += 1
         return True
 
-    async def _backfill_gap(self, symbol: str, start_id: int, end_id: int):
+    async def _backfill_gap(self, symbol: str):
         """
-        Attempt to fill gap using REST API.
-        Note: Binance doesn't provide historical diff updates via REST.
-        Only trades can be backfilled. For L2 gaps, we must re-sync.
+        Handle a detected gap in order book updates.
+        Per Binance docs: when a gap is detected, the only solution is a full re-sync.
         """
-        logger.warning(f"Cannot backfill L2 gap {start_id}-{end_id}, forcing re-sync")
-        # Binance lacks historical order book diff API
-        # Alternative: fetch recent trades to maintain some data continuity
-        try:
-            trades = await self.rest_client.fetch_trades(symbol, since=start_id)
-            logger.info(f"Backfilled {len(trades)} trades for gap period")
-            # Store these trades separately as 'gap_fill' records
-        except Exception as e:
-            logger.error(f"Trade backfill failed: {e}")
-        
-        # Force full re-sync
+        logger.warning("🔄 Backfill triggered: Fetching fresh REST snapshot to re-sync order book")
         self._book_initialised = False
+        self._last_resync_time = time.monotonic()
+        await self._fetch_rest_snapshot(symbol)
 
     def _build_sorted_book(self) -> Dict[str, Any]:
         """
@@ -480,28 +491,29 @@ class ExchangeConnector:
         self._ws_urls = self._get_ws_urls(symbol)
         self._ws_url_index = 0
         consecutive_failures = 0
+        self._last_resync_time = time.monotonic()  # Initialize resync cooldown
         
         while self.running:
             ws_url = self._ws_urls[self._ws_url_index]
             
             try:
+                logger.info(f"🔌 Connecting to WebSocket: {ws_url}")
                 async with websockets.connect(
                     ws_url,
-                    ping_interval=20,
+                    ping_interval=15,  # Send ping every 15s (Binance expects keep-alive)
                     ping_timeout=10,
                     close_timeout=5,
                     open_timeout=15,
-                    #additional_headers={"User-Agent": "orderflow-recorder/1.0"},
-                    #extra_headers={"User-Agent": "orderflow-recorder/1.0"},
                 ) as ws:
                     self.ws_connection = ws
-                    logger.info(f"WebSocket connected: {ws_url}")
+                    logger.info(f"✅ WebSocket connected: {ws_url}")
                     
                     # Reset on successful connection
                     consecutive_failures = 0
                     self._reconnect_delay = self.INITIAL_RECONNECT_DELAY
                     
                     # Reset book state and fetch fresh REST snapshot
+                    logger.info("📖 Fetching fresh order book snapshot...")
                     self._book_initialised = False
                     self._event_buffer.clear()
                     self._prev_final_update_id = 0
@@ -510,6 +522,7 @@ class ExchangeConnector:
                     self._last_message_time = time.monotonic()
                     
                     await self._subscribe(ws, symbol)
+                    logger.info("🎧 Subscribed to market data streams")
                     
                     watchdog_task = asyncio.create_task(
                         self._stale_connection_watchdog(ws)
@@ -531,19 +544,24 @@ class ExchangeConnector:
             except websockets.exceptions.ConnectionClosed as e:
                 consecutive_failures += 1
                 logger.warning(
-                    f"WebSocket closed (code={e.code}) on {ws_url}, "
+                    f"⚠️  WebSocket closed (code={e.code}) on {ws_url}, "
                     f"failure #{consecutive_failures}"
                 )
+            
+            except asyncio.CancelledError:
+                logger.info("WebSocket task cancelled")
+                break
             
             except Exception as e:
                 consecutive_failures += 1
                 error_msg = str(e)
                 logger.error(
-                    f"WebSocket error on {ws_url}: {error_msg}, "
+                    f"❌ WebSocket error on {ws_url}: {error_msg}, "
                     f"failure #{consecutive_failures}"
                 )
             
             if not self.running:
+                logger.info("WebSocket loop stopped (running=False)")
                 break
             
             # Rotate to next URL after 2 consecutive failures on current one
@@ -552,14 +570,15 @@ class ExchangeConnector:
                 self._ws_url_index = (self._ws_url_index + 1) % len(self._ws_urls)
                 new_url = self._ws_urls[self._ws_url_index]
                 logger.warning(
-                    f"Rotating endpoint: {old_url} -> {new_url} "
-                    f"(after {consecutive_failures} failures)"
+                    f"🔄 Rotating endpoint after {consecutive_failures} failures: "
+                    f"{old_url} -> {new_url}"
                 )
                 consecutive_failures = 0
                 # Short delay before trying new endpoint
                 await asyncio.sleep(1)
             else:
                 # Backoff before retrying same endpoint
+                logger.info(f"⏳ Reconnecting in {self._reconnect_delay:.1f}s...")
                 await asyncio.sleep(self._reconnect_delay)
                 self._reconnect_delay = min(
                     self._reconnect_delay * 2,
@@ -567,16 +586,29 @@ class ExchangeConnector:
                 )
 
     async def _stale_connection_watchdog(self, ws):
-        """Force-close the WS if no message is received for STALE_CONNECTION_TIMEOUT."""
+        """Force-close the WS if no message is received for STALE_CONNECTION_TIMEOUT.
+        
+        This watchdog detects if the connection has become stale and forces a reconnect.
+        Per Binance, we should see depth updates every 100ms and trades continuously.
+        If we go silent for 45s+, something is wrong.
+        """
         while True:
-            await asyncio.sleep(5)
-            elapsed = time.monotonic() - self._last_message_time
-            if elapsed > self.STALE_CONNECTION_TIMEOUT:
-                logger.warning(
-                    f"No WS message for {elapsed:.1f}s, forcing reconnect"
-                )
-                await ws.close()
-                return
+            try:
+                await asyncio.sleep(5)  # Check every 5 seconds
+                elapsed = time.monotonic() - self._last_message_time
+                
+                if elapsed > self.STALE_CONNECTION_TIMEOUT:
+                    logger.warning(
+                        f"⏱️  No WS message for {elapsed:.1f}s (timeout={self.STALE_CONNECTION_TIMEOUT}s). "
+                        f"Connection stale. Forcing reconnect."
+                    )
+                    await ws.close()
+                    return
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Watchdog error: {e}")
+                break
 
     def _get_ws_urls(self, symbol: str) -> List[str]:
         """
@@ -673,55 +705,55 @@ class ExchangeConnector:
     async def _handle_depth_update(self, data: Dict, symbol: str):
         """Handle depth update with gap detection and recovery.
         
-        Key invariant: after fetching a REST snapshot, we MUST discard all
-        buffered WS events that are older than the snapshot before processing
-        new ones. Otherwise we enter a re-sync death spiral.
+        Key invariant (per Binance docs): after fetching a REST snapshot, we MUST discard
+        all buffered WS events older than the snapshot BEFORE processing new events.
+        Otherwise we can enter a re-sync death spiral.
         """
         if not self._book_initialised:
+            # Book not yet initialized — buffer this event
             self._event_buffer.append(data)
-            if len(self._event_buffer) > 1000:
-                self._event_buffer = self._event_buffer[-500:]
+            if len(self._event_buffer) > 2000:
+                # Trim buffer if it grows too large (keep newest 1000)
+                self._event_buffer = self._event_buffer[-1000:]
+                logger.warning(f"Event buffer trimmed to {len(self._event_buffer)} events")
             return
 
         self._health_metrics['events_received'] += 1
         
         event_final_id = data.get('u', 0)
         
-        # CRITICAL: silently drop events that are older than our snapshot.
+        # CRITICAL: Silently drop events older than snapshot.
         # After a re-sync, many stale events may be queued in the WS buffer.
-        # These must be skipped without triggering another re-sync.
+        # These must NOT trigger another re-sync.
         if event_final_id <= self._last_update_id:
-            return  # Stale event, just skip it
+            return  # Stale event, skip silently
         
+        # Attempt to apply diff
         applied = self._apply_diff_if_valid(data)
         
         if not applied:
-            # Only re-sync if we haven't JUST re-synced.
-            # Use a cooldown to prevent rapid-fire re-syncs.
+            # Diff validation failed — book may be broken
+            # Check re-sync cooldown to prevent rapid-fire re-syncs
             now = time.monotonic()
             time_since_last_resync = now - self._last_resync_time
             
-            if time_since_last_resync < 5.0:
-                # Recently re-synced — this is likely a stale event from before
-                # the resync. Just skip it silently.
+            if time_since_last_resync < 3.0:
+                # Recently re-synced (< 3s ago) — this is likely a stale event from BEFORE
+                # the resync that's just arriving now. Skip it silently.
                 logger.debug(
-                    f"Skipping rejected diff (U={data.get('U')}, u={event_final_id}) "
-                    f"— last resync was {time_since_last_resync:.1f}s ago"
+                    f"Skipping rejected diff (U={data.get('U')}, u={event_final_id}). "
+                    f"Last resync was {time_since_last_resync:.1f}s ago. Likely stale event."
                 )
                 return
             
-            if hasattr(self, '_pending_gap') and self._pending_gap:
-                await self._backfill_gap(symbol, *self._pending_gap)
-                self._pending_gap = None
-            else:
-                logger.warning(
-                    f"Diff rejected (U={data.get('U')}, u={event_final_id}, "
-                    f"lastUpdateId={self._last_update_id}), re-syncing from REST"
-                )
-                self._health_metrics['resyncs'] += 1
-                self._book_initialised = False
-                self._last_resync_time = now
-                await self._fetch_rest_snapshot(symbol)
+            # More than 3s since last re-sync — something is wrong, re-sync now
+            logger.error(
+                f"❌ Diff validation failed for U={data.get('U')}, u={event_final_id}. "
+                f"Last resync was {time_since_last_resync:.1f}s ago. Triggering immediate re-sync."
+            )
+            self._book_initialised = False
+            self._last_resync_time = now
+            await self._backfill_gap(symbol)
             return
 
         # Successfully applied — build and emit book

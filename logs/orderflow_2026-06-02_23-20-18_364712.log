@@ -9,3 +9,53 @@
 2026-06-02 23:20:28.917 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10692263378703, got U=10692263381389, missing 2686 updates
 2026-06-02 23:20:28.918 | WARNING  | data.exchange_connector:_backfill_gap:435 - Cannot backfill L2 gap 10692263378703-10692263381388, forcing re-sync
 2026-06-02 23:20:30.290 | INFO     | data.exchange_connector:_backfill_gap:440 - Backfilled 0 trades for gap period
+2026-06-03 03:21:05.284 | WARNING  | data.exchange_connector:start_websocket:533 - WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-03 03:21:11.813 | INFO     | data.exchange_connector:start_websocket:498 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 03:21:22.036 | INFO     | data.exchange_connector:_fetch_rest_snapshot:320 - Snapshot loaded: 1000b/1000a, lastUpdateId=10694110214874
+2026-06-03 03:21:22.037 | INFO     | data.exchange_connector:_fetch_rest_snapshot:358 - Book re-initialized. Total resyncs so far: 0
+2026-06-03 03:21:22.068 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10694110233337, got U=10694110236215, missing 2878 updates
+2026-06-03 03:21:22.069 | WARNING  | data.exchange_connector:_backfill_gap:435 - Cannot backfill L2 gap 10694110233337-10694110236214, forcing re-sync
+2026-06-03 03:21:23.441 | INFO     | data.exchange_connector:_backfill_gap:440 - Backfilled 0 trades for gap period
+2026-06-03 05:03:15.084 | WARNING  | data.exchange_connector:start_websocket:533 - WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-03 05:03:18.010 | INFO     | data.exchange_connector:start_websocket:498 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 05:03:20.117 | INFO     | data.exchange_connector:_fetch_rest_snapshot:320 - Snapshot loaded: 1000b/1000a, lastUpdateId=10694798997789
+2026-06-03 05:03:20.118 | INFO     | data.exchange_connector:_fetch_rest_snapshot:358 - Book re-initialized. Total resyncs so far: 0
+2026-06-03 05:03:20.173 | WARNING  | data.exchange_connector:_handle_depth_update:717 - Diff rejected (U=10694799003675, u=10694799015744, lastUpdateId=10694798997789), re-syncing from REST
+2026-06-03 05:03:31.068 | INFO     | data.exchange_connector:_fetch_rest_snapshot:320 - Snapshot loaded: 1000b/1000a, lastUpdateId=10694800435681
+2026-06-03 05:03:31.069 | INFO     | data.exchange_connector:_fetch_rest_snapshot:358 - Book re-initialized. Total resyncs so far: 1
+2026-06-03 05:03:36.264 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10694800445725, got U=10694800446875, missing 1150 updates
+2026-06-03 05:03:36.265 | WARNING  | data.exchange_connector:_backfill_gap:435 - Cannot backfill L2 gap 10694800445725-10694800446874, forcing re-sync
+2026-06-03 05:03:37.694 | INFO     | data.exchange_connector:_backfill_gap:440 - Backfilled 0 trades for gap period
+2026-06-03 07:28:24.583 | WARNING  | data.exchange_connector:start_websocket:533 - WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-03 07:28:29.402 | INFO     | data.exchange_connector:start_websocket:498 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 07:28:31.338 | INFO     | data.exchange_connector:_fetch_rest_snapshot:320 - Snapshot loaded: 1000b/1000a, lastUpdateId=10695834997679
+2026-06-03 07:28:31.338 | INFO     | data.exchange_connector:_fetch_rest_snapshot:358 - Book re-initialized. Total resyncs so far: 1
+2026-06-03 07:28:31.338 | WARNING  | data.exchange_connector:_handle_depth_update:717 - Diff rejected (U=10695835009616, u=10695835017628, lastUpdateId=10695834997679), re-syncing from REST
+2026-06-03 07:28:32.822 | INFO     | data.exchange_connector:_fetch_rest_snapshot:320 - Snapshot loaded: 1000b/1000a, lastUpdateId=10695835102875
+2026-06-03 07:28:32.823 | INFO     | data.exchange_connector:_fetch_rest_snapshot:358 - Book re-initialized. Total resyncs so far: 2
+2026-06-03 07:28:32.959 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835114336, missing 6835 updates
+2026-06-03 07:28:33.176 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835125520, missing 18019 updates
+2026-06-03 07:28:33.380 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835136268, missing 28767 updates
+2026-06-03 07:28:33.573 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835148840, missing 41339 updates
+2026-06-03 07:28:33.684 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835156509, missing 49008 updates
+2026-06-03 07:28:33.905 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835170836, missing 63335 updates
+2026-06-03 07:28:34.129 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835187688, missing 80187 updates
+2026-06-03 07:28:34.331 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835202478, missing 94977 updates
+2026-06-03 07:28:34.434 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835230273, missing 122772 updates
+2026-06-03 07:28:34.535 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835246951, missing 139450 updates
+2026-06-03 07:28:34.637 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835256296, missing 148795 updates
+2026-06-03 07:28:34.912 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835278697, missing 171196 updates
+2026-06-03 07:28:35.014 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835323596, missing 216095 updates
+2026-06-03 07:28:35.211 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835349993, missing 242492 updates
+2026-06-03 07:28:35.309 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835367334, missing 259833 updates
+2026-06-03 07:28:35.422 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835381481, missing 273980 updates
+2026-06-03 07:28:35.622 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835395816, missing 288315 updates
+2026-06-03 07:28:35.732 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835406058, missing 298557 updates
+2026-06-03 07:28:35.827 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835414904, missing 307403 updates
+2026-06-03 07:28:36.031 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835428871, missing 321370 updates
+2026-06-03 07:28:36.031 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835437400, missing 329899 updates
+2026-06-03 07:28:36.124 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835442280, missing 334779 updates
+2026-06-03 07:28:36.235 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835456789, missing 349288 updates
+2026-06-03 07:28:36.335 | ERROR    | data.exchange_connector:_apply_diff_if_valid:401 - GAP DETECTED: expected U=10695835107501, got U=10695835464809, missing 357308 updates
+2026-06-03 07:28:36.336 | WARNING  | data.exchange_connector:_backfill_gap:435 - Cannot backfill L2 gap 10695835107501-10695835464808, forcing re-sync
+2026-06-03 07:28:37.860 | INFO     | data.exchange_connector:_backfill_gap:440 - Backfilled 0 trades for gap period

@@ -1,0 +1,229 @@
+2026-06-03 17:24:32.852 | INFO     | main:run_paper:525 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-03 17:24:32.861 | INFO     | main:run_paper:535 -   Loaded strategy: absorption
+2026-06-03 17:24:32.861 | INFO     | main:run_paper:535 -   Loaded strategy: stacked_imbalance
+2026-06-03 17:24:32.861 | INFO     | data.exchange_connector:connect:141 - Connecting to binance (attempt 1/5)...
+2026-06-03 17:24:36.516 | INFO     | data.exchange_connector:connect:143 - Connected to binance
+2026-06-03 17:24:36.516 | INFO     | data.exchange_connector:start_websocket:500 - 🔌 Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 17:24:38.268 | INFO     | data.exchange_connector:start_websocket:509 - ✅ WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 17:24:38.269 | INFO     | data.exchange_connector:start_websocket:516 - 📖 Fetching fresh order book snapshot...
+2026-06-03 17:24:38.790 | INFO     | data.exchange_connector:_fetch_rest_snapshot:321 - ✅ Snapshot loaded: 1000b/1000a, lastUpdateId=10699768089001 [Resync #1]
+2026-06-03 17:24:38.791 | INFO     | data.exchange_connector:_fetch_rest_snapshot:369 - No bridging event in buffer. Discarding all 0 events.
+2026-06-03 17:24:38.791 | INFO     | data.exchange_connector:_fetch_rest_snapshot:376 - ✅ Book synchronized. Total resyncs: 1
+2026-06-03 17:24:38.791 | INFO     | data.exchange_connector:start_websocket:525 - 🎧 Subscribed to market data streams
+2026-06-03 17:24:38.860 | ERROR    | data.exchange_connector:_apply_diff_if_valid:419 - ❌ GAP DETECTED: expected U=10699768094858, got U=10699768096214, missing 1356 updates — TRIGGERING RE-SYNC
+2026-06-03 17:25:22.010 | WARNING  | data.exchange_connector:start_websocket:546 - ⚠️  WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-03 17:25:22.025 | INFO     | data.exchange_connector:start_websocket:581 - ⏳ Reconnecting in 1.0s...
+2026-06-03 17:25:23.045 | INFO     | data.exchange_connector:start_websocket:500 - 🔌 Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 17:25:23.574 | INFO     | data.exchange_connector:start_websocket:509 - ✅ WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 17:25:23.575 | INFO     | data.exchange_connector:start_websocket:516 - 📖 Fetching fresh order book snapshot...
+2026-06-03 17:25:25.261 | INFO     | data.exchange_connector:_fetch_rest_snapshot:321 - ✅ Snapshot loaded: 1000b/1000a, lastUpdateId=10699774978744 [Resync #2]
+2026-06-03 17:25:25.261 | INFO     | data.exchange_connector:_fetch_rest_snapshot:369 - No bridging event in buffer. Discarding all 0 events.
+2026-06-03 17:25:25.261 | INFO     | data.exchange_connector:_fetch_rest_snapshot:376 - ✅ Book synchronized. Total resyncs: 2
+2026-06-03 17:25:25.261 | INFO     | data.exchange_connector:start_websocket:525 - 🎧 Subscribed to market data streams
+2026-06-03 17:25:25.276 | ERROR    | data.exchange_connector:_apply_diff_if_valid:419 - ❌ GAP DETECTED: expected U=10699774987048, got U=10699774991942, missing 4894 updates — TRIGGERING RE-SYNC
+2026-06-03 17:29:56.150 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:32:00.773 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:34:10.424 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:36:23.286 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:38:31.213 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:40:53.259 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:43:08.859 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:45:14.901 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:47:12.039 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:49:14.705 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:51:27.115 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:53:44.804 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:56:02.045 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 17:58:21.693 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:00:39.120 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:02:52.597 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:05:15.157 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:07:30.222 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:09:43.340 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:11:58.400 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:14:17.598 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:16:28.205 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:18:32.762 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:20:43.811 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:22:54.352 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:25:02.112 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:27:11.158 | WARNING  | data.exchange_connector:start_websocket:546 - ⚠️  WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-03 18:27:11.159 | INFO     | data.exchange_connector:start_websocket:581 - ⏳ Reconnecting in 1.0s...
+2026-06-03 18:27:12.161 | INFO     | data.exchange_connector:start_websocket:500 - 🔌 Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 18:27:13.851 | INFO     | data.exchange_connector:start_websocket:509 - ✅ WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 18:27:13.852 | INFO     | data.exchange_connector:start_websocket:516 - 📖 Fetching fresh order book snapshot...
+2026-06-03 18:27:15.865 | INFO     | data.exchange_connector:_fetch_rest_snapshot:321 - ✅ Snapshot loaded: 1000b/1000a, lastUpdateId=10700267068680 [Resync #3]
+2026-06-03 18:27:15.866 | INFO     | data.exchange_connector:_fetch_rest_snapshot:369 - No bridging event in buffer. Discarding all 0 events.
+2026-06-03 18:27:15.866 | INFO     | data.exchange_connector:_fetch_rest_snapshot:376 - ✅ Book synchronized. Total resyncs: 3
+2026-06-03 18:27:15.866 | INFO     | data.exchange_connector:start_websocket:525 - 🎧 Subscribed to market data streams
+2026-06-03 18:27:15.986 | ERROR    | data.exchange_connector:_apply_diff_if_valid:419 - ❌ GAP DETECTED: expected U=10700267073277, got U=10700267073522, missing 245 updates — TRIGGERING RE-SYNC
+2026-06-03 18:31:37.272 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:33:39.908 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:35:47.890 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:37:56.068 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:40:03.735 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:42:17.160 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:44:41.282 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:46:50.527 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:48:52.846 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:51:15.504 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:53:38.688 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:55:52.419 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 18:58:02.363 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:00:22.369 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:02:24.236 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:04:29.042 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:06:34.496 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:08:37.167 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:10:43.997 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:12:55.817 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:15:08.521 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:17:16.925 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:19:25.942 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:21:33.725 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:23:37.428 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:25:39.214 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:27:44.022 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:29:55.924 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:32:04.271 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:34:15.751 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:36:30.081 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:38:39.648 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:40:58.024 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:43:23.527 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:45:36.295 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:47:52.284 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:50:09.741 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:52:25.325 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:54:46.745 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:56:59.731 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 19:59:10.477 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:01:27.634 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:03:41.311 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:05:46.138 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:07:55.693 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:10:08.921 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:12:37.963 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:15:11.868 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:17:26.514 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:19:33.929 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:21:52.974 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:24:08.922 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:26:38.163 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:29:01.502 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:31:23.346 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:33:35.371 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:35:40.828 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:37:46.442 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:40:13.017 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:42:43.406 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:45:21.068 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:47:36.548 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:49:54.423 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:50:03.228 | WARNING  | data.exchange_connector:start_websocket:546 - ⚠️  WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-03 20:50:03.230 | INFO     | data.exchange_connector:start_websocket:581 - ⏳ Reconnecting in 1.0s...
+2026-06-03 20:50:04.241 | INFO     | data.exchange_connector:start_websocket:500 - 🔌 Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 20:50:06.196 | INFO     | data.exchange_connector:start_websocket:509 - ✅ WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-03 20:50:06.198 | INFO     | data.exchange_connector:start_websocket:516 - 📖 Fetching fresh order book snapshot...
+2026-06-03 20:50:08.357 | INFO     | data.exchange_connector:_fetch_rest_snapshot:321 - ✅ Snapshot loaded: 1000b/1000a, lastUpdateId=10701436616148 [Resync #4]
+2026-06-03 20:50:08.358 | INFO     | data.exchange_connector:_fetch_rest_snapshot:369 - No bridging event in buffer. Discarding all 0 events.
+2026-06-03 20:50:08.359 | INFO     | data.exchange_connector:_fetch_rest_snapshot:376 - ✅ Book synchronized. Total resyncs: 4
+2026-06-03 20:50:08.360 | INFO     | data.exchange_connector:start_websocket:525 - 🎧 Subscribed to market data streams
+2026-06-03 20:50:08.470 | ERROR    | data.exchange_connector:_apply_diff_if_valid:419 - ❌ GAP DETECTED: expected U=10701436618337, got U=10701436627724, missing 9387 updates — TRIGGERING RE-SYNC
+2026-06-03 20:54:53.918 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:57:21.008 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 20:59:50.708 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:02:01.237 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:04:26.768 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:06:59.863 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:09:36.332 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:11:53.668 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:14:17.806 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:16:28.744 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:18:42.401 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:21:02.373 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:23:28.555 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:25:40.842 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:28:02.059 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:30:21.563 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:32:29.122 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:34:56.627 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:37:24.325 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:39:52.475 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:42:05.837 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:44:30.191 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:46:56.347 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:49:25.288 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:51:58.008 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:54:38.597 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 21:57:21.885 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:00:04.219 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:02:38.847 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:05:08.501 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:07:40.599 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:10:22.498 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:12:59.186 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:15:44.230 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:18:06.850 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:20:36.843 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:22:59.101 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:25:25.923 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:27:58.179 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:30:19.184 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:32:49.479 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:35:19.818 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:37:42.350 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:39:45.383 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:41:51.370 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:44:02.536 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:46:15.705 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:48:26.927 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:50:39.366 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:52:46.581 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:55:02.006 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:57:04.427 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 22:59:21.016 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:01:30.876 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:03:35.984 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:05:54.521 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:08:11.237 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:10:36.025 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:12:44.709 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:14:58.098 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:16:57.582 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:19:12.001 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:21:26.551 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:23:44.955 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:26:09.485 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:28:29.723 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:31:05.474 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:33:24.249 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:35:39.796 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:38:03.826 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:40:14.823 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:42:39.912 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:44:51.268 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:47:01.569 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:49:16.957 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:51:39.766 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:53:46.570 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:55:38.744 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:57:35.403 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-03 23:59:38.822 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:01:39.485 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:03:38.886 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:05:45.608 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:07:44.829 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:09:50.067 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:11:54.700 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:13:57.043 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:16:09.689 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:18:15.970 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:20:33.275 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:22:55.709 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:25:09.596 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:27:12.663 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:29:23.818 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:31:25.618 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:33:25.780 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:35:38.315 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
