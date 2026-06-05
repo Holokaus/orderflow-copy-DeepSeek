@@ -106,7 +106,7 @@ class OrderFlowSystem:
         else:
             logger.info(f"LLM advisor ready: {self.llm_advisor.provider.value}")
     
-    def _init_components(self, mode: str, testnet: bool = None) -> None:
+    def _init_components(self, mode: str, testnet: bool = None, use_futures: bool = None) -> None:
         """Initialize components based on mode"""
         # Feature engine always needed
         self.feature_engine = FeatureEngine(FeatureConfig(
@@ -126,9 +126,11 @@ class OrderFlowSystem:
         
         if mode in ['record', 'paper', 'live']:
             use_testnet = testnet if testnet is not None else (mode == 'paper')
+            is_futures = use_futures if use_futures is not None else True
             self.exchange = ExchangeConnector(ExchangeConfig(
                 exchange_id=self.settings.trading.exchange.value,
                 testnet=use_testnet,
+                use_futures=is_futures,
             ))
         
 
@@ -527,12 +529,12 @@ class OrderFlowSystem:
     
     # ==================== PAPER TRADING ====================
     
-    async def run_paper(self, strategy_names: list, params: dict = None, testnet: bool = None) -> None:
+    async def run_paper(self, strategy_names: list, params: dict = None, testnet: bool = None, use_futures: bool = None) -> None:
         """Run paper trading with one or more strategies"""
         logger.info(f"Starting paper trading: {strategy_names}")
         
         if not self.exchange:
-            self._init_components('paper', testnet=testnet)
+            self._init_components('paper', testnet=testnet, use_futures=use_futures)
         
         # Load all strategies
         self.paper_strategies = []

@@ -124,8 +124,8 @@ async def main():
     print("=" * 60)
     print("\n⏳ Connecting to Binance...\n")
     
-    # Initialize exchange with API credentials (not async)
-    system._init_components('paper', testnet=False)
+    # Initialize exchange with API credentials (not async) — SPOT mode for trade data
+    system._init_components('paper', testnet=False, use_futures=False)
     if system.exchange:
         system.exchange.config.api_key = api_key
         system.exchange.config.api_secret = api_secret
@@ -136,7 +136,7 @@ async def main():
     
     try:
         # Create task for paper trading
-        trading_task = asyncio.create_task(system.run_paper(STRATEGIES, testnet=False))
+        trading_task = asyncio.create_task(system.run_paper(STRATEGIES, testnet=False, use_futures=False))
         
         # Status monitor task
         async def status_monitor():
