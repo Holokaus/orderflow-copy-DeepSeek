@@ -37,3 +37,10 @@
 2026-06-05 13:57:04.419 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:26000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4325 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:52000 NoBook:0 LossSkip:0
 2026-06-05 13:59:43.752 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:27000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4385 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:54000 NoBook:0 LossSkip:0
 2026-06-05 14:02:11.900 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:28000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4325 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:56000 NoBook:0 LossSkip:0
+<<<<<<< Updated upstream
+=======
+2026-06-05 14:04:38.011 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:29000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4265 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:58000 NoBook:0 LossSkip:0
+2026-06-05 14:06:53.899 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:30000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4305 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:60000 NoBook:0 LossSkip:0
+2026-06-05 14:07:34.082 | INFO     | data.exchange_connector:start_websocket:330 - WebSocket task cancelled
+2026-06-05 14:07:34.084 | INFO     | data.exchange_connector:disconnect:118 - Disconnected from exchange
+>>>>>>> Stashed changes
