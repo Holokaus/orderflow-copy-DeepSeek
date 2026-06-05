@@ -1,0 +1,30 @@
+2026-06-05 12:53:59.986 | INFO     | main:run_paper:532 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-05 12:53:59.989 | INFO     | main:run_paper:543 -   Loaded strategy: absorption
+2026-06-05 12:53:59.990 | INFO     | main:run_paper:543 -   Loaded strategy: stacked_imbalance
+2026-06-05 12:53:59.990 | INFO     | data.exchange_connector:connect:95 - Connecting to binance (attempt 1/5)...
+2026-06-05 12:54:04.285 | INFO     | data.exchange_connector:connect:97 - Connected to binance
+2026-06-05 12:54:04.285 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 12:54:06.396 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 12:54:06.397 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-05 12:54:06.943 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 1000b/1000a, lastUpdateId=10720478527674 [Resync #1]
+2026-06-05 12:54:06.944 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 1
+2026-06-05 12:54:06.945 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-05 12:56:33.162 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:1000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4915 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:2000 NoBook:0 LossSkip:0
+2026-06-05 12:59:00.388 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:2000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4975 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:4000 NoBook:0 LossSkip:0
+2026-06-05 13:01:11.225 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:3000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.5025 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:6000 NoBook:0 LossSkip:0
+2026-06-05 13:03:31.168 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:4000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.5005 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:8000 NoBook:0 LossSkip:0
+2026-06-05 13:05:46.799 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:5000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4845 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:10000 NoBook:0 LossSkip:0
+2026-06-05 13:08:05.127 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:6000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4815 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:12000 NoBook:0 LossSkip:0
+2026-06-05 13:10:37.090 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:7000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4735 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:14000 NoBook:0 LossSkip:0
+2026-06-05 13:12:56.298 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:8000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4695 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:16000 NoBook:0 LossSkip:0
+2026-06-05 13:15:32.155 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:9000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4665 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:18000 NoBook:0 LossSkip:0
+2026-06-05 13:17:56.171 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:10000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4515 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:20000 NoBook:0 LossSkip:0
+2026-06-05 13:20:17.230 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:11000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4485 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:22000 NoBook:0 LossSkip:0
+2026-06-05 13:22:47.486 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:12000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4535 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:24000 NoBook:0 LossSkip:0
+2026-06-05 13:25:21.911 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:13000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4565 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:26000 NoBook:0 LossSkip:0
+2026-06-05 13:28:03.364 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:14000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4495 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:28000 NoBook:0 LossSkip:0
+2026-06-05 13:30:39.858 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:15000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4495 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:30000 NoBook:0 LossSkip:0
+2026-06-05 13:33:01.916 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:16000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4485 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:32000 NoBook:0 LossSkip:0
+2026-06-05 13:35:28.573 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:17000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4445 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:34000 NoBook:0 LossSkip:0
+2026-06-05 13:37:46.198 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:18000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4325 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:36000 NoBook:0 LossSkip:0
+2026-06-05 13:40:08.387 | INFO     | main:_on_paper_order_book:716 - [HEALTH] Ticks:19000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4355 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:38000 NoBook:0 LossSkip:0

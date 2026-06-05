@@ -392,6 +392,8 @@ class ExchangeConnector:
             }
             await ws.send(json.dumps(subscribe_msg))
 
+    _msg_counters = {'depthUpdate': 0, 'aggTrade': 0, 'other': 0, 'total': 0}
+
     async def _process_message(self, message: str, symbol: str):
         try:
             data = json.loads(message)
@@ -399,16 +401,31 @@ class ExchangeConnector:
                 data = data['data']
             if self.config.exchange_id == "binance":
                 if 'e' in data:
+                    self._msg_counters['total'] += 1
                     if data['e'] == 'depthUpdate':
+                        self._msg_counters['depthUpdate'] += 1
                         await self._handle_depth_update(data, symbol)
                     elif data['e'] == 'aggTrade':
+                        self._msg_counters['aggTrade'] += 1
                         await self._handle_trade(data)
+                    else:
+                        self._msg_counters['other'] += 1
+                else:
+                    self._msg_counters['other'] += 1
             elif self.config.exchange_id == "bybit":
                 if 'topic' in data:
                     if 'orderbook' in data['topic']:
                         await self._handle_depth_update(data['data'], symbol)
                     elif 'publicTrade' in data['topic']:
                         await self._handle_trade(data['data'])
+            if self._msg_counters['total'] % 500 == 0:
+                c = self._msg_counters
+                logger.info(
+                    f"[WS MSGS] total={c['total']} "
+                    f"depth={c['depthUpdate']} "
+                    f"aggTrade={c['aggTrade']} "
+                    f"other={c['other']}"
+                )
         except json.JSONDecodeError:
             logger.warning(f"Invalid JSON message: {message[:100]}")
         except Exception as e:
@@ -451,11 +468,20 @@ class ExchangeConnector:
         if self.on_order_book_update:
             await self.on_order_book_update(sorted_book)
 
+    _trade_log_count = 0
+
     async def _handle_trade(self, data: Dict):
         if not isinstance(data, dict):
             return
         if 'p' not in data and 'price' not in data:
             return
+        self._trade_log_count += 1
+        if self._trade_log_count <= 3 or self._trade_log_count % 500 == 0:
+            logger.info(
+                f"[TRACE TRADE #{self._trade_log_count}] "
+                f"keys={list(data.keys())} "
+                f"p={data.get('p')} q={data.get('q')} m={data.get('m')}"
+            )
         try:
             trade_ts_ms = data.get('T', None)
             if trade_ts_ms is not None:

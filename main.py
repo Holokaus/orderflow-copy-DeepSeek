@@ -89,6 +89,13 @@ class OrderFlowSystem:
         self._pending_trades: list = []
         self.paper_initial_capital = 100.0
         self.paper_capital = 100.0
+        self._paper_tick_count = 0
+        self._paper_total_trades_received = 0
+        self._paper_skipped_no_book = 0
+        self._paper_skipped_has_pos = 0
+        self._paper_skipped_cooldown = 0
+        self._paper_skipped_loss_streak = 0
+        self._paper_signals_evaluated = 0
     
     def _init_llm(self) -> None:
         """Initialize LLM advisor with automatic failover"""
@@ -524,7 +531,8 @@ class OrderFlowSystem:
         """Run paper trading with one or more strategies"""
         logger.info(f"Starting paper trading: {strategy_names}")
         
-        self._init_components('paper', testnet=testnet)
+        if not self.exchange:
+            self._init_components('paper', testnet=testnet)
         
         # Load all strategies
         self.paper_strategies = []
@@ -563,11 +571,13 @@ class OrderFlowSystem:
 
     async def _on_paper_order_book(self, order_book: dict) -> None:
         """Process order book update: full paper trading tick."""
+        self._paper_tick_count += 1
+        ntrades = len(self._pending_trades)
+        self._paper_total_trades_received += ntrades
+
         if not self.running or not self.paper_strategies:
-            logger.debug(f"⏹️  Paper orderbook callback skipped: running={self.running}, strategies={len(self.paper_strategies) if self.paper_strategies else 0}")
             return
 
-        logger.debug(f"📥 Paper orderbook tick: {len(order_book.get('bids', []))}b/{len(order_book.get('asks', []))}a")
         try:
             ts = datetime.now()
 
@@ -586,20 +596,25 @@ class OrderFlowSystem:
             trades = []
             for t in self._pending_trades:
                 price = float(t.get('price', 0))
-                size = float(t.get('size', 0))
+                size_val = float(t.get('size', 0))
+                if size_val == 0:
+                    size_val = float(t.get('q', 0))
                 side_str = str(t.get('side', 'buy')).lower().strip()
                 side = Side.BUY if side_str == 'buy' else Side.SELL
-                if price > 0 and size > 0:
-                    trades.append(Trade(timestamp=ts, price=price, size=size, side=side))
+                if price > 0 and size_val > 0:
+                    trades.append(Trade(timestamp=ts, price=price, size=size_val, side=side))
             self._pending_trades.clear()
 
             # 3) Skip if no best bid/ask
             if not ob.best_bid or not ob.best_ask or ob.mid_price <= 0:
+                self._paper_skipped_no_book += 1
+                if self._paper_tick_count % 500 == 0:
+                    logger.warning(f"No valid book data after {self._paper_tick_count} ticks "
+                                   f"(bids={len(bids)}, asks={len(asks)})")
                 return
 
             # 4) Update FeatureEngine
             state = self.paper_feature_engine.update(ob, trades)
-            logger.debug(f"✅ Feature state updated: {len(state.imbalances) if state.imbalances else 0} imbalances")
 
             # 5) Mark-to-market existing position
             if self.paper_position:
@@ -613,6 +628,7 @@ class OrderFlowSystem:
 
             # 6) Evaluate strategies (only when flat)
             if self.paper_position:
+                self._paper_skipped_has_pos += 1
                 return
 
             # 6a) Cooldown check
@@ -623,22 +639,21 @@ class OrderFlowSystem:
 
             # 6b) Loss streak cooldown: skip after 2 consecutive losses
             if self.paper_consecutive_losses >= 2:
+                self._paper_skipped_loss_streak += 1
                 return
 
             # 6c) Evaluate each strategy
             mid = ob.mid_price
-            logger.debug(f"📊 Evaluating {len(self.paper_strategies)} strategies...")
-            for strat_name, strat in self.paper_strategies:
+            strat_ref = self.paper_strategies
+            for strat_name, strat in strat_ref:
+                self._paper_signals_evaluated += 1
                 signal = strat.evaluate(state)
-                logger.debug(f"[{strat_name}] Signal: {signal.signal_type if signal else 'None'}, actionable={signal.is_actionable if signal else 'N/A'}")
 
                 if not signal or not signal.is_actionable:
-                    logger.debug(f"[{strat_name}] Skipped: no signal or not actionable")
                     continue
 
                 # Long-only gate
                 if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
-                    logger.debug(f"[{strat_name}] Skipped: short signal not allowed")
                     continue
 
                 # Entry price (long: ask + slippage)
@@ -650,10 +665,7 @@ class OrderFlowSystem:
                 )
 
                 if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
-                    logger.debug(f"[{strat_name}] Risk filter rejected: {reason}")
                     continue
-                
-                logger.debug(f"[{strat_name}] Risk check passed")
 
                 # Fee-aware filter
                 if signal.entry_price > 0 and signal.take_profit != signal.entry_price:
@@ -667,10 +679,7 @@ class OrderFlowSystem:
                 )
 
                 if fee_check['status'] == 'REJECTED':
-                    logger.debug(f"[{strat_name}] Fee filter rejected: {fee_check['reason']}")
                     continue
-                
-                logger.debug(f"[{strat_name}] Fee filter passed")
 
                 # Position sizing
                 sig = adjusted_signal or signal
@@ -699,6 +708,26 @@ class OrderFlowSystem:
                 self.paper_entry_timestamp = ts
                 self.paper_capital -= pos_value + (pos_value * self.settings.trading.fee_pct)
                 break  # Only one strategy per tick
+
+            # Periodic health report (every 1000 ticks)
+            if self._paper_tick_count % 1000 == 0:
+                fcount = len(state.features) if state and state.features else 0
+                regime_name = state.regime.name if state and state.regime else 'UNKNOWN'
+                logger.info(
+                    f"[HEALTH] Ticks:{self._paper_tick_count} "
+                    f"TradesRcv:{self._paper_total_trades_received} "
+                    f"TradesQueued:{ntrades} "
+                    f"Features:{fcount} "
+                    f"Regime:{regime_name} "
+                    f"Bids:{len(bids)} Asks:{len(asks)} "
+                    f"Mid:{mid:.4f} "
+                    f"Pos:{'OPEN' if self.paper_position else 'FLAT'} "
+                    f"ClTrades:{len(self.paper_closed_trades)} "
+                    f"ConsecLoss:{self.paper_consecutive_losses} "
+                    f"SigEval:{self._paper_signals_evaluated} "
+                    f"NoBook:{self._paper_skipped_no_book} "
+                    f"LossSkip:{self._paper_skipped_loss_streak}"
+                )
 
         except Exception as e:
             logger.error(f"Paper trading error: {e}")
