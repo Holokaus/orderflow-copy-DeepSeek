@@ -1,0 +1,19 @@
+2026-06-04 00:38:54.295 | INFO     | main:run_paper:525 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-04 00:38:54.325 | INFO     | main:run_paper:535 -   Loaded strategy: absorption
+2026-06-04 00:38:54.326 | INFO     | main:run_paper:535 -   Loaded strategy: stacked_imbalance
+2026-06-04 00:38:54.326 | INFO     | data.exchange_connector:connect:141 - Connecting to binance (attempt 1/5)...
+2026-06-04 00:38:58.247 | INFO     | data.exchange_connector:connect:143 - Connected to binance
+2026-06-04 00:38:58.247 | INFO     | data.exchange_connector:start_websocket:506 - 🔌 Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-04 00:39:00.178 | INFO     | data.exchange_connector:start_websocket:515 - ✅ WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-04 00:39:00.179 | INFO     | data.exchange_connector:start_websocket:522 - 📖 Fetching fresh order book snapshot...
+2026-06-04 00:39:00.664 | INFO     | data.exchange_connector:_fetch_rest_snapshot:321 - ✅ Snapshot loaded: 1000b/1000a, lastUpdateId=10703047223118 [Resync #1]
+2026-06-04 00:39:00.665 | INFO     | data.exchange_connector:_fetch_rest_snapshot:369 - No bridging event in buffer. Discarding all 0 events.
+2026-06-04 00:39:00.666 | INFO     | data.exchange_connector:_fetch_rest_snapshot:376 - ✅ Book synchronized. Total resyncs: 1
+2026-06-04 00:39:00.667 | INFO     | data.exchange_connector:start_websocket:531 - 🎧 Subscribed to market data streams
+2026-06-04 00:39:00.745 | INFO     | data.exchange_connector:_apply_diff_if_valid:417 - ✅ Accepting first event after snapshot: U=10703047234993, u=10703047261008, gap from snapshot=11874 updates
+2026-06-04 00:39:00.823 | ERROR    | data.exchange_connector:_apply_diff_if_valid:425 - ❌ GAP DETECTED: expected U=10703047261009, got U=10703047261167, missing 158 updates — TRIGGERING RE-SYNC
+2026-06-04 00:43:04.206 | WARNING  | data.exchange_connector:_handle_depth_update:724 - Event buffer trimmed to 1000 events
+2026-06-04 00:45:11.556 | WARNING  | data.exchange_connector:_handle_depth_update:724 - Event buffer trimmed to 1000 events
+2026-06-04 00:47:15.187 | WARNING  | data.exchange_connector:_handle_depth_update:724 - Event buffer trimmed to 1000 events
+2026-06-04 00:49:07.278 | INFO     | data.exchange_connector:start_websocket:558 - WebSocket task cancelled
+2026-06-04 00:49:07.280 | INFO     | data.exchange_connector:disconnect:172 - Disconnected from exchange

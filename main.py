@@ -564,8 +564,10 @@ class OrderFlowSystem:
     async def _on_paper_order_book(self, order_book: dict) -> None:
         """Process order book update: full paper trading tick."""
         if not self.running or not self.paper_strategies:
+            logger.debug(f"⏹️  Paper orderbook callback skipped: running={self.running}, strategies={len(self.paper_strategies) if self.paper_strategies else 0}")
             return
 
+        logger.debug(f"📥 Paper orderbook tick: {len(order_book.get('bids', []))}b/{len(order_book.get('asks', []))}a")
         try:
             ts = datetime.now()
 
@@ -597,6 +599,7 @@ class OrderFlowSystem:
 
             # 4) Update FeatureEngine
             state = self.paper_feature_engine.update(ob, trades)
+            logger.debug(f"✅ Feature state updated: {len(state.imbalances) if state.imbalances else 0} imbalances")
 
             # 5) Mark-to-market existing position
             if self.paper_position:
@@ -624,14 +627,18 @@ class OrderFlowSystem:
 
             # 6c) Evaluate each strategy
             mid = ob.mid_price
+            logger.debug(f"📊 Evaluating {len(self.paper_strategies)} strategies...")
             for strat_name, strat in self.paper_strategies:
                 signal = strat.evaluate(state)
+                logger.debug(f"[{strat_name}] Signal: {signal.signal_type if signal else 'None'}, actionable={signal.is_actionable if signal else 'N/A'}")
 
                 if not signal or not signal.is_actionable:
+                    logger.debug(f"[{strat_name}] Skipped: no signal or not actionable")
                     continue
 
                 # Long-only gate
                 if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                    logger.debug(f"[{strat_name}] Skipped: short signal not allowed")
                     continue
 
                 # Entry price (long: ask + slippage)
@@ -643,8 +650,10 @@ class OrderFlowSystem:
                 )
 
                 if risk_action in (RiskAction.HALT_TRADING, RiskAction.REJECT):
-                    logger.info(f"[{strat_name}] Risk {risk_action.name}: {reason}")
+                    logger.debug(f"[{strat_name}] Risk filter rejected: {reason}")
                     continue
+                
+                logger.debug(f"[{strat_name}] Risk check passed")
 
                 # Fee-aware filter
                 if signal.entry_price > 0 and signal.take_profit != signal.entry_price:
@@ -658,8 +667,10 @@ class OrderFlowSystem:
                 )
 
                 if fee_check['status'] == 'REJECTED':
-                    logger.info(f"[{strat_name}] Fee filter: {fee_check['reason']}")
+                    logger.debug(f"[{strat_name}] Fee filter rejected: {fee_check['reason']}")
                     continue
+                
+                logger.debug(f"[{strat_name}] Fee filter passed")
 
                 # Position sizing
                 sig = adjusted_signal or signal

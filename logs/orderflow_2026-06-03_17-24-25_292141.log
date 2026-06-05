@@ -227,3 +227,6 @@
 2026-06-04 00:31:25.618 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
 2026-06-04 00:33:25.780 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
 2026-06-04 00:35:38.315 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:37:43.797 | WARNING  | data.exchange_connector:_handle_depth_update:718 - Event buffer trimmed to 1000 events
+2026-06-04 00:38:16.266 | INFO     | data.exchange_connector:start_websocket:552 - WebSocket task cancelled
+2026-06-04 00:38:16.267 | INFO     | data.exchange_connector:disconnect:172 - Disconnected from exchange
