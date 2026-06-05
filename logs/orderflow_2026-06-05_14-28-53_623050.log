@@ -1,0 +1,11 @@
+2026-06-05 14:28:59.432 | INFO     | main:run_paper:534 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-05 14:28:59.434 | INFO     | main:run_paper:545 -   Loaded strategy: absorption
+2026-06-05 14:28:59.434 | INFO     | main:run_paper:545 -   Loaded strategy: stacked_imbalance
+2026-06-05 14:28:59.435 | INFO     | data.exchange_connector:connect:95 - Connecting to binance (attempt 1/5)...
+2026-06-05 14:29:03.322 | INFO     | data.exchange_connector:connect:97 - Connected to binance
+2026-06-05 14:29:03.323 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 14:29:05.295 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 14:29:05.296 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-05 14:29:05.827 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 1000b/1000a, lastUpdateId=10721145496230 [Resync #1]
+2026-06-05 14:29:05.828 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 1
+2026-06-05 14:29:05.829 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
