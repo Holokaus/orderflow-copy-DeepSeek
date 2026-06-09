@@ -802,8 +802,8 @@ class OrderFlowSystem:
         if exit_price >= pos['take_profit']:
             return 'take_profit'
 
-        # Flow-based exits (require min hold)
-        if hold_sec < 1200:  # 20 min minimum
+        # Flow-based exits (require min hold — 5 min)
+        if hold_sec < 300:
             return None
 
         net_pressure = state.features.get('net_pressure', 0)
@@ -811,18 +811,36 @@ class OrderFlowSystem:
         ask_depth = state.features.get('ask_depth_10', 0)
         hold_min = hold_sec / 60.0
 
-        # Tier 1 (20 min): Strong collapse — original thresholds
-        if net_pressure < -0.5:
-            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.3:
+        # Regime-dependent tier thresholds (matched to backtest engine)
+        regime = state.regime
+        if regime in (Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION):
+            t2_min = 15; t3_min = 25
+            t1_thresh = 0.5; t1_ratio = 0.3
+            t2_thresh = 0.4; t2_ratio = 0.4
+            t3_thresh = 0.2
+        elif regime in (Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.BREAKOUT):
+            t2_min = 40; t3_min = 90
+            t1_thresh = 0.5; t1_ratio = 0.3
+            t2_thresh = 0.3; t2_ratio = 0.5
+            t3_thresh = 0.1
+        else:
+            t2_min = 25; t3_min = 45
+            t1_thresh = 0.5; t1_ratio = 0.3
+            t2_thresh = 0.35; t2_ratio = 0.45
+            t3_thresh = 0.15
+
+        # Tier 1: Strong collapse
+        if net_pressure < -t1_thresh:
+            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < t1_ratio:
                 return 'book_pressure_collapse'
 
-        # Tier 2 (40 min): Moderate collapse — weaker thresholds
-        if hold_min >= 40 and net_pressure < -0.3:
-            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.5:
+        # Tier 2: Moderate collapse
+        if hold_min >= t2_min and net_pressure < -t2_thresh:
+            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < t2_ratio:
                 return 'book_pressure_collapse_moderate'
 
-        # Tier 3 (60 min): Weak adverse pressure — any opposing flow
-        if hold_min >= 60 and net_pressure < -0.1:
+        # Tier 3: Weak adverse pressure
+        if hold_min >= t3_min and net_pressure < -t3_thresh:
             return 'book_pressure_weak'
 
         return None

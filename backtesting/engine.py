@@ -167,8 +167,8 @@ class BacktestEngine:
     EQUITY_SAMPLE_EVERY_N = 50
     VOLUME_PROFILE_EVERY_N = 100
 
-    # Minimum hold before flow-based exits can fire (20 minutes)
-    MIN_HOLD_BEFORE_FLOW_EXIT_SEC = 1200
+    # Minimum hold before flow-based exits can fire (5 minutes) — [FIX 2026-06-09] Was 20min, reduced to fit within max hold tiers
+    MIN_HOLD_BEFORE_FLOW_EXIT_SEC = 300
 
     # Loss streak cooldown: after 2 consecutive losses, skip trading for 30 min
     LOSS_STREAK_COOLDOWN_MINUTES = 30
@@ -868,39 +868,61 @@ class BacktestEngine:
                     latest_sweep.reversal_strength < 0.4):
                 return "sweep_against_short"
 
-        # 3d) Book pressure collapse — GRADUATED thresholds (requires minimum hold)
+        # 3d) Book pressure collapse — REGIME-DEPENDENT graduated thresholds
+        # Tier timing and tightness scale with max hold window:
+        #   Ranging (30m max):  early tiers need HIGHER conviction (stricter thresholds)
+        #   Trending (120m max): later tiers can use LOWER conviction (original loose thresholds)
         if flow_exits_allowed:
             net_pressure = features.get("net_pressure", 0)
             bid_depth = features.get("bid_depth_10", 0)
             ask_depth = features.get("ask_depth_10", 0)
             hold_min = hold_duration / 60.0
 
-            # Tier 1: Strong collapse (original thresholds, after 20 min)
-            if self.position.side == Side.BUY and net_pressure < -0.5:
-                if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.3:
+            regime = state.regime
+            if regime in (Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION):
+                t2_min = 15; t3_min = 25
+                t1_thresh = 0.5; t1_ratio = 0.3
+                t2_thresh = 0.4; t2_ratio = 0.4
+                t3_thresh = 0.2
+            elif regime in (Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.BREAKOUT):
+                t2_min = 40; t3_min = 90
+                t1_thresh = 0.5; t1_ratio = 0.3
+                t2_thresh = 0.3; t2_ratio = 0.5
+                t3_thresh = 0.1
+            else:
+                t2_min = 25; t3_min = 45
+                t1_thresh = 0.5; t1_ratio = 0.3
+                t2_thresh = 0.35; t2_ratio = 0.45
+                t3_thresh = 0.15
+
+            is_buy = self.position.side == Side.BUY
+            is_sell = self.position.side == Side.SELL
+
+            # Tier 1: Strong collapse (always active after min hold)
+            if is_buy and net_pressure < -t1_thresh:
+                if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < t1_ratio:
                     return "book_pressure_collapse"
-            if self.position.side == Side.SELL and net_pressure > 0.5:
-                if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.3:
+            if is_sell and net_pressure > t1_thresh:
+                if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < t1_ratio:
                     return "book_pressure_collapse"
 
-            # Tier 2: Moderate collapse (after 40 min, weaker thresholds)
-            if hold_min >= 40:
-                if self.position.side == Side.BUY and net_pressure < -0.3:
-                    if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.5:
+            # Tier 2: Moderate collapse
+            if hold_min >= t2_min:
+                if is_buy and net_pressure < -t2_thresh:
+                    if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < t2_ratio:
                         return "book_pressure_collapse_moderate"
-                if self.position.side == Side.SELL and net_pressure > 0.3:
-                    if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.5:
+                if is_sell and net_pressure > t2_thresh:
+                    if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < t2_ratio:
                         return "book_pressure_collapse_moderate"
 
-            # Tier 3: Weak adverse pressure (after 60 min, any opposing pressure)
-            if hold_min >= 60:
-                if self.position.side == Side.BUY and net_pressure < -0.1:
+            # Tier 3: Weak adverse pressure
+            if hold_min >= t3_min:
+                if is_buy and net_pressure < -t3_thresh:
                     return "book_pressure_weak"
-                if self.position.side == Side.SELL and net_pressure > 0.1:
+                if is_sell and net_pressure > t3_thresh:
                     return "book_pressure_weak"
 
         # 3e) Time-based max hold (after 30 min in ranging, 60 min default, 2h trending)
-        # Prevents trades from drifting indefinitely when flow exits never trigger
         regime = state.regime
         if regime in (Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION):
             max_hold = self.MAX_HOLD_SECONDS_RANGING
