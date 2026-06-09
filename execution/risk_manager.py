@@ -36,7 +36,7 @@ class RiskLimits:
     max_trades_per_day: int = 50
     max_trades_per_hour: int = 10
     min_time_between_trades_sec: int = 30
-    max_consecutive_losses: int = 20
+    max_consecutive_losses: int = 3  # [FIX 2026-06-09] Was 20 — align with engine's 2-loss cooldown
     
     # Exposure limits
     max_correlated_positions: int = 3

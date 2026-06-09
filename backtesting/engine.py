@@ -170,6 +170,14 @@ class BacktestEngine:
     # Minimum hold before flow-based exits can fire (20 minutes)
     MIN_HOLD_BEFORE_FLOW_EXIT_SEC = 1200
 
+    # Loss streak cooldown: after 2 consecutive losses, skip trading for 30 min
+    LOSS_STREAK_COOLDOWN_MINUTES = 30
+
+    # Max hold time before forced exit (seconds) — prevents drift-to-SL on ranging days
+    MAX_HOLD_SECONDS_RANGING = 1800   # 30 min
+    MAX_HOLD_SECONDS_TRENDING = 7200  # 2 hours
+    MAX_HOLD_SECONDS_DEFAULT = 3600   # 1 hour
+
     def __init__(
         self,
         initial_capital: float = 100_000.0,
@@ -217,7 +225,7 @@ class BacktestEngine:
             max_trades_per_day=50,
             max_trades_per_hour=10,
             min_time_between_trades_sec=int(min_time_between_trades_sec),
-            max_consecutive_losses=20,
+            max_consecutive_losses=3,
         )
 
         # State (initialized in reset())
@@ -231,6 +239,7 @@ class BacktestEngine:
         self._last_trade_close_time: Optional[datetime] = None
         self._last_signal_strategy: Optional[str] = None
         self._last_signal_time: Optional[datetime] = None
+        self._last_loss_time: Optional[datetime] = None  # [FIX] Track last loss for cooldown decay
         self._current_day = None
 
         # Tracking
@@ -257,6 +266,7 @@ class BacktestEngine:
         self._last_trade_close_time = None
         self._last_signal_strategy = None
         self._last_signal_time = None
+        self._last_loss_time: Optional[datetime] = None  # [FIX] Track last loss for cooldown decay
         self._current_day = None
         self._signals_rejected = 0
         self._signals_reduced = 0
@@ -482,9 +492,20 @@ class BacktestEngine:
                         self.equity_curve.append((timestamp, self._calculate_equity_fast()))
                     continue
 
-                # Loss streak cooldown: skip signal after 2 consecutive losses
-                recent_trades = self.closed_trades[-2:]
-                if len(recent_trades) == 2 and all(t.pnl <= 0 for t in recent_trades):
+                # Loss streak cooldown: time-decaying (not permanent)
+                # After 2 consecutive losses, skip signals for LOSS_STREAK_COOLDOWN_MINUTES
+                # Once cooldown expires, the streak resets and trading resumes
+                cooldown_active = False
+                if len(self.closed_trades) >= 2:
+                    recent_trades = self.closed_trades[-2:]
+                    if all(t.pnl <= 0 for t in recent_trades):
+                        if self._last_loss_time is not None:
+                            elapsed = (timestamp - self._last_loss_time).total_seconds()
+                            if elapsed < (self.LOSS_STREAK_COOLDOWN_MINUTES * 60):
+                                cooldown_active = True
+                        else:
+                            cooldown_active = True
+                if cooldown_active:
                     if tick_idx % equity_every == 0:
                         self.equity_curve.append((timestamp, self._calculate_equity_fast()))
                     continue
@@ -847,19 +868,54 @@ class BacktestEngine:
                     latest_sweep.reversal_strength < 0.4):
                 return "sweep_against_short"
 
-        # 3d) Book pressure collapse (requires minimum hold)
+        # 3d) Book pressure collapse — GRADUATED thresholds (requires minimum hold)
         if flow_exits_allowed:
             net_pressure = features.get("net_pressure", 0)
+            bid_depth = features.get("bid_depth_10", 0)
+            ask_depth = features.get("ask_depth_10", 0)
+            hold_min = hold_duration / 60.0
+
+            # Tier 1: Strong collapse (original thresholds, after 20 min)
             if self.position.side == Side.BUY and net_pressure < -0.5:
-                bid_depth = features.get("bid_depth_10", 0)
-                ask_depth = features.get("ask_depth_10", 0)
                 if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.3:
                     return "book_pressure_collapse"
             if self.position.side == Side.SELL and net_pressure > 0.5:
-                bid_depth = features.get("bid_depth_10", 0)
-                ask_depth = features.get("ask_depth_10", 0)
                 if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.3:
                     return "book_pressure_collapse"
+
+            # Tier 2: Moderate collapse (after 40 min, weaker thresholds)
+            if hold_min >= 40:
+                if self.position.side == Side.BUY and net_pressure < -0.3:
+                    if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.5:
+                        return "book_pressure_collapse_moderate"
+                if self.position.side == Side.SELL and net_pressure > 0.3:
+                    if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.5:
+                        return "book_pressure_collapse_moderate"
+
+            # Tier 3: Weak adverse pressure (after 60 min, any opposing pressure)
+            if hold_min >= 60:
+                if self.position.side == Side.BUY and net_pressure < -0.1:
+                    return "book_pressure_weak"
+                if self.position.side == Side.SELL and net_pressure > 0.1:
+                    return "book_pressure_weak"
+
+        # 3e) Time-based max hold (after 30 min in ranging, 60 min default, 2h trending)
+        # Prevents trades from drifting indefinitely when flow exits never trigger
+        regime = state.regime
+        if regime in (Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION):
+            max_hold = self.MAX_HOLD_SECONDS_RANGING
+        elif regime in (Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.BREAKOUT):
+            max_hold = self.MAX_HOLD_SECONDS_TRENDING
+        else:
+            max_hold = self.MAX_HOLD_SECONDS_DEFAULT
+        if hold_duration > max_hold:
+            # Only force exit if not in profit — profitable trades can keep running
+            if self.position.unrealized_pnl <= 0:
+                # Check if we're near breakeven (within spread) — avoid unnecessary fee burn
+                notional = self.position.entry_price * self.position.size
+                pnl_pct = self.position.unrealized_pnl / notional if notional > 0 else 0
+                if pnl_pct < 0.001:  # Less than 0.1% loss — close
+                    return "max_hold_time"
 
         return None
 
@@ -1035,6 +1091,9 @@ class BacktestEngine:
 
         self.risk_manager.record_trade_closed(pnl)
         self._last_trade_close_time = timestamp
+        # [FIX] Track last loss time for cooldown decay
+        if pnl <= 0:
+            self._last_loss_time = timestamp
         self.position = None
 
     # ------------------------------------------------------------------

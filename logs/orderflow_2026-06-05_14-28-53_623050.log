@@ -9,3 +9,444 @@
 2026-06-05 14:29:05.827 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 1000b/1000a, lastUpdateId=10721145496230 [Resync #1]
 2026-06-05 14:29:05.828 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 1
 2026-06-05 14:29:05.829 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-05 14:30:24.201 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=500 depth=500 aggTrade=0 other=0
+2026-06-05 14:31:39.644 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=1000 depth=1000 aggTrade=0 other=0
+2026-06-05 14:31:40.337 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:1000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4215 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:2000 NoBook:0 LossSkip:0
+2026-06-05 14:32:56.540 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=1500 depth=1500 aggTrade=0 other=0
+2026-06-05 14:34:13.439 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=2000 depth=2000 aggTrade=0 other=0
+2026-06-05 14:34:13.950 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:2000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4205 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:4000 NoBook:0 LossSkip:0
+2026-06-05 14:35:33.683 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=2500 depth=2500 aggTrade=0 other=0
+2026-06-05 14:36:51.331 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=3000 depth=3000 aggTrade=0 other=0
+2026-06-05 14:36:51.718 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:3000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4145 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:6000 NoBook:0 LossSkip:0
+2026-06-05 14:38:00.414 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=3500 depth=3500 aggTrade=0 other=0
+2026-06-05 14:39:14.984 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=4000 depth=4000 aggTrade=0 other=0
+2026-06-05 14:39:15.349 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:4000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4145 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:8000 NoBook:0 LossSkip:0
+2026-06-05 14:40:26.903 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=4500 depth=4500 aggTrade=0 other=0
+2026-06-05 14:41:36.574 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=5000 depth=5000 aggTrade=0 other=0
+2026-06-05 14:41:37.536 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:5000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4065 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:10000 NoBook:0 LossSkip:0
+2026-06-05 14:43:00.119 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=5500 depth=5500 aggTrade=0 other=0
+2026-06-05 14:44:19.609 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=6000 depth=6000 aggTrade=0 other=0
+2026-06-05 14:44:20.084 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:6000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4045 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:12000 NoBook:0 LossSkip:0
+2026-06-05 14:45:23.465 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=6500 depth=6500 aggTrade=0 other=0
+2026-06-05 14:46:22.466 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=7000 depth=7000 aggTrade=0 other=0
+2026-06-05 14:46:22.844 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:7000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3905 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:14000 NoBook:0 LossSkip:0
+2026-06-05 14:47:28.104 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=7500 depth=7500 aggTrade=0 other=0
+2026-06-05 14:48:37.812 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=8000 depth=8000 aggTrade=0 other=0
+2026-06-05 14:48:38.157 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:8000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3925 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:16000 NoBook:0 LossSkip:0
+2026-06-05 14:49:41.157 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=8500 depth=8500 aggTrade=0 other=0
+2026-06-05 14:50:45.423 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=9000 depth=9000 aggTrade=0 other=0
+2026-06-05 14:50:45.790 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:9000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3955 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:18000 NoBook:0 LossSkip:0
+2026-06-05 14:51:50.477 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=9500 depth=9500 aggTrade=0 other=0
+2026-06-05 14:53:00.137 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=10000 depth=10000 aggTrade=0 other=0
+2026-06-05 14:53:00.545 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:10000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3995 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:20000 NoBook:0 LossSkip:0
+2026-06-05 14:54:10.073 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=10500 depth=10500 aggTrade=0 other=0
+2026-06-05 14:55:16.161 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=11000 depth=11000 aggTrade=0 other=0
+2026-06-05 14:55:16.882 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:11000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3965 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:22000 NoBook:0 LossSkip:0
+2026-06-05 14:56:24.228 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=11500 depth=11500 aggTrade=0 other=0
+2026-06-05 14:57:35.128 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=12000 depth=12000 aggTrade=0 other=0
+2026-06-05 14:57:35.436 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:12000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3955 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:24000 NoBook:0 LossSkip:0
+2026-06-05 14:58:51.133 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=12500 depth=12500 aggTrade=0 other=0
+2026-06-05 14:59:59.992 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=13000 depth=13000 aggTrade=0 other=0
+2026-06-05 15:00:00.315 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:13000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3925 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:26000 NoBook:0 LossSkip:0
+2026-06-05 15:01:04.064 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=13500 depth=13500 aggTrade=0 other=0
+2026-06-05 15:02:02.811 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=14000 depth=14000 aggTrade=0 other=0
+2026-06-05 15:02:03.126 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:14000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3785 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:28000 NoBook:0 LossSkip:0
+2026-06-05 15:03:01.114 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=14500 depth=14500 aggTrade=0 other=0
+2026-06-05 15:04:02.039 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=15000 depth=15000 aggTrade=0 other=0
+2026-06-05 15:04:02.382 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:15000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3725 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:30000 NoBook:0 LossSkip:0
+2026-06-05 15:05:02.979 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=15500 depth=15500 aggTrade=0 other=0
+2026-06-05 15:06:02.019 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=16000 depth=16000 aggTrade=0 other=0
+2026-06-05 15:06:02.364 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:16000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3815 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:32000 NoBook:0 LossSkip:0
+2026-06-05 15:06:59.614 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=16500 depth=16500 aggTrade=0 other=0
+2026-06-05 15:07:58.241 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=17000 depth=17000 aggTrade=0 other=0
+2026-06-05 15:07:58.648 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:17000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4015 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:34000 NoBook:0 LossSkip:0
+2026-06-05 15:08:58.783 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=17500 depth=17500 aggTrade=0 other=0
+2026-06-05 15:10:02.878 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=18000 depth=18000 aggTrade=0 other=0
+2026-06-05 15:10:03.396 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:18000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3885 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:36000 NoBook:0 LossSkip:0
+2026-06-05 15:11:05.283 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=18500 depth=18500 aggTrade=0 other=0
+2026-06-05 15:12:06.229 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=19000 depth=19000 aggTrade=0 other=0
+2026-06-05 15:12:06.552 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:19000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3955 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:38000 NoBook:0 LossSkip:0
+2026-06-05 15:13:14.223 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=19500 depth=19500 aggTrade=0 other=0
+2026-06-05 15:14:27.114 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=20000 depth=20000 aggTrade=0 other=0
+2026-06-05 15:14:27.766 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:20000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3905 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:40000 NoBook:0 LossSkip:0
+2026-06-05 15:15:36.317 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=20500 depth=20500 aggTrade=0 other=0
+2026-06-05 15:16:41.765 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=21000 depth=21000 aggTrade=0 other=0
+2026-06-05 15:16:42.075 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:21000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3945 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:42000 NoBook:0 LossSkip:0
+2026-06-05 15:17:44.799 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=21500 depth=21500 aggTrade=0 other=0
+2026-06-05 15:18:48.918 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=22000 depth=22000 aggTrade=0 other=0
+2026-06-05 15:18:49.235 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:22000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4005 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:44000 NoBook:0 LossSkip:0
+2026-06-05 15:19:52.755 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=22500 depth=22500 aggTrade=0 other=0
+2026-06-05 15:21:00.117 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=23000 depth=23000 aggTrade=0 other=0
+2026-06-05 15:21:00.451 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:23000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3945 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:46000 NoBook:0 LossSkip:0
+2026-06-05 15:22:10.616 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=23500 depth=23500 aggTrade=0 other=0
+2026-06-05 15:23:18.908 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=24000 depth=24000 aggTrade=0 other=0
+2026-06-05 15:23:19.388 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:24000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4045 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:48000 NoBook:0 LossSkip:0
+2026-06-05 15:24:24.590 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=24500 depth=24500 aggTrade=0 other=0
+2026-06-05 15:25:32.462 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=25000 depth=25000 aggTrade=0 other=0
+2026-06-05 15:25:32.793 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:25000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4035 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:50000 NoBook:0 LossSkip:0
+2026-06-05 15:26:46.130 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=25500 depth=25500 aggTrade=0 other=0
+2026-06-05 15:28:03.705 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=26000 depth=26000 aggTrade=0 other=0
+2026-06-05 15:28:04.213 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:26000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3985 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:52000 NoBook:0 LossSkip:0
+2026-06-05 15:29:17.039 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=26500 depth=26500 aggTrade=0 other=0
+2026-06-05 15:30:19.137 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=27000 depth=27000 aggTrade=0 other=0
+2026-06-05 15:30:19.443 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:27000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3945 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:54000 NoBook:0 LossSkip:0
+2026-06-05 15:31:16.770 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=27500 depth=27500 aggTrade=0 other=0
+2026-06-05 15:32:12.098 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=28000 depth=28000 aggTrade=0 other=0
+2026-06-05 15:32:12.552 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:28000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3725 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:56000 NoBook:0 LossSkip:0
+2026-06-05 15:33:14.266 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=28500 depth=28500 aggTrade=0 other=0
+2026-06-05 15:34:17.918 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=29000 depth=29000 aggTrade=0 other=0
+2026-06-05 15:34:18.249 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:29000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3745 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:58000 NoBook:0 LossSkip:0
+2026-06-05 15:35:16.088 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=29500 depth=29500 aggTrade=0 other=0
+2026-06-05 15:36:15.982 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=30000 depth=30000 aggTrade=0 other=0
+2026-06-05 15:36:16.290 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:30000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3625 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:60000 NoBook:0 LossSkip:0
+2026-06-05 15:37:13.839 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=30500 depth=30500 aggTrade=0 other=0
+2026-06-05 15:38:16.450 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=31000 depth=31000 aggTrade=0 other=0
+2026-06-05 15:38:16.903 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:31000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3735 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:62000 NoBook:0 LossSkip:0
+2026-06-05 15:39:20.622 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=31500 depth=31500 aggTrade=0 other=0
+2026-06-05 15:40:26.219 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=32000 depth=32000 aggTrade=0 other=0
+2026-06-05 15:40:26.513 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:32000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3685 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:64000 NoBook:0 LossSkip:0
+2026-06-05 15:41:29.859 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=32500 depth=32500 aggTrade=0 other=0
+2026-06-05 15:42:36.407 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=33000 depth=33000 aggTrade=0 other=0
+2026-06-05 15:42:36.717 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:33000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3745 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:66000 NoBook:0 LossSkip:0
+2026-06-05 15:43:49.610 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=33500 depth=33500 aggTrade=0 other=0
+2026-06-05 15:44:54.761 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=34000 depth=34000 aggTrade=0 other=0
+2026-06-05 15:44:54.780 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:34000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3775 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:68000 NoBook:0 LossSkip:0
+2026-06-05 15:46:00.885 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=34500 depth=34500 aggTrade=0 other=0
+2026-06-05 15:47:07.860 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=35000 depth=35000 aggTrade=0 other=0
+2026-06-05 15:47:08.139 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:35000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3785 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:70000 NoBook:0 LossSkip:0
+2026-06-05 15:48:17.452 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=35500 depth=35500 aggTrade=0 other=0
+2026-06-05 15:49:28.049 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=36000 depth=36000 aggTrade=0 other=0
+2026-06-05 15:49:28.406 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:36000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3815 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:72000 NoBook:0 LossSkip:0
+2026-06-05 15:50:39.772 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=36500 depth=36500 aggTrade=0 other=0
+2026-06-05 15:51:46.688 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=37000 depth=37000 aggTrade=0 other=0
+2026-06-05 15:51:47.212 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:37000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3735 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:74000 NoBook:0 LossSkip:0
+2026-06-05 15:52:50.942 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=37500 depth=37500 aggTrade=0 other=0
+2026-06-05 15:53:53.132 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=38000 depth=38000 aggTrade=0 other=0
+2026-06-05 15:53:53.485 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:38000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3815 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:76000 NoBook:0 LossSkip:0
+2026-06-05 15:55:06.859 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=38500 depth=38500 aggTrade=0 other=0
+2026-06-05 15:56:15.985 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=39000 depth=39000 aggTrade=0 other=0
+2026-06-05 15:56:16.489 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:39000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3805 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:78000 NoBook:0 LossSkip:0
+2026-06-05 15:57:23.220 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=39500 depth=39500 aggTrade=0 other=0
+2026-06-05 15:58:34.050 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=40000 depth=40000 aggTrade=0 other=0
+2026-06-05 15:58:34.344 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:40000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3755 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:80000 NoBook:0 LossSkip:0
+2026-06-05 15:59:19.703 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-05 15:59:19.704 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-05 15:59:20.721 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 15:59:22.992 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 15:59:22.993 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-05 15:59:25.222 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 977b/1000a, lastUpdateId=10721883678264 [Resync #2]
+2026-06-05 15:59:25.223 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 2
+2026-06-05 15:59:25.224 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-05 16:00:06.560 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=40500 depth=40500 aggTrade=0 other=0
+2026-06-05 16:01:11.297 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=41000 depth=41000 aggTrade=0 other=0
+2026-06-05 16:01:13.593 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:41000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3895 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:82000 NoBook:0 LossSkip:0
+2026-06-05 16:02:16.521 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=41500 depth=41500 aggTrade=0 other=0
+2026-06-05 16:03:21.270 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=42000 depth=42000 aggTrade=0 other=0
+2026-06-05 16:03:23.647 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:42000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4005 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:84000 NoBook:0 LossSkip:0
+2026-06-05 16:04:21.229 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=42500 depth=42500 aggTrade=0 other=0
+2026-06-05 16:05:27.032 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=43000 depth=43000 aggTrade=0 other=0
+2026-06-05 16:05:29.640 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:43000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4005 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:86000 NoBook:0 LossSkip:0
+2026-06-05 16:06:30.290 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=43500 depth=43500 aggTrade=0 other=0
+2026-06-05 16:07:41.585 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=44000 depth=44000 aggTrade=0 other=0
+2026-06-05 16:07:45.433 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:44000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3985 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:88000 NoBook:0 LossSkip:0
+2026-06-05 16:08:52.484 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=44500 depth=44500 aggTrade=0 other=0
+2026-06-05 16:10:01.686 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=45000 depth=45000 aggTrade=0 other=0
+2026-06-05 16:10:04.381 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:45000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3895 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:90000 NoBook:0 LossSkip:0
+2026-06-05 16:11:09.390 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=45500 depth=45500 aggTrade=0 other=0
+2026-06-05 16:12:20.982 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=46000 depth=46000 aggTrade=0 other=0
+2026-06-05 16:12:23.470 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:46000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3875 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:92000 NoBook:0 LossSkip:0
+2026-06-05 16:13:31.107 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=46500 depth=46500 aggTrade=0 other=0
+2026-06-05 16:14:38.484 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=47000 depth=47000 aggTrade=0 other=0
+2026-06-05 16:14:41.609 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:47000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3995 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:94000 NoBook:0 LossSkip:0
+2026-06-05 16:15:54.351 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=47500 depth=47500 aggTrade=0 other=0
+2026-06-05 16:17:03.234 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=48000 depth=48000 aggTrade=0 other=0
+2026-06-05 16:17:05.921 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:48000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3985 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:96000 NoBook:0 LossSkip:0
+2026-06-05 16:18:09.117 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=48500 depth=48500 aggTrade=0 other=0
+2026-06-05 16:19:21.514 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=49000 depth=49000 aggTrade=0 other=0
+2026-06-05 16:19:24.176 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:49000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4025 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:98000 NoBook:0 LossSkip:0
+2026-06-05 16:20:32.895 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=49500 depth=49500 aggTrade=0 other=0
+2026-06-05 16:21:36.231 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=50000 depth=50000 aggTrade=0 other=0
+2026-06-05 16:21:39.360 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:50000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4115 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:100000 NoBook:0 LossSkip:0
+2026-06-05 16:22:46.297 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=50500 depth=50500 aggTrade=0 other=0
+2026-06-05 16:23:56.969 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=51000 depth=51000 aggTrade=0 other=0
+2026-06-05 16:23:59.959 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:51000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3965 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:102000 NoBook:0 LossSkip:0
+2026-06-05 16:25:09.036 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=51500 depth=51500 aggTrade=0 other=0
+2026-06-05 16:26:17.063 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=52000 depth=52000 aggTrade=0 other=0
+2026-06-05 16:26:20.139 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:52000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4095 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:104000 NoBook:0 LossSkip:0
+2026-06-05 16:27:25.387 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=52500 depth=52500 aggTrade=0 other=0
+2026-06-05 16:28:41.320 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=53000 depth=53000 aggTrade=0 other=0
+2026-06-05 16:28:45.585 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:53000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4085 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:106000 NoBook:0 LossSkip:0
+2026-06-05 16:29:54.018 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=53500 depth=53500 aggTrade=0 other=0
+2026-06-05 16:30:58.597 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=54000 depth=54000 aggTrade=0 other=0
+2026-06-05 16:31:01.587 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:54000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3995 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:108000 NoBook:0 LossSkip:0
+2026-06-05 16:32:03.664 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=54500 depth=54500 aggTrade=0 other=0
+2026-06-05 16:33:08.648 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=55000 depth=55000 aggTrade=0 other=0
+2026-06-05 16:33:11.357 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:55000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4105 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:110000 NoBook:0 LossSkip:0
+2026-06-05 16:34:15.535 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=55500 depth=55500 aggTrade=0 other=0
+2026-06-05 16:35:19.089 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=56000 depth=56000 aggTrade=0 other=0
+2026-06-05 16:35:21.545 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:56000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4115 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:112000 NoBook:0 LossSkip:0
+2026-06-05 16:36:21.785 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=56500 depth=56500 aggTrade=0 other=0
+2026-06-05 16:37:27.220 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=57000 depth=57000 aggTrade=0 other=0
+2026-06-05 16:37:30.317 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:57000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.4085 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:114000 NoBook:0 LossSkip:0
+2026-06-05 16:38:31.028 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=57500 depth=57500 aggTrade=0 other=0
+2026-06-05 16:39:42.708 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=58000 depth=58000 aggTrade=0 other=0
+2026-06-05 16:39:45.553 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:58000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3995 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:116000 NoBook:0 LossSkip:0
+2026-06-05 16:40:48.468 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=58500 depth=58500 aggTrade=0 other=0
+2026-06-05 16:41:50.992 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=59000 depth=59000 aggTrade=0 other=0
+2026-06-05 16:41:53.972 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:59000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3955 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:118000 NoBook:0 LossSkip:0
+2026-06-05 16:42:56.390 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=59500 depth=59500 aggTrade=0 other=0
+2026-06-05 16:44:02.815 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=60000 depth=60000 aggTrade=0 other=0
+2026-06-05 16:44:05.647 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:60000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3965 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:120000 NoBook:0 LossSkip:0
+2026-06-05 16:45:09.990 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=60500 depth=60500 aggTrade=0 other=0
+2026-06-05 16:46:11.854 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=61000 depth=61000 aggTrade=0 other=0
+2026-06-05 16:46:14.380 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:61000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3915 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:122000 NoBook:0 LossSkip:0
+2026-06-05 16:47:16.625 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=61500 depth=61500 aggTrade=0 other=0
+2026-06-05 16:48:20.141 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=62000 depth=62000 aggTrade=0 other=0
+2026-06-05 16:48:22.809 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:62000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3765 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:124000 NoBook:0 LossSkip:0
+2026-06-05 16:49:20.026 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=62500 depth=62500 aggTrade=0 other=0
+2026-06-05 16:50:16.112 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=63000 depth=63000 aggTrade=0 other=0
+2026-06-05 16:50:18.419 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:63000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3565 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:126000 NoBook:0 LossSkip:0
+2026-06-05 16:51:13.186 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=63500 depth=63500 aggTrade=0 other=0
+2026-06-05 16:52:11.666 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=64000 depth=64000 aggTrade=0 other=0
+2026-06-05 16:52:14.021 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:64000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3575 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:128000 NoBook:0 LossSkip:0
+2026-06-05 16:53:11.275 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=64500 depth=64500 aggTrade=0 other=0
+2026-06-05 16:54:09.900 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=65000 depth=65000 aggTrade=0 other=0
+2026-06-05 16:54:12.370 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:65000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3495 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:130000 NoBook:0 LossSkip:0
+2026-06-05 16:55:12.107 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=65500 depth=65500 aggTrade=0 other=0
+2026-06-05 16:56:09.548 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=66000 depth=66000 aggTrade=0 other=0
+2026-06-05 16:56:11.680 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:66000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3355 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:132000 NoBook:0 LossSkip:0
+2026-06-05 16:57:06.765 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=66500 depth=66500 aggTrade=0 other=0
+2026-06-05 16:58:02.898 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=67000 depth=67000 aggTrade=0 other=0
+2026-06-05 16:58:05.215 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:67000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3215 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:134000 NoBook:0 LossSkip:0
+2026-06-05 16:59:01.057 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=67500 depth=67500 aggTrade=0 other=0
+2026-06-05 17:00:01.413 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=68000 depth=68000 aggTrade=0 other=0
+2026-06-05 17:00:03.637 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:68000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3175 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:136000 NoBook:0 LossSkip:0
+2026-06-05 17:00:57.102 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=68500 depth=68500 aggTrade=0 other=0
+2026-06-05 17:01:52.779 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=69000 depth=69000 aggTrade=0 other=0
+2026-06-05 17:01:55.150 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:69000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3205 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:138000 NoBook:0 LossSkip:0
+2026-06-05 17:02:56.191 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-05 17:02:56.192 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-05 17:02:57.187 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:03:12.205 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #2
+2026-06-05 17:03:13.206 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:03:28.205 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #1
+2026-06-05 17:03:28.206 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 2.0s...
+2026-06-05 17:03:30.208 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:03:45.201 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #2
+2026-06-05 17:03:46.182 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:04:01.207 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #1
+2026-06-05 17:04:01.208 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 4.0s...
+2026-06-05 17:04:05.220 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:04:13.174 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:04:13.175 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-05 17:04:15.778 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 964b/1000a, lastUpdateId=10722549267300 [Resync #3]
+2026-06-05 17:04:15.778 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 3
+2026-06-05 17:04:15.779 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-05 17:04:15.780 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #1] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.31600000 q=26.52000000 m=True
+2026-06-05 17:04:15.782 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #2] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.31600000 q=67.31000000 m=False
+2026-06-05 17:04:15.784 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #3] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.31500000 q=24.50000000 m=True
+2026-06-05 17:04:23.213 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=69500 depth=69461 aggTrade=39 other=0
+2026-06-05 17:05:20.159 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=70000 depth=69898 aggTrade=102 other=0
+2026-06-05 17:06:17.356 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=70500 depth=70316 aggTrade=184 other=0
+2026-06-05 17:07:02.155 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=71000 depth=70715 aggTrade=285 other=0
+2026-06-05 17:07:43.162 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=71500 depth=71083 aggTrade=417 other=0
+2026-06-05 17:08:03.681 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #500] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.34800000 q=49.88000000 m=True
+2026-06-05 17:08:25.255 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=72000 depth=71455 aggTrade=545 other=0
+2026-06-05 17:09:09.560 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=72500 depth=71840 aggTrade=660 other=0
+2026-06-05 17:10:00.861 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=73000 depth=72245 aggTrade=755 other=0
+2026-06-05 17:11:07.661 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=73500 depth=72690 aggTrade=810 other=0
+2026-06-05 17:11:59.417 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=74000 depth=73081 aggTrade=919 other=0
+2026-06-05 17:12:42.747 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #1000] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.35100000 q=117.40000000 m=True
+2026-06-05 17:12:58.459 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=74500 depth=73473 aggTrade=1027 other=0
+2026-06-05 17:13:53.160 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=75000 depth=73873 aggTrade=1127 other=0
+2026-06-05 17:14:48.858 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=75500 depth=74277 aggTrade=1223 other=0
+2026-06-05 17:15:39.668 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=76000 depth=74665 aggTrade=1335 other=0
+2026-06-05 17:16:29.560 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=76500 depth=75056 aggTrade=1444 other=0
+2026-06-05 17:16:49.737 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #1500] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.36400000 q=97.00000000 m=False
+2026-06-05 17:17:23.360 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=77000 depth=75435 aggTrade=1565 other=0
+2026-06-05 17:18:22.259 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=77500 depth=75825 aggTrade=1675 other=0
+2026-06-05 17:19:23.055 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=78000 depth=76228 aggTrade=1772 other=0
+2026-06-05 17:20:14.858 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=78500 depth=76619 aggTrade=1881 other=0
+2026-06-05 17:21:03.158 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=79000 depth=77029 aggTrade=1971 other=0
+2026-06-05 17:21:15.074 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #2000] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.36400000 q=4.00000000 m=False
+2026-06-05 17:21:51.189 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=79500 depth=77438 aggTrade=2062 other=0
+2026-06-05 17:22:39.661 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=80000 depth=77871 aggTrade=2129 other=0
+2026-06-05 17:23:54.411 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-05 17:23:54.412 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-05 17:23:55.411 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:24:10.425 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #2
+2026-06-05 17:24:11.426 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:24:26.426 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #1
+2026-06-05 17:24:26.427 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 2.0s...
+2026-06-05 17:24:28.418 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:24:43.426 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #2
+2026-06-05 17:24:44.442 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:24:59.458 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #1
+2026-06-05 17:24:59.459 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 4.0s...
+2026-06-05 17:25:03.476 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:25:18.483 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #2
+2026-06-05 17:25:19.522 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:25:21.711 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:25:21.712 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-05 17:25:24.119 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 930b/1000a, lastUpdateId=10722802844282 [Resync #4]
+2026-06-05 17:25:24.120 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 4
+2026-06-05 17:25:24.121 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-05 17:25:24.644 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=80500 depth=78287 aggTrade=2213 other=0
+2026-06-05 17:26:14.260 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=81000 depth=78699 aggTrade=2301 other=0
+2026-06-05 17:27:06.161 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=81500 depth=79107 aggTrade=2393 other=0
+2026-06-05 17:27:58.096 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #2500] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.31900000 q=19.84000000 m=False
+2026-06-05 17:28:01.660 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=82000 depth=79486 aggTrade=2514 other=0
+2026-06-05 17:29:02.628 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-05 17:29:02.629 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-05 17:29:03.636 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:29:18.656 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #2
+2026-06-05 17:29:19.669 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:29:33.820 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-05 17:29:33.821 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-05 17:29:36.140 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 917b/1000a, lastUpdateId=10722846457703 [Resync #5]
+2026-06-05 17:29:36.141 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 5
+2026-06-05 17:29:36.142 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-05 17:29:42.168 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3205 | SL=1.8515 TP=9.0205 | Regime=ACCUMULATION | Score=9.37
+2026-06-05 17:29:42.169 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:29:42.229 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3205 | SL=1.8515 TP=9.0205 | Regime=ACCUMULATION | Score=9.40
+2026-06-05 17:29:42.230 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:29:42.468 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3205 | SL=1.8515 TP=9.0205 | Regime=ACCUMULATION | Score=9.06
+2026-06-05 17:29:42.469 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:29:42.583 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3205 | SL=1.8515 TP=9.0205 | Regime=ACCUMULATION | Score=9.06
+2026-06-05 17:29:42.584 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:29:42.650 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3205 | SL=1.8515 TP=9.0205 | Regime=ACCUMULATION | Score=9.06
+2026-06-05 17:29:42.651 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:29:42.771 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3205 | SL=1.8515 TP=9.0205 | Regime=ACCUMULATION | Score=9.06
+2026-06-05 17:29:42.772 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:29:42.940 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3205 | SL=1.8515 TP=9.0205 | Regime=ACCUMULATION | Score=9.06
+2026-06-05 17:29:42.941 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:29:43.072 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3205 | SL=1.8515 TP=9.0205 | Regime=ACCUMULATION | Score=9.06
+2026-06-05 17:29:43.073 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:30:07.792 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=82500 depth=79942 aggTrade=2558 other=0
+2026-06-05 17:30:59.035 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:70000 TradesRcv:2558 TradesQueued:0 Features:213 Regime:ACCUMULATION Bids:20 Asks:20 Mid:2.3255 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:140000 NoBook:0 LossSkip:0
+2026-06-05 17:31:10.413 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=83000 depth=80442 aggTrade=2558 other=0
+2026-06-05 17:32:17.321 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=83500 depth=80942 aggTrade=2558 other=0
+2026-06-05 17:33:08.094 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:71000 TradesRcv:2558 TradesQueued:0 Features:213 Regime:ACCUMULATION Bids:20 Asks:20 Mid:2.3155 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:142000 NoBook:0 LossSkip:0
+2026-06-05 17:33:18.779 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=84000 depth=81442 aggTrade=2558 other=0
+2026-06-05 17:34:22.117 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=84500 depth=81942 aggTrade=2558 other=0
+2026-06-05 17:34:45.588 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3215 | SL=2.3052 TP=2.5537 | Regime=ACCUMULATION | Score=3.00
+2026-06-05 17:34:45.589 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0431% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:34:48.062 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3315 | SL=2.3152 TP=2.5647 | Regime=ACCUMULATION | Score=2.83
+2026-06-05 17:34:48.062 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0429% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:35:09.078 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:72000 TradesRcv:2558 TradesQueued:0 Features:214 Regime:DISTRIBUTION Bids:20 Asks:20 Mid:2.3235 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:144000 NoBook:0 LossSkip:0
+2026-06-05 17:35:19.041 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=85000 depth=82442 aggTrade=2558 other=0
+2026-06-05 17:36:15.181 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=85500 depth=82942 aggTrade=2558 other=0
+2026-06-05 17:36:36.326 | INFO     | knowledge.strategy_library:evaluate:302 - [Absorption] SIGNAL: BUY @ 2.3335 | SL=2.3172 TP=2.5669 | Regime=ACCUMULATION | Score=3.00
+2026-06-05 17:36:36.327 | WARNING  | execution.order_manager:validate_signal_with_fee_filter:245 - [OrderManager] Fee filter REJECTED: Spread 0.0429% is 4.3x expected 0.0100%. Likely illiquidity. Reject.
+2026-06-05 17:37:01.459 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:73000 TradesRcv:2558 TradesQueued:0 Features:214 Regime:DISTRIBUTION Bids:20 Asks:20 Mid:2.3295 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:146000 NoBook:0 LossSkip:0
+2026-06-05 17:37:11.802 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=86000 depth=83442 aggTrade=2558 other=0
+2026-06-05 17:38:06.680 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=86500 depth=83942 aggTrade=2558 other=0
+2026-06-05 17:38:55.631 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:74000 TradesRcv:2558 TradesQueued:0 Features:214 Regime:DISTRIBUTION Bids:20 Asks:20 Mid:2.3315 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:148000 NoBook:0 LossSkip:0
+2026-06-05 17:39:07.330 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=87000 depth=84442 aggTrade=2558 other=0
+2026-06-05 17:40:11.743 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=87500 depth=84942 aggTrade=2558 other=0
+2026-06-05 17:41:05.857 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:75000 TradesRcv:2558 TradesQueued:0 Features:215 Regime:DISTRIBUTION Bids:20 Asks:20 Mid:2.3295 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:150000 NoBook:0 LossSkip:0
+2026-06-05 17:41:17.632 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=88000 depth=85442 aggTrade=2558 other=0
+2026-06-05 17:42:22.066 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=88500 depth=85942 aggTrade=2558 other=0
+2026-06-05 17:43:13.784 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:76000 TradesRcv:2558 TradesQueued:0 Features:215 Regime:DISTRIBUTION Bids:20 Asks:20 Mid:2.3295 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:152000 NoBook:0 LossSkip:0
+2026-06-05 17:43:25.410 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=89000 depth=86442 aggTrade=2558 other=0
+2026-06-05 17:44:29.957 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=89500 depth=86942 aggTrade=2558 other=0
+2026-06-05 17:45:21.283 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:77000 TradesRcv:2558 TradesQueued:0 Features:216 Regime:ACCUMULATION Bids:20 Asks:20 Mid:2.3325 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:154000 NoBook:0 LossSkip:0
+2026-06-05 17:45:33.232 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=90000 depth=87442 aggTrade=2558 other=0
+2026-06-05 17:46:34.472 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=90500 depth=87942 aggTrade=2558 other=0
+2026-06-05 17:47:25.877 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:78000 TradesRcv:2558 TradesQueued:0 Features:216 Regime:DISTRIBUTION Bids:20 Asks:20 Mid:2.3285 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:156000 NoBook:0 LossSkip:0
+2026-06-05 17:47:34.936 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-05 17:47:34.993 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-05 17:47:36.031 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:34:42.501 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: , failure #2
+2026-06-06 00:34:43.515 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:34:45.290 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: [Errno 11001] getaddrinfo failed, failure #1
+2026-06-06 00:34:45.290 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 2.0s...
+2026-06-06 00:34:47.298 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:34:47.427 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://fstream.binance.com:9443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: [Errno 11001] getaddrinfo failed, failure #2
+2026-06-06 00:34:48.476 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:34:48.540 | ERROR    | data.exchange_connector:start_websocket:334 - WebSocket error on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade: [Errno 11001] getaddrinfo failed, failure #1
+2026-06-06 00:34:48.618 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 4.0s...
+2026-06-06 00:34:52.646 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:34:53.108 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:34:53.108 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 00:34:55.192 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 827b/1000a, lastUpdateId=10727134493178 [Resync #6]
+2026-06-06 00:34:55.192 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 6
+2026-06-06 00:34:55.192 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 00:35:06.012 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=91000 depth=88439 aggTrade=2561 other=0
+2026-06-06 00:37:40.751 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=91500 depth=88891 aggTrade=2609 other=0
+2026-06-06 00:38:29.833 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-06 00:38:29.834 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-06 00:38:30.836 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:38:32.052 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:38:32.053 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 00:38:33.860 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 829b/1000a, lastUpdateId=10727156324160 [Resync #7]
+2026-06-06 00:38:33.861 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 7
+2026-06-06 00:38:33.862 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 00:40:27.851 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=92000 depth=89327 aggTrade=2673 other=0
+2026-06-06 00:42:08.983 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-06 00:42:08.983 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-06 00:42:09.989 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:42:11.765 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:42:11.765 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 00:42:13.540 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 834b/1000a, lastUpdateId=10727178307741 [Resync #8]
+2026-06-06 00:42:13.540 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 8
+2026-06-06 00:42:13.540 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 00:43:43.940 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=92500 depth=89775 aggTrade=2725 other=0
+2026-06-06 00:45:53.882 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-06 00:45:53.882 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-06 00:45:54.881 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:45:55.169 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:45:55.169 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 00:45:56.883 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 829b/1000a, lastUpdateId=10727200179080 [Resync #9]
+2026-06-06 00:45:56.883 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 9
+2026-06-06 00:45:56.883 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 00:47:19.638 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=93000 depth=90215 aggTrade=2785 other=0
+2026-06-06 00:49:31.636 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-06 00:49:31.636 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-06 00:49:32.639 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:49:33.018 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:49:33.018 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 00:49:34.749 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 819b/1000a, lastUpdateId=10727222276003 [Resync #10]
+2026-06-06 00:49:34.749 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 10
+2026-06-06 00:49:34.749 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 00:51:44.255 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=93500 depth=90663 aggTrade=2837 other=0
+2026-06-06 00:53:13.964 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-06 00:53:13.980 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-06 00:53:14.995 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:53:15.295 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:53:15.295 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 00:53:17.031 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 817b/1000a, lastUpdateId=10727241800317 [Resync #11]
+2026-06-06 00:53:17.031 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 11
+2026-06-06 00:53:17.031 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 00:55:51.368 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=94000 depth=91121 aggTrade=2879 other=0
+2026-06-06 00:56:51.595 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-06 00:56:51.595 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-06 00:56:52.592 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:56:52.907 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 00:56:52.907 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 00:56:54.586 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 818b/1000a, lastUpdateId=10727260617719 [Resync #12]
+2026-06-06 00:56:54.600 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 12
+2026-06-06 00:56:54.600 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 00:59:31.755 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=94500 depth=91577 aggTrade=2923 other=0
+2026-06-06 01:00:29.594 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-06 01:00:29.594 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-06 01:00:30.596 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 01:00:30.906 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 01:00:30.907 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 01:00:32.663 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 811b/1000a, lastUpdateId=10727278414504 [Resync #13]
+2026-06-06 01:00:32.663 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 13
+2026-06-06 01:00:32.664 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 01:01:53.165 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #3000] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.33400000 q=66.00000000 m=True
+2026-06-06 01:01:55.615 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=95000 depth=91960 aggTrade=3040 other=0
+2026-06-06 01:03:02.870 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=95500 depth=92323 aggTrade=3177 other=0
+2026-06-06 01:04:06.565 | WARNING  | data.exchange_connector:start_websocket:328 - WebSocket closed (code=1006) on wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade, failure #1
+2026-06-06 01:04:06.566 | INFO     | data.exchange_connector:start_websocket:342 - Reconnecting in 1.0s...
+2026-06-06 01:04:07.583 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 01:04:08.551 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://data-stream.binance.vision/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 01:04:08.551 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 01:04:10.326 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 799b/1000a, lastUpdateId=10727303791491 [Resync #14]
+2026-06-06 01:04:10.327 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 14
+2026-06-06 01:04:10.327 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 01:04:49.242 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=96000 depth=92744 aggTrade=3256 other=0
+2026-06-06 01:05:58.168 | INFO     | data.exchange_connector:start_websocket:330 - WebSocket task cancelled
+2026-06-06 01:05:58.168 | INFO     | data.exchange_connector:disconnect:118 - Disconnected from exchange

@@ -1,0 +1,17 @@
+2026-06-06 03:13:13.962 | INFO     | main:run_paper:534 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-06 03:13:13.962 | INFO     | main:run_paper:545 -   Loaded strategy: absorption
+2026-06-06 03:13:13.962 | INFO     | main:run_paper:545 -   Loaded strategy: stacked_imbalance
+2026-06-06 03:13:13.962 | INFO     | data.exchange_connector:connect:95 - Connecting to binance (attempt 1/5)...
+2026-06-06 03:13:16.979 | INFO     | data.exchange_connector:connect:97 - Connected to binance
+2026-06-06 03:13:16.979 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 03:13:17.623 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://fstream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 03:13:17.625 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 03:13:18.062 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 788b/1000a, lastUpdateId=10728281281356 [Resync #1]
+2026-06-06 03:13:18.062 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 1
+2026-06-06 03:13:18.062 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 03:14:47.328 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=500 depth=500 aggTrade=0 other=0
+2026-06-06 03:16:07.928 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=1000 depth=1000 aggTrade=0 other=0
+2026-06-06 03:16:08.056 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:1000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3235 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:2000 NoBook:0 LossSkip:0
+2026-06-06 03:17:29.524 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=1500 depth=1500 aggTrade=0 other=0
+2026-06-06 03:18:46.597 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=2000 depth=2000 aggTrade=0 other=0
+2026-06-06 03:18:46.714 | INFO     | main:_on_paper_order_book:718 - [HEALTH] Ticks:2000 TradesRcv:0 TradesQueued:0 Features:216 Regime:UNKNOWN Bids:20 Asks:20 Mid:2.3105 Pos:FLAT ClTrades:0 ConsecLoss:0 SigEval:4000 NoBook:0 LossSkip:0

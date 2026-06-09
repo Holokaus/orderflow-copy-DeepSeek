@@ -84,6 +84,7 @@ class OrderFlowSystem:
         self.paper_position = None
         self.paper_closed_trades: list = []
         self.paper_consecutive_losses = 0
+        self.paper_last_loss_time = None
         self.paper_last_trade_time = None
         self.paper_entry_timestamp = None
         self._pending_trades: list = []
@@ -639,10 +640,19 @@ class OrderFlowSystem:
                 if elapsed < self.settings.trading.min_time_between_trades_sec:
                     return
 
-            # 6b) Loss streak cooldown: skip after 2 consecutive losses
+            # 6b) Loss streak cooldown: time-decaying (skip after 2 losses, resets after PAPER_LOSS_STREAK_COOLDOWN_MINUTES)
+            PAPER_LOSS_STREAK_COOLDOWN_MINUTES = 30
             if self.paper_consecutive_losses >= 2:
-                self._paper_skipped_loss_streak += 1
-                return
+                if self.paper_last_loss_time is not None:
+                    elapsed = (ts - self.paper_last_loss_time).total_seconds()
+                    if elapsed < (PAPER_LOSS_STREAK_COOLDOWN_MINUTES * 60):
+                        self._paper_skipped_loss_streak += 1
+                        return
+                    else:
+                        self.paper_consecutive_losses = 0
+                else:
+                    self._paper_skipped_loss_streak += 1
+                    return
 
             # 6c) Evaluate each strategy
             mid = ob.mid_price
@@ -797,11 +807,23 @@ class OrderFlowSystem:
             return None
 
         net_pressure = state.features.get('net_pressure', 0)
+        bid_depth = state.features.get('bid_depth_10', 0)
+        ask_depth = state.features.get('ask_depth_10', 0)
+        hold_min = hold_sec / 60.0
+
+        # Tier 1 (20 min): Strong collapse — original thresholds
         if net_pressure < -0.5:
-            bid_depth = state.features.get('bid_depth_10', 0)
-            ask_depth = state.features.get('ask_depth_10', 0)
             if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.3:
                 return 'book_pressure_collapse'
+
+        # Tier 2 (40 min): Moderate collapse — weaker thresholds
+        if hold_min >= 40 and net_pressure < -0.3:
+            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.5:
+                return 'book_pressure_collapse_moderate'
+
+        # Tier 3 (60 min): Weak adverse pressure — any opposing flow
+        if hold_min >= 60 and net_pressure < -0.1:
+            return 'book_pressure_weak'
 
         return None
 
@@ -845,6 +867,7 @@ class OrderFlowSystem:
         # Update consecutive loss counter
         if net_pnl <= 0:
             self.paper_consecutive_losses += 1
+            self.paper_last_loss_time = ts
         else:
             self.paper_consecutive_losses = 0
 

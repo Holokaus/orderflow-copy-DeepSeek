@@ -95,17 +95,17 @@ class StrategyDefinition:
     # Risk parameters (base values - may be overridden by optimizer)
     stop_loss_atr_mult: float = 2.5
     take_profit_atr_mult: float = 6.0
-    max_holding_seconds: int = 86400  # [APPLIED] 24h = unlimited hold time, optimizer controls exits via SL/TP only
+    max_holding_seconds: int = 3600  # [FIX 2026-06-09] 1h max hold — prevents drift-to-SL on ranging days
     trailing_stop_activation_pct: float = 0.005
     
     # CRITICAL: Regime-specific multipliers (optimizer-controlled)
     # These allow different risk parameters for different market conditions
-    sl_mult_high_vol: float = 3.5
-    sl_mult_low_vol: float = 1.8
-    sl_mult_trending: float = 2.5
-    tp_mult_high_vol: float = 7.0
-    tp_mult_low_vol: float = 2.5
-    tp_mult_trending: float = 5.0
+    sl_mult_high_vol: float = 7.0
+    sl_mult_low_vol: float = 3.5
+    sl_mult_trending: float = 5.0
+    tp_mult_high_vol: float = 15.0
+    tp_mult_low_vol: float = 5.0
+    tp_mult_trending: float = 10.0
     
     filters: List[StrategyCondition] = field(default_factory=list)
     allowed_regimes: List[Regime] = field(default_factory=lambda: list(Regime))
@@ -414,11 +414,11 @@ class StrategyDefinition:
         # Convert dollar ATR to percentage of price (e.g., $0.00012 / $1.33 = 0.00009 = 0.009%)
         atr_pct = atr_dollar / mid_price
 
-        # Floor: 0.1% of price. Prevents spread-noise stops on tick data.
-        # Old floor was 0.5% (5x larger) which always dominated.
-        # NOTE: For tick-level data, ATR period=14 gives tiny values (~0.009%).
-        # Consider increasing ATR period in precomputer if floor dominates too much.
-        return max(atr_pct, 0.001)
+        # Floor: 0.15% of price. Prevents spread-noise stops on tick data.
+        # [FIX 2026-06-09] Raised from 0.1% to 0.15% — better matches ICP's
+        # actual tick volatility (0.15-0.4% 60s range). Without this floor,
+        # tight sl_mult (1.8x) × 0.1% floor = 0.18% SL gets stopped out on noise.
+        return max(atr_pct, 0.0015)
 
     def _extract_ml_features(self, state: OrderFlowState) -> dict:
         """
@@ -561,14 +561,16 @@ def create_absorption_strategy() -> StrategyDefinition:
         min_conditions_satisfied=2,
         min_score_threshold=2.5,
         
-        # [ICP-OPT] Trailing stop exits (SL=0.7%, trail activates at +1.0%)
+        # [FIX 2026-06-09] Realistic SL/TP for ranging regimes
+        # 100x TP was unreachable on normal days → trades always hit SL
+        # sl=3.5 × 0.15% ATR = 0.525% SL; tp=5.0 × 0.15% = 0.75% TP (1.4:1 R:R in ranging)
         sl_mult_high_vol=7.0,
-        sl_mult_low_vol=7.0,
-        sl_mult_trending=7.0,
-        tp_mult_high_vol=100.0,
-        tp_mult_low_vol=100.0,
-        tp_mult_trending=100.0,
-        trailing_stop_activation_pct=0.01,
+        sl_mult_low_vol=3.5,
+        sl_mult_trending=5.0,
+        tp_mult_high_vol=15.0,
+        tp_mult_low_vol=5.0,
+        tp_mult_trending=10.0,
+        trailing_stop_activation_pct=0.005,
 
         allowed_regimes=[
             Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION, 
@@ -833,14 +835,14 @@ def create_stacked_imbalance_strategy() -> StrategyDefinition:
         
         min_conditions_satisfied=2,
         min_score_threshold=2.5,
-        # ICP-optimized: trailing stop with wide SL (fee+slippage ~0.16%/side)
+        # [FIX 2026-06-09] Realistic SL/TP for ranging regimes
         sl_mult_high_vol=7.0,
-        sl_mult_low_vol=7.0,
-        sl_mult_trending=7.0,
-        tp_mult_high_vol=100.0,
-        tp_mult_low_vol=100.0,
-        tp_mult_trending=100.0,
-        trailing_stop_activation_pct=0.01,
+        sl_mult_low_vol=3.5,
+        sl_mult_trending=5.0,
+        tp_mult_high_vol=15.0,
+        tp_mult_low_vol=5.0,
+        tp_mult_trending=10.0,
+        trailing_stop_activation_pct=0.005,
         base_position_pct=0.95,
         scale_with_score=False,
         max_position_pct=0.95,

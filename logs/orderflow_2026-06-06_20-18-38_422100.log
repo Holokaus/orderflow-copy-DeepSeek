@@ -1,0 +1,22 @@
+2026-06-06 20:18:46.476 | INFO     | main:run_paper:534 - Starting paper trading: ['absorption', 'stacked_imbalance']
+2026-06-06 20:18:46.476 | INFO     | main:run_paper:545 -   Loaded strategy: absorption
+2026-06-06 20:18:46.476 | INFO     | main:run_paper:545 -   Loaded strategy: stacked_imbalance
+2026-06-06 20:18:46.491 | INFO     | data.exchange_connector:connect:95 - Connecting to binance (attempt 1/5)...
+2026-06-06 20:18:48.488 | INFO     | data.exchange_connector:connect:97 - Connected to binance
+2026-06-06 20:18:48.488 | INFO     | data.exchange_connector:start_websocket:293 - Connecting to WebSocket: wss://stream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 20:18:48.984 | INFO     | data.exchange_connector:start_websocket:302 - WebSocket connected: wss://stream.binance.com:443/stream?streams=icpusdt@depth@100ms/icpusdt@aggTrade
+2026-06-06 20:18:48.985 | INFO     | data.exchange_connector:start_websocket:305 - Fetching fresh order book snapshot...
+2026-06-06 20:18:49.390 | INFO     | data.exchange_connector:_fetch_rest_snapshot:223 - Snapshot loaded: 677b/1000a, lastUpdateId=6362065053 [Resync #1]
+2026-06-06 20:18:49.390 | INFO     | data.exchange_connector:_fetch_rest_snapshot:234 - Book synchronized. Total resyncs: 1
+2026-06-06 20:18:49.390 | INFO     | data.exchange_connector:start_websocket:312 - Subscribed to market data streams
+2026-06-06 20:19:06.055 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #1] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.28700000 q=17.48000000 m=True
+2026-06-06 20:19:06.224 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #2] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.28700000 q=2.88000000 m=True
+2026-06-06 20:19:06.224 | INFO     | data.exchange_connector:_handle_trade:480 - [TRACE TRADE #3] keys=['e', 'E', 's', 'a', 'p', 'q', 'f', 'l', 'T', 'm', 'M'] p=2.28700000 q=20.93000000 m=True
+2026-06-06 20:19:56.076 | INFO     | knowledge.strategy_library:evaluate:302 - [Stacked Imbalance] SIGNAL: BUY @ 2.2895 | SL=2.2545 TP=2.7895 | Regime=UNKNOWN | Score=3.11
+2026-06-06 20:19:56.076 | INFO     | main:_on_paper_order_book:691 - [stacked_imbalance] PAPER ENTRY @ 2.2911 | SL: 2.2545 | TP: 2.7895 | Size: 0.9993
+2026-06-06 20:22:00.861 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=500 depth=474 aggTrade=26 other=0
+2026-06-06 20:24:19.401 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=1000 depth=937 aggTrade=63 other=0
+2026-06-06 20:27:34.464 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=1500 depth=1412 aggTrade=88 other=0
+2026-06-06 20:30:03.257 | INFO     | data.exchange_connector:_process_message:423 - [WS MSGS] total=2000 depth=1882 aggTrade=118 other=0
+2026-06-06 20:31:42.674 | INFO     | data.exchange_connector:start_websocket:330 - WebSocket task cancelled
+2026-06-06 20:31:42.674 | INFO     | data.exchange_connector:disconnect:118 - Disconnected from exchange

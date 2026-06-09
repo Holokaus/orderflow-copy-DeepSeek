@@ -120,15 +120,26 @@ async def main():
     print("  Initial capital: $100")
     print("  Loss streak cooldown: active (skip after 2 losses)")
     print("  Exchange: Binance PRODUCTION (real market data)")
-    print(f"  API Credentials: {'✓ Configured' if api_key else '✗ Missing'}")
+    print(f"  API Credentials: {'[OK]' if api_key else '[MISSING]'}")
     print("=" * 60)
     print("\n⏳ Connecting to Binance...\n")
     
-    # Initialize exchange with API credentials (not async) — FUTURES mode for backtest-consistent data
-    system._init_components('paper', testnet=False, use_futures=True)
+    # Initialize exchange with API credentials (not async) — SPOT data stream for trade data,
+    # but relaxed spread threshold to avoid blocking on naturally wider spot spreads.
+    system._init_components('paper', testnet=False, use_futures=False)
     if system.exchange:
         system.exchange.config.api_key = api_key
         system.exchange.config.api_secret = api_secret
+    
+    # Relax the live fee filter expected spread so spot ICP liquidity doesn't block trades
+    if system.order_manager and hasattr(system.order_manager, 'fee_filter'):
+        fee_filter = system.order_manager.fee_filter
+        fee_filter.expected_spread = 0.0005  # 0.05% (was 0.01%)
+        # Recalc total cost threshold: entry + exit + spread + min_profit
+        fee_filter.total_cost = (
+            fee_filter.entry_fee + fee_filter.exit_fee +
+            fee_filter.expected_spread + fee_filter.min_profit
+        )
     
     start_time = asyncio.get_event_loop().time()
     status_interval = 180  # Print status every 180 seconds
@@ -136,7 +147,7 @@ async def main():
     
     try:
         # Create task for paper trading
-        trading_task = asyncio.create_task(system.run_paper(STRATEGIES, testnet=False, use_futures=True))
+        trading_task = asyncio.create_task(system.run_paper(STRATEGIES, testnet=False, use_futures=False))
         
         # Status monitor task
         async def status_monitor():
