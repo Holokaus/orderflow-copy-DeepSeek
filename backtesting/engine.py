@@ -167,8 +167,8 @@ class BacktestEngine:
     EQUITY_SAMPLE_EVERY_N = 50
     VOLUME_PROFILE_EVERY_N = 100
 
-    # Minimum hold before flow-based exits can fire (5 minutes) — [FIX 2026-06-09] Was 20min, reduced to fit within max hold tiers
-    MIN_HOLD_BEFORE_FLOW_EXIT_SEC = 300
+    # Minimum hold before flow-based exits can fire (2 minutes)
+    MIN_HOLD_BEFORE_FLOW_EXIT_SEC = 120
 
     # Loss streak cooldown: after 2 consecutive losses, skip trading for 30 min
     LOSS_STREAK_COOLDOWN_MINUTES = 30
@@ -177,6 +177,18 @@ class BacktestEngine:
     MAX_HOLD_SECONDS_RANGING = 1800   # 30 min
     MAX_HOLD_SECONDS_TRENDING = 7200  # 2 hours
     MAX_HOLD_SECONDS_DEFAULT = 3600   # 1 hour
+
+    # Regime-based strategy selection
+    REGIME_STRATEGY_MAP = {
+        Regime.RANGING: ["absorption", "value_area"],
+        Regime.ACCUMULATION: ["absorption"],
+        Regime.TRENDING_UP: ["stacked_imbalance"],
+        Regime.TRENDING_DOWN: [],
+        Regime.BREAKOUT: ["stacked_imbalance"],
+        Regime.HIGH_VOLATILITY: [],
+        Regime.DISTRIBUTION: ["value_area"],
+        Regime.CRASH: [],
+    }
 
     def __init__(
         self,
@@ -240,6 +252,7 @@ class BacktestEngine:
         self._last_signal_strategy: Optional[str] = None
         self._last_signal_time: Optional[datetime] = None
         self._last_loss_time: Optional[datetime] = None  # [FIX] Track last loss for cooldown decay
+        self._pending_entry = None
         self._current_day = None
 
         # Tracking
@@ -267,6 +280,7 @@ class BacktestEngine:
         self._last_signal_strategy = None
         self._last_signal_time = None
         self._last_loss_time: Optional[datetime] = None  # [FIX] Track last loss for cooldown decay
+        self._pending_entry = None
         self._current_day = None
         self._signals_rejected = 0
         self._signals_reduced = 0
@@ -472,6 +486,7 @@ class BacktestEngine:
             if self.position:
                 self._update_position(state)
                 self._update_trailing_stop(state)
+                self._update_breakeven_stop(state)
 
                 if tick_idx > self._entry_tick_idx:  # Only gate the EXIT check
                     exit_reason = self._check_exit_conditions(state, timestamp)
@@ -487,14 +502,18 @@ class BacktestEngine:
 
             # Signal evaluation (only when flat)
             if not self.position:
+                # Circuit breaker: halt trading in crash structure
+                if not self._should_trade_today(state):
+                    if tick_idx % equity_every == 0:
+                        self.equity_curve.append((timestamp, self._calculate_equity_fast()))
+                    continue
+
                 if not self._cooldown_passed(timestamp):
                     if tick_idx % equity_every == 0:
                         self.equity_curve.append((timestamp, self._calculate_equity_fast()))
                     continue
 
                 # Loss streak cooldown: time-decaying (not permanent)
-                # After 2 consecutive losses, skip signals for LOSS_STREAK_COOLDOWN_MINUTES
-                # Once cooldown expires, the streak resets and trading resumes
                 cooldown_active = False
                 if len(self.closed_trades) >= 2:
                     recent_trades = self.closed_trades[-2:]
@@ -510,7 +529,52 @@ class BacktestEngine:
                         self.equity_curve.append((timestamp, self._calculate_equity_fast()))
                     continue
 
+                # CRASH regime detection pre-check
+                if self._detect_crash_regime(state):
+                    state.regime = Regime.CRASH
+
+                # Regime-based strategy selection
+                active_strategies = self.REGIME_STRATEGY_MAP.get(state.regime, ["absorption"])
+                strat_name = strategy.name.lower().replace(" ", "_")
+                if strat_name not in active_strategies and "all" not in active_strategies:
+                    if tick_idx % equity_every == 0:
+                        self.equity_curve.append((timestamp, self._calculate_equity_fast()))
+                    continue
+
                 signal = strategy.evaluate(state)
+
+                # Entry confirmation: require price to hold direction for 2 ticks with 0.03% favorable move within 5s
+                if signal and signal.is_actionable:
+                    if self._pending_entry is None:
+                        self._pending_entry = {
+                            'signal': signal,
+                            'confirm_count': 0,
+                            'first_mid': state.order_book.mid_price,
+                            'timestamp': timestamp
+                        }
+                        if tick_idx % equity_every == 0:
+                            self.equity_curve.append((timestamp, self._calculate_equity_fast()))
+                        continue
+
+                    pending = self._pending_entry
+                    mid = state.order_book.mid_price
+                    favorable_move = (mid - pending['first_mid']) / pending['first_mid']
+
+                    if favorable_move > 0.0003:
+                        pending['confirm_count'] += 1
+
+                    if pending['confirm_count'] >= 2 and (timestamp - pending['timestamp']).total_seconds() < 5:
+                        signal = pending['signal']
+                        self._pending_entry = None
+                    elif (timestamp - pending['timestamp']).total_seconds() >= 5:
+                        self._pending_entry = None
+                        if tick_idx % equity_every == 0:
+                            self.equity_curve.append((timestamp, self._calculate_equity_fast()))
+                        continue
+                    else:
+                        if tick_idx % equity_every == 0:
+                            self.equity_curve.append((timestamp, self._calculate_equity_fast()))
+                        continue
 
                 if signal and signal.is_actionable:
                     # LONG-ONLY gate: reject SELL/STRONG_SELL signals
@@ -537,7 +601,6 @@ class BacktestEngine:
 
                     # Fee-aware filter check (before opening position)
                     signal_to_check = adjusted_signal or signal
-                    # Use actual signal TP distance when available, not ATR estimate [FIX 5 & 7]
                     if signal_to_check.entry_price > 0 and signal_to_check.take_profit != signal_to_check.entry_price:
                         predicted_move_pct = abs(signal_to_check.take_profit - signal_to_check.entry_price) / signal_to_check.entry_price
                     else:
@@ -556,10 +619,10 @@ class BacktestEngine:
                     if risk_action == RiskAction.REDUCE_SIZE:
                         self._signals_reduced += 1
                         self._open_position(adjusted_signal, state, timestamp, strategy, risk_action.name)
-                        self._entry_tick_idx = tick_idx  # [FIXED] Record the tick we opened on
+                        self._entry_tick_idx = tick_idx
                     elif risk_action == RiskAction.ALLOW:
                         self._open_position(adjusted_signal or signal, state, timestamp, strategy, risk_action.name)
-                        self._entry_tick_idx = tick_idx  # [FIXED] Record the tick we opened on
+                        self._entry_tick_idx = tick_idx
 
             # Equity curve (down-sampled)
             if tick_idx % equity_every == 0:
@@ -801,6 +864,74 @@ class BacktestEngine:
                 if self.position.trailing_stop_price < self.position.stop_loss:
                     self.position.stop_loss = self.position.trailing_stop_price
 
+    def _update_breakeven_stop(self, state: OrderFlowState) -> None:
+        """Move SL to breakeven + 1 pip after reaching 0.15% profit."""
+        if not self.position:
+            return
+        book = state.order_book
+        if self.position.side == Side.BUY:
+            mark = book.best_bid.price if book.best_bid else book.mid_price
+            pnl_pct = (mark - self.position.entry_price) / self.position.entry_price
+            if pnl_pct >= 0.0015 and self.position.stop_loss < self.position.entry_price * 1.0001:
+                new_sl = self.position.entry_price * 1.0001
+                self.position.stop_loss = max(self.position.stop_loss, new_sl)
+
+    # ------------------------------------------------------------------
+    # Circuit breaker
+    # ------------------------------------------------------------------
+
+    def _should_trade_today(self, state: OrderFlowState) -> bool:
+        """Halt trading when market shows crash structure."""
+        features = state.features
+        recent_bars = features.get("recent_bars", [])
+        if len(recent_bars) < 10:
+            return True
+
+        consecutive_down = 0
+        max_consecutive_down = 0
+        for bar in recent_bars:
+            if bar['close'] < bar['open']:
+                consecutive_down += 1
+                max_consecutive_down = max(max_consecutive_down, consecutive_down)
+            else:
+                consecutive_down = 0
+
+        high_range_count = sum(1 for bar in recent_bars
+                              if (bar['high'] - bar['low']) / bar['open'] > 0.005)
+
+        if max_consecutive_down >= 3 and high_range_count / len(recent_bars) > 0.2:
+            logger.warning(f"[CIRCUIT BREAKER] Market in crash mode: {max_consecutive_down} down bars, {high_range_count} high-range bars. HALTING TRADES.")
+            return False
+
+        return True
+
+    def _detect_crash_regime(self, state: OrderFlowState) -> bool:
+        """Detect crash conditions from recent bars and set regime."""
+        features = state.features
+        recent_ranges = features.get("bar_ranges_10", [])
+        if len(recent_ranges) < 5:
+            return False
+        median_range = np.median(recent_ranges)
+        if median_range <= 0.003:
+            return False
+        recent_bars = features.get("recent_bars", [])
+        if len(recent_bars) < 3:
+            return False
+        consecutive_same = 0
+        max_same = 0
+        last_dir = None
+        for bar in recent_bars:
+            direction = 1 if bar['close'] > bar['open'] else -1
+            if direction == last_dir:
+                consecutive_same += 1
+            else:
+                consecutive_same = 1
+            max_same = max(max_same, consecutive_same)
+            last_dir = direction
+        if max_same >= 3:
+            return True
+        return False
+
     # ------------------------------------------------------------------
     # Exit conditions
     # ------------------------------------------------------------------
@@ -868,58 +999,38 @@ class BacktestEngine:
                     latest_sweep.reversal_strength < 0.4):
                 return "sweep_against_short"
 
-        # 3d) Book pressure collapse — REGIME-DEPENDENT graduated thresholds
-        # Tier timing and tightness scale with max hold window:
-        #   Ranging (30m max):  early tiers need HIGHER conviction (stricter thresholds)
-        #   Trending (120m max): later tiers can use LOWER conviction (original loose thresholds)
+        # 3d) Book pressure collapse — FAST graduated thresholds
         if flow_exits_allowed:
             net_pressure = features.get("net_pressure", 0)
             bid_depth = features.get("bid_depth_10", 0)
             ask_depth = features.get("ask_depth_10", 0)
             hold_min = hold_duration / 60.0
 
-            regime = state.regime
-            if regime in (Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION):
-                t2_min = 15; t3_min = 25
-                t1_thresh = 0.5; t1_ratio = 0.3
-                t2_thresh = 0.4; t2_ratio = 0.4
-                t3_thresh = 0.2
-            elif regime in (Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.BREAKOUT):
-                t2_min = 40; t3_min = 90
-                t1_thresh = 0.5; t1_ratio = 0.3
-                t2_thresh = 0.3; t2_ratio = 0.5
-                t3_thresh = 0.1
-            else:
-                t2_min = 25; t3_min = 45
-                t1_thresh = 0.5; t1_ratio = 0.3
-                t2_thresh = 0.35; t2_ratio = 0.45
-                t3_thresh = 0.15
-
             is_buy = self.position.side == Side.BUY
             is_sell = self.position.side == Side.SELL
 
-            # Tier 1: Strong collapse (always active after min hold)
-            if is_buy and net_pressure < -t1_thresh:
-                if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < t1_ratio:
+            # Tier 1: Pressure shift (2 min, lowered threshold)
+            if is_buy and net_pressure < -0.25:
+                if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.45:
                     return "book_pressure_collapse"
-            if is_sell and net_pressure > t1_thresh:
-                if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < t1_ratio:
+            if is_sell and net_pressure > 0.25:
+                if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.45:
                     return "book_pressure_collapse"
 
-            # Tier 2: Moderate collapse
-            if hold_min >= t2_min:
-                if is_buy and net_pressure < -t2_thresh:
-                    if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < t2_ratio:
+            # Tier 2: Moderate (5 min)
+            if hold_min >= 5:
+                if is_buy and net_pressure < -0.2:
+                    if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.5:
                         return "book_pressure_collapse_moderate"
-                if is_sell and net_pressure > t2_thresh:
-                    if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < t2_ratio:
+                if is_sell and net_pressure > 0.2:
+                    if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.5:
                         return "book_pressure_collapse_moderate"
 
-            # Tier 3: Weak adverse pressure
-            if hold_min >= t3_min:
-                if is_buy and net_pressure < -t3_thresh:
+            # Tier 3: Weak (10 min)
+            if hold_min >= 10:
+                if is_buy and net_pressure < -0.1:
                     return "book_pressure_weak"
-                if is_sell and net_pressure > t3_thresh:
+                if is_sell and net_pressure > 0.1:
                     return "book_pressure_weak"
 
         # 3e) Time-based max hold (after 30 min in ranging, 60 min default, 2h trending)

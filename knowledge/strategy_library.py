@@ -96,7 +96,7 @@ class StrategyDefinition:
     stop_loss_atr_mult: float = 2.5
     take_profit_atr_mult: float = 6.0
     max_holding_seconds: int = 3600  # [FIX 2026-06-09] 1h max hold — prevents drift-to-SL on ranging days
-    trailing_stop_activation_pct: float = 0.005
+    trailing_stop_activation_pct: float = 0.0015
     
     # CRITICAL: Regime-specific multipliers (optimizer-controlled)
     # These allow different risk parameters for different market conditions
@@ -227,15 +227,22 @@ class StrategyDefinition:
         elif regime in (Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION):
             sl_mult, tp_mult = self.sl_mult_low_vol, self.tp_mult_low_vol
             logger.debug(f"[{self.name}] Using LOW_VOL multipliers: SL={sl_mult}, TP={tp_mult}")
+        elif regime == Regime.CRASH:
+            sl_mult, tp_mult = 1.5, 2.5
+            logger.debug(f"[{self.name}] Using CRASH multipliers: SL={sl_mult}, TP={tp_mult}")
         else:  # TRENDING_UP, TRENDING_DOWN, BREAKOUT, etc.
             sl_mult, tp_mult = self.sl_mult_trending, self.tp_mult_trending
             logger.debug(f"[{self.name}] Using TRENDING multipliers: SL={sl_mult}, TP={tp_mult}")
-        
-        # [CHANGED 2026-05-27] ATR is now a fraction of price (atr_pct).
-        # stop_dist = atr_pct * mid_price * sl_mult  → distance in price units
-        # Previously: stop_dist = atr_dollar * sl_mult  (with 0.5% floor overriding real ATR)
-        # WHY: percentage ATR works at any price level and across assets.
-        # TO REVERT: change back to: stop_dist = atr_dollar * sl_mult; tp_dist = atr_dollar * tp_mult
+
+        # Volatility-regime override based on bar ranges (supplementary to regime selection)
+        recent_ranges = state.features.get("bar_ranges_10", [])
+        if len(recent_ranges) >= 5:
+            median_range = np.median(recent_ranges)
+            if median_range > 0.003:
+                sl_mult, tp_mult = 1.5, 2.5
+            elif median_range > 0.0015:
+                sl_mult, tp_mult = 3.0, 5.0
+
         atr_pct = self._estimate_atr(state)
         mid_price = state.order_book.mid_price
         
@@ -362,63 +369,43 @@ class StrategyDefinition:
         
     
     def _estimate_atr(self, state: OrderFlowState, default: float = 100.0) -> float:
-        """
-        Estimate ATR as a fraction of price (e.g., 0.0025 = 0.25%).
-        [CHANGED 2026-05-27] Previously returned dollar ATR with a 0.5% floor.
-        
-        WHY (percentage, not dollar):
-          Dollar ATR with a mid_price * 0.005 floor meant the real ATR computation
-          was never used — the floor always dominated. Converting to percentage:
-          1. Works across price levels — XRP at $0.30 or $3.50 gives same ATR%
-          2. Works across assets — no recalibration needed for BTC, ETH, etc.
-          3. The massive 0.5% floor is replaced by a small 0.1% floor — the real
-             tick-level ATR now drives SL/TP most of the time
-          4. Multipliers (2.5x, 6.0x) now multiply a percentage, producing consistent
-             percentage distances regardless of price
-        
-        Floor: max(atr_pct, 0.001) = 0.1% of price minimum.
-          - Old floor was 0.5% (always > real ATR for XRP tick data → floor dominated)
-          - New floor 0.1% prevents spread-noise stops while rarely dominating
-          - For XRP tick data: ATR median = 0.009%, 90th %ile = 0.012%, so floor
-            dominates ~95% of the time (the tick-period ATR is too short to be useful)
-          - For longer timeframes or volatile assets, real ATR exceeds 0.1% and drives stops
-          - TO ADJUST: Change 0.001 below to desired minimum ATR fraction
-        
-        TO REVERT (to old dollar ATR with 0.5% floor):
-          1. Change floor from 0.001 to 0.005, and multiply by mid_price to get dollars
-          2. Return max(atr_dollar, mid_price * 0.005) instead of max(atr_pct, 0.001)
-          3. In evaluate(): stop_dist = atr * sl_mult (replace atr_pct * mid_price * sl_mult)
-          4. In engine.py _estimate_predicted_move(): (atr * tp_mult) / mid_price
-        
-        Priority order:
-          1. atr_60s from FeatureEngine (dollar → divide by mid_price for percentage)
-          2. price_range_60s as proxy
-          3. Fallback: 0.1% of mid price
-        """
-        mid_price = state.order_book.mid_price
-        if mid_price <= 0:
+        """Estimate ATR with volatility-regime-aware floor using recent bar ranges."""
+        mid = state.order_book.mid_price
+        if mid <= 0:
             return default
 
         features = state.features
 
-        # Priority 1: Real ATR from feature engine (dollar → convert to percentage)
-        if features.get("atr_60s", 0) > 0:
-            atr_dollar = features["atr_60s"]
-        # Priority 2: Price range as ATR proxy
-        elif features.get("price_range_60s", 0) > 0:
-            atr_dollar = features["price_range_60s"]
+        atr_60s = features.get("atr_60s", 0)
+        price_range = features.get("price_range_60s", 0)
+
+        if atr_60s > 0:
+            atr_pct = atr_60s / mid
+        elif price_range > 0:
+            atr_pct = price_range / mid
         else:
-            # Priority 3: Fallback — 0.1% of mid price
-            atr_dollar = mid_price * 0.001
+            atr_pct = 0.0001
 
-        # Convert dollar ATR to percentage of price (e.g., $0.00012 / $1.33 = 0.00009 = 0.009%)
-        atr_pct = atr_dollar / mid_price
+        recent_ranges = features.get("bar_ranges_10", [])
+        if len(recent_ranges) >= 5:
+            median_range = np.median(recent_ranges)
+            max_range = max(recent_ranges)
+        else:
+            median_range = atr_pct
+            max_range = atr_pct
 
-        # Floor: 0.15% of price. Prevents spread-noise stops on tick data.
-        # [FIX 2026-06-09] Raised from 0.1% to 0.15% — better matches ICP's
-        # actual tick volatility (0.15-0.4% 60s range). Without this floor,
-        # tight sl_mult (1.8x) × 0.1% floor = 0.18% SL gets stopped out on noise.
-        return max(atr_pct, 0.0015)
+        if median_range > 0.003:
+            floor = 0.0006
+            cap = 0.006
+        elif median_range > 0.0015:
+            floor = 0.0005
+            cap = 0.003
+        else:
+            floor = 0.0008
+            cap = 0.0015
+
+        effective_atr = max(min(atr_pct, cap), floor)
+        return effective_atr
 
     def _extract_ml_features(self, state: OrderFlowState) -> dict:
         """
@@ -570,7 +557,7 @@ def create_absorption_strategy() -> StrategyDefinition:
         tp_mult_high_vol=15.0,
         tp_mult_low_vol=5.0,
         tp_mult_trending=10.0,
-        trailing_stop_activation_pct=0.005,
+        trailing_stop_activation_pct=0.0015,
 
         allowed_regimes=[
             Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION, 
@@ -842,10 +829,10 @@ def create_stacked_imbalance_strategy() -> StrategyDefinition:
         tp_mult_high_vol=15.0,
         tp_mult_low_vol=5.0,
         tp_mult_trending=10.0,
-        trailing_stop_activation_pct=0.005,
-        base_position_pct=0.95,
-        scale_with_score=False,
-        max_position_pct=0.95,
+        trailing_stop_activation_pct=0.0015,
+        base_position_pct=0.15,
+        scale_with_score=True,
+        max_position_pct=0.25,
     )
 
 

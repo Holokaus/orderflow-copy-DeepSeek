@@ -61,6 +61,17 @@ class OrderFlowSystem:
     6. Live - Live trading
     7. Test - Connectivity test
     """
+
+    REGIME_STRATEGY_MAP = {
+        Regime.RANGING: ["absorption", "value_area"],
+        Regime.ACCUMULATION: ["absorption"],
+        Regime.TRENDING_UP: ["stacked_imbalance"],
+        Regime.TRENDING_DOWN: [],
+        Regime.BREAKOUT: ["stacked_imbalance"],
+        Regime.HIGH_VOLATILITY: [],
+        Regime.DISTRIBUTION: ["value_area"],
+        Regime.CRASH: [],
+    }
     
     def __init__(self, settings: Settings = None):
         self.settings = settings or Settings()
@@ -96,7 +107,10 @@ class OrderFlowSystem:
         self._paper_skipped_has_pos = 0
         self._paper_skipped_cooldown = 0
         self._paper_skipped_loss_streak = 0
+        self._paper_skipped_circuit_breaker = 0
+        self._paper_skipped_regime = 0
         self._paper_signals_evaluated = 0
+        self._paper_pending_entry = None
     
     def _init_llm(self) -> None:
         """Initialize LLM advisor with automatic failover"""
@@ -623,6 +637,7 @@ class OrderFlowSystem:
             if self.paper_position:
                 self._update_paper_position(state)
                 self._update_paper_trailing_stop(state)
+                self._update_paper_breakeven_stop(state)
 
                 if self.paper_entry_timestamp is not None:
                     exit_reason = self._check_paper_exit(state, ts)
@@ -634,13 +649,18 @@ class OrderFlowSystem:
                 self._paper_skipped_has_pos += 1
                 return
 
-            # 6a) Cooldown check
+            # 6a) Circuit breaker: halt trading in crash structure
+            if not self._paper_should_trade_today(state):
+                self._paper_skipped_circuit_breaker += 1
+                return
+
+            # 6b) Cooldown check
             if self.paper_last_trade_time is not None:
                 elapsed = (ts - self.paper_last_trade_time).total_seconds()
                 if elapsed < self.settings.trading.min_time_between_trades_sec:
                     return
 
-            # 6b) Loss streak cooldown: time-decaying (skip after 2 losses, resets after PAPER_LOSS_STREAK_COOLDOWN_MINUTES)
+            # 6c) Loss streak cooldown: time-decaying (skip after 2 losses, resets after PAPER_LOSS_STREAK_COOLDOWN_MINUTES)
             PAPER_LOSS_STREAK_COOLDOWN_MINUTES = 30
             if self.paper_consecutive_losses >= 2:
                 if self.paper_last_loss_time is not None:
@@ -654,18 +674,57 @@ class OrderFlowSystem:
                     self._paper_skipped_loss_streak += 1
                     return
 
-            # 6c) Evaluate each strategy
+            # 6d) Evaluate each strategy
             mid = ob.mid_price
+
+            # CRASH regime detection pre-check
+            if self._detect_paper_crash_regime(state):
+                state.regime = Regime.CRASH
+
             strat_ref = self.paper_strategies
             for strat_name, strat in strat_ref:
+                # Regime-based strategy selection
+                active_strategies = self.REGIME_STRATEGY_MAP.get(state.regime, ["absorption"])
+                sn = strat_name.lower().replace(" ", "_")
+                if sn not in active_strategies and "all" not in active_strategies:
+                    self._paper_skipped_regime += 1
+                    continue
+
                 self._paper_signals_evaluated += 1
                 signal = strat.evaluate(state)
 
-                if not signal or not signal.is_actionable:
-                    continue
+                # Entry confirmation: require price to hold direction for 2 ticks with 0.03% favorable move within 5s
+                if signal and signal.is_actionable:
+                    # Long-only gate first
+                    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                        continue
 
-                # Long-only gate
-                if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
+                    if self._paper_pending_entry is None:
+                        self._paper_pending_entry = {
+                            'signal': signal,
+                            'strat_name': strat_name,
+                            'confirm_count': 0,
+                            'first_mid': mid,
+                            'timestamp': ts
+                        }
+                        return
+
+                    pending = self._paper_pending_entry
+                    favorable_move = (mid - pending['first_mid']) / pending['first_mid']
+
+                    if favorable_move > 0.0003:
+                        pending['confirm_count'] += 1
+
+                    if pending['confirm_count'] >= 2 and (ts - pending['timestamp']).total_seconds() < 5:
+                        signal = pending['signal']
+                        strat_name = pending['strat_name']
+                        self._paper_pending_entry = None
+                    elif (ts - pending['timestamp']).total_seconds() >= 5:
+                        self._paper_pending_entry = None
+                        continue
+                    else:
+                        continue
+                else:
                     continue
 
                 # Entry price (long: ask + slippage)
@@ -779,6 +838,71 @@ class OrderFlowSystem:
                 pos['trailing_stop_price'] = new_stop
                 pos['stop_loss'] = max(pos['stop_loss'], new_stop)
 
+    def _update_paper_breakeven_stop(self, state: OrderFlowState) -> None:
+        """Move SL to breakeven + 1 pip after reaching 0.15% profit."""
+        pos = self.paper_position
+        if not pos:
+            return
+        book = state.order_book
+        mark = book.best_bid.price if book.best_bid else book.mid_price
+        pnl_pct = (mark - pos['entry_price']) / pos['entry_price']
+        if pnl_pct >= 0.0015 and pos['stop_loss'] < pos['entry_price'] * 1.0001:
+            new_sl = pos['entry_price'] * 1.0001
+            pos['stop_loss'] = max(pos['stop_loss'], new_sl)
+
+    def _paper_should_trade_today(self, state: OrderFlowState) -> bool:
+        """Halt trading when market shows crash structure."""
+        features = state.features
+        recent_bars = features.get("recent_bars", [])
+        if len(recent_bars) < 10:
+            return True
+
+        consecutive_down = 0
+        max_consecutive_down = 0
+        for bar in recent_bars:
+            if bar['close'] < bar['open']:
+                consecutive_down += 1
+                max_consecutive_down = max(max_consecutive_down, consecutive_down)
+            else:
+                consecutive_down = 0
+
+        high_range_count = sum(1 for bar in recent_bars
+                              if (bar['high'] - bar['low']) / bar['open'] > 0.005)
+
+        if max_consecutive_down >= 3 and high_range_count / len(recent_bars) > 0.2:
+            logger.warning(f"[CIRCUIT BREAKER] Market in crash mode: {max_consecutive_down} down bars, {high_range_count} high-range bars. HALTING TRADES.")
+            return False
+
+        return True
+
+    def _detect_paper_crash_regime(self, state: OrderFlowState) -> bool:
+        """Detect crash conditions from recent bars."""
+        features = state.features
+        recent_ranges = features.get("bar_ranges_10", [])
+        if len(recent_ranges) < 5:
+            return False
+        sorted_ranges = sorted(recent_ranges)
+        median_range = sorted_ranges[len(sorted_ranges) // 2]
+        if median_range <= 0.003:
+            return False
+        recent_bars = features.get("recent_bars", [])
+        if len(recent_bars) < 3:
+            return False
+        consecutive_same = 0
+        max_same = 0
+        last_dir = None
+        for bar in recent_bars:
+            direction = 1 if bar['close'] > bar['open'] else -1
+            if direction == last_dir:
+                consecutive_same += 1
+            else:
+                consecutive_same = 1
+            max_same = max(max_same, consecutive_same)
+            last_dir = direction
+        if max_same >= 3:
+            return True
+        return False
+
     def _check_paper_exit(self, state: OrderFlowState, ts: datetime) -> str:
         """Check exit conditions for paper position. Returns reason or None."""
         pos = self.paper_position
@@ -802,8 +926,8 @@ class OrderFlowSystem:
         if exit_price >= pos['take_profit']:
             return 'take_profit'
 
-        # Flow-based exits (require min hold — 5 min)
-        if hold_sec < 300:
+        # Flow-based exits (require min hold — 2 min)
+        if hold_sec < 120:
             return None
 
         net_pressure = state.features.get('net_pressure', 0)
@@ -811,36 +935,18 @@ class OrderFlowSystem:
         ask_depth = state.features.get('ask_depth_10', 0)
         hold_min = hold_sec / 60.0
 
-        # Regime-dependent tier thresholds (matched to backtest engine)
-        regime = state.regime
-        if regime in (Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION):
-            t2_min = 15; t3_min = 25
-            t1_thresh = 0.5; t1_ratio = 0.3
-            t2_thresh = 0.4; t2_ratio = 0.4
-            t3_thresh = 0.2
-        elif regime in (Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.BREAKOUT):
-            t2_min = 40; t3_min = 90
-            t1_thresh = 0.5; t1_ratio = 0.3
-            t2_thresh = 0.3; t2_ratio = 0.5
-            t3_thresh = 0.1
-        else:
-            t2_min = 25; t3_min = 45
-            t1_thresh = 0.5; t1_ratio = 0.3
-            t2_thresh = 0.35; t2_ratio = 0.45
-            t3_thresh = 0.15
-
-        # Tier 1: Strong collapse
-        if net_pressure < -t1_thresh:
-            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < t1_ratio:
+        # Tier 1: Pressure shift (2 min, lowered threshold)
+        if net_pressure < -0.25:
+            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.45:
                 return 'book_pressure_collapse'
 
-        # Tier 2: Moderate collapse
-        if hold_min >= t2_min and net_pressure < -t2_thresh:
-            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < t2_ratio:
+        # Tier 2: Moderate (5 min)
+        if hold_min >= 5 and net_pressure < -0.2:
+            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.5:
                 return 'book_pressure_collapse_moderate'
 
-        # Tier 3: Weak adverse pressure
-        if hold_min >= t3_min and net_pressure < -t3_thresh:
+        # Tier 3: Weak (10 min)
+        if hold_min >= 10 and net_pressure < -0.1:
             return 'book_pressure_weak'
 
         return None

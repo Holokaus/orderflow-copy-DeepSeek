@@ -33,6 +33,7 @@ class Regime(Enum):
     ACCUMULATION = auto()
     DISTRIBUTION = auto()
     BREAKOUT = auto()
+    CRASH = auto()
     UNKNOWN = auto()
 
 
