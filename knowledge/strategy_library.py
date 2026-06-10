@@ -96,7 +96,7 @@ class StrategyDefinition:
     stop_loss_atr_mult: float = 2.5
     take_profit_atr_mult: float = 6.0
     max_holding_seconds: int = 3600  # [FIX 2026-06-09] 1h max hold — prevents drift-to-SL on ranging days
-    trailing_stop_activation_pct: float = 0.0015
+    trailing_stop_activation_pct: float = 0.005
     
     # CRITICAL: Regime-specific multipliers (optimizer-controlled)
     # These allow different risk parameters for different market conditions
@@ -401,8 +401,8 @@ class StrategyDefinition:
             floor = 0.0005
             cap = 0.003
         else:
-            floor = 0.0008
-            cap = 0.0015
+            floor = 0.0015
+            cap = 0.0025
 
         effective_atr = max(min(atr_pct, cap), floor)
         return effective_atr
@@ -543,13 +543,18 @@ def create_absorption_strategy() -> StrategyDefinition:
                 operator="<",
                 threshold=5000.0
             ),
+            # Trend filter: don't buy below 5-min VWAP
+            StrategyCondition(
+                feature="vwap_deviation_300s",
+                operator="<",
+                threshold=-0.0015
+            ),
         ],
         
         min_conditions_satisfied=2,
         min_score_threshold=2.5,
         
         # [FIX 2026-06-09] Realistic SL/TP for ranging regimes
-        # 100x TP was unreachable on normal days → trades always hit SL
         # sl=3.5 × 0.15% ATR = 0.525% SL; tp=5.0 × 0.15% = 0.75% TP (1.4:1 R:R in ranging)
         sl_mult_high_vol=7.0,
         sl_mult_low_vol=3.5,
@@ -557,12 +562,12 @@ def create_absorption_strategy() -> StrategyDefinition:
         tp_mult_high_vol=15.0,
         tp_mult_low_vol=5.0,
         tp_mult_trending=10.0,
-        trailing_stop_activation_pct=0.0015,
+        trailing_stop_activation_pct=0.005,
 
         allowed_regimes=[
             Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION, 
             Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.BREAKOUT,
-            Regime.HIGH_VOLATILITY, Regime.LOW_LIQUIDITY
+            Regime.HIGH_VOLATILITY, Regime.LOW_LIQUIDITY, Regime.UNKNOWN
         ]
     )
 
@@ -632,7 +637,7 @@ def create_delta_divergence_strategy() -> StrategyDefinition:
                 operator=">",
                 threshold=0.7
             ),
-            # FIX 4: Market filters - reject bad market environments
+            # Market filters
             StrategyCondition(
                 feature="spread_bps",
                 operator=">",
@@ -648,13 +653,27 @@ def create_delta_divergence_strategy() -> StrategyDefinition:
                 operator="<",
                 threshold=5000.0
             ),
+            # Trend filter: reject when price too far below VWAP (reversal needs some support)
+            StrategyCondition(
+                feature="vwap_deviation_300s",
+                operator="<",
+                threshold=-0.003
+            ),
         ],
         
         min_conditions_satisfied=2,
         min_score_threshold=2.5,
-        stop_loss_atr_mult=2.0,
-        take_profit_atr_mult=6.0,
-        allowed_regimes=[Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION]
+        sl_mult_high_vol=7.0,
+        sl_mult_low_vol=3.5,
+        sl_mult_trending=5.0,
+        tp_mult_high_vol=15.0,
+        tp_mult_low_vol=5.0,
+        tp_mult_trending=10.0,
+        trailing_stop_activation_pct=0.005,
+        base_position_pct=0.15,
+        scale_with_score=True,
+        max_position_pct=0.25,
+        allowed_regimes=[Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION, Regime.UNKNOWN]
     )
 
 
@@ -735,7 +754,7 @@ def create_liquidity_sweep_strategy() -> StrategyDefinition:
         min_score_threshold=2.5,
         stop_loss_atr_mult=2.0,
         take_profit_atr_mult=6.0,
-        allowed_regimes=[Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION]
+        allowed_regimes=[Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION, Regime.UNKNOWN]
     )
 
 
@@ -807,16 +826,11 @@ def create_stacked_imbalance_strategy() -> StrategyDefinition:
                 operator="<",
                 threshold=5000.0  # Reject thin asks (<5000 total)
             ),
-            # [FIX] Reject extreme volatility only (>5% in 5min)
+            # Trend filter: don't buy below 5-min VWAP
             StrategyCondition(
-                feature="price_change_pct_300s",
-                operator=">",
-                threshold=0.05
-            ),
-            StrategyCondition(
-                feature="price_change_pct_300s",
+                feature="vwap_deviation_300s",
                 operator="<",
-                threshold=-0.05
+                threshold=-0.0015
             ),
         ],
         
@@ -829,7 +843,7 @@ def create_stacked_imbalance_strategy() -> StrategyDefinition:
         tp_mult_high_vol=15.0,
         tp_mult_low_vol=5.0,
         tp_mult_trending=10.0,
-        trailing_stop_activation_pct=0.0015,
+        trailing_stop_activation_pct=0.005,
         base_position_pct=0.15,
         scale_with_score=True,
         max_position_pct=0.25,
@@ -887,13 +901,7 @@ def create_value_area_strategy() -> StrategyDefinition:
         ],
         
         filters=[
-            # Don't fade strong momentum
-            StrategyCondition(
-                feature="trade_intensity_60s",
-                operator=">",
-                threshold=80  # Too active
-            ),
-            # FIX 4: Market filters - reject bad market environments
+            # Market filters
             StrategyCondition(
                 feature="spread_bps",
                 operator=">",
@@ -909,14 +917,27 @@ def create_value_area_strategy() -> StrategyDefinition:
                 operator="<",
                 threshold=5000.0
             ),
+            # Trend filter: reject when far below VWAP (mean reversion needs some support)
+            StrategyCondition(
+                feature="vwap_deviation_300s",
+                operator="<",
+                threshold=-0.003
+            ),
         ],
         
         min_conditions_satisfied=2,
         min_score_threshold=2.5,
-        # FIX 2: 3:1 risk/reward ratio
-        stop_loss_atr_mult=2.0,
-        take_profit_atr_mult=6.0,
-        allowed_regimes=[Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION]
+        sl_mult_high_vol=7.0,
+        sl_mult_low_vol=3.5,
+        sl_mult_trending=5.0,
+        tp_mult_high_vol=15.0,
+        tp_mult_low_vol=5.0,
+        tp_mult_trending=10.0,
+        trailing_stop_activation_pct=0.005,
+        base_position_pct=0.15,
+        scale_with_score=True,
+        max_position_pct=0.25,
+        allowed_regimes=[Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION, Regime.UNKNOWN]
     )
 
 

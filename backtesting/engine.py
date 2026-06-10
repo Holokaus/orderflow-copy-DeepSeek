@@ -167,8 +167,8 @@ class BacktestEngine:
     EQUITY_SAMPLE_EVERY_N = 50
     VOLUME_PROFILE_EVERY_N = 100
 
-    # Minimum hold before flow-based exits can fire (2 minutes)
-    MIN_HOLD_BEFORE_FLOW_EXIT_SEC = 120
+    # Minimum hold before flow-based exits can fire (30 minutes) — prevents noise exits
+    MIN_HOLD_BEFORE_FLOW_EXIT_SEC = 1800
 
     # Loss streak cooldown: after 2 consecutive losses, skip trading for 30 min
     LOSS_STREAK_COOLDOWN_MINUTES = 30
@@ -180,14 +180,15 @@ class BacktestEngine:
 
     # Regime-based strategy selection
     REGIME_STRATEGY_MAP = {
-        Regime.RANGING: ["absorption", "value_area"],
-        Regime.ACCUMULATION: ["absorption"],
-        Regime.TRENDING_UP: ["stacked_imbalance"],
-        Regime.TRENDING_DOWN: [],
-        Regime.BREAKOUT: ["stacked_imbalance"],
-        Regime.HIGH_VOLATILITY: [],
-        Regime.DISTRIBUTION: ["value_area"],
+        Regime.RANGING: ["absorption", "stacked_imbalance", "value_area", "delta_divergence"],
+        Regime.ACCUMULATION: ["absorption", "stacked_imbalance", "value_area"],
+        Regime.TRENDING_UP: ["absorption", "stacked_imbalance", "delta_divergence"],
+        Regime.TRENDING_DOWN: ["value_area", "delta_divergence"],
+        Regime.BREAKOUT: ["absorption", "stacked_imbalance", "delta_divergence"],
+        Regime.HIGH_VOLATILITY: ["value_area", "delta_divergence"],
+        Regime.DISTRIBUTION: ["value_area", "absorption", "delta_divergence"],
         Regime.CRASH: [],
+        Regime.UNKNOWN: ["value_area", "delta_divergence"],
     }
 
     def __init__(
@@ -543,7 +544,7 @@ class BacktestEngine:
 
                 signal = strategy.evaluate(state)
 
-                # Entry confirmation: require price to hold direction for 2 ticks with 0.03% favorable move within 5s
+                # Entry confirmation: require price to hold direction for 2 ticks with 0.015% favorable move within 5s
                 if signal and signal.is_actionable:
                     if self._pending_entry is None:
                         self._pending_entry = {
@@ -560,7 +561,7 @@ class BacktestEngine:
                     mid = state.order_book.mid_price
                     favorable_move = (mid - pending['first_mid']) / pending['first_mid']
 
-                    if favorable_move > 0.0003:
+                    if favorable_move > 0.00015:
                         pending['confirm_count'] += 1
 
                     if pending['confirm_count'] >= 2 and (timestamp - pending['timestamp']).total_seconds() < 5:
@@ -999,39 +1000,23 @@ class BacktestEngine:
                     latest_sweep.reversal_strength < 0.4):
                 return "sweep_against_short"
 
-        # 3d) Book pressure collapse — FAST graduated thresholds
+        # 3d) Book pressure collapse — single strong exit (only after 30 min hold)
+        # SIMPLIFIED: one strict threshold prevents noise exits that cut winners short
         if flow_exits_allowed:
             net_pressure = features.get("net_pressure", 0)
             bid_depth = features.get("bid_depth_10", 0)
             ask_depth = features.get("ask_depth_10", 0)
-            hold_min = hold_duration / 60.0
 
             is_buy = self.position.side == Side.BUY
             is_sell = self.position.side == Side.SELL
 
-            # Tier 1: Pressure shift (2 min, lowered threshold)
-            if is_buy and net_pressure < -0.25:
-                if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.45:
+            # Strong collapse: extreme order book pressure shift (net_pressure < -0.5, bid/ask < 0.3)
+            if is_buy and net_pressure < -0.5:
+                if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.3:
                     return "book_pressure_collapse"
-            if is_sell and net_pressure > 0.25:
-                if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.45:
+            if is_sell and net_pressure > 0.5:
+                if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.3:
                     return "book_pressure_collapse"
-
-            # Tier 2: Moderate (5 min)
-            if hold_min >= 5:
-                if is_buy and net_pressure < -0.2:
-                    if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.5:
-                        return "book_pressure_collapse_moderate"
-                if is_sell and net_pressure > 0.2:
-                    if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.5:
-                        return "book_pressure_collapse_moderate"
-
-            # Tier 3: Weak (10 min)
-            if hold_min >= 10:
-                if is_buy and net_pressure < -0.1:
-                    return "book_pressure_weak"
-                if is_sell and net_pressure > 0.1:
-                    return "book_pressure_weak"
 
         # 3e) Time-based max hold (after 30 min in ranging, 60 min default, 2h trending)
         regime = state.regime

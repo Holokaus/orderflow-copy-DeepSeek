@@ -63,14 +63,15 @@ class OrderFlowSystem:
     """
 
     REGIME_STRATEGY_MAP = {
-        Regime.RANGING: ["absorption", "value_area"],
-        Regime.ACCUMULATION: ["absorption"],
-        Regime.TRENDING_UP: ["stacked_imbalance"],
-        Regime.TRENDING_DOWN: [],
-        Regime.BREAKOUT: ["stacked_imbalance"],
-        Regime.HIGH_VOLATILITY: [],
-        Regime.DISTRIBUTION: ["value_area"],
+        Regime.RANGING: ["absorption", "stacked_imbalance", "value_area", "delta_divergence"],
+        Regime.ACCUMULATION: ["absorption", "stacked_imbalance", "value_area"],
+        Regime.TRENDING_UP: ["absorption", "stacked_imbalance", "delta_divergence"],
+        Regime.TRENDING_DOWN: ["value_area", "delta_divergence"],
+        Regime.BREAKOUT: ["absorption", "stacked_imbalance", "delta_divergence"],
+        Regime.HIGH_VOLATILITY: ["value_area", "delta_divergence"],
+        Regime.DISTRIBUTION: ["value_area", "absorption", "delta_divergence"],
         Regime.CRASH: [],
+        Regime.UNKNOWN: ["value_area", "delta_divergence"],
     }
     
     def __init__(self, settings: Settings = None):
@@ -681,6 +682,18 @@ class OrderFlowSystem:
             if self._detect_paper_crash_regime(state):
                 state.regime = Regime.CRASH
 
+            # Fallback: if classifier returned UNKNOWN, use feature-based detection
+            if state.regime == Regime.UNKNOWN:
+                features = state.features
+                mid = ob.mid_price
+                price_change_900s = features.get("price_change_pct_900s", 0)
+                if price_change_900s > 0.002:
+                    state.regime = Regime.TRENDING_UP
+                elif price_change_900s < -0.002:
+                    state.regime = Regime.TRENDING_DOWN
+                else:
+                    state.regime = Regime.RANGING
+
             strat_ref = self.paper_strategies
             for strat_name, strat in strat_ref:
                 # Regime-based strategy selection
@@ -693,7 +706,7 @@ class OrderFlowSystem:
                 self._paper_signals_evaluated += 1
                 signal = strat.evaluate(state)
 
-                # Entry confirmation: require price to hold direction for 2 ticks with 0.03% favorable move within 5s
+                # Entry confirmation: require price to hold direction for 2 ticks with 0.015% favorable move within 5s
                 if signal and signal.is_actionable:
                     # Long-only gate first
                     if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
@@ -712,7 +725,7 @@ class OrderFlowSystem:
                     pending = self._paper_pending_entry
                     favorable_move = (mid - pending['first_mid']) / pending['first_mid']
 
-                    if favorable_move > 0.0003:
+                    if favorable_move > 0.00015:
                         pending['confirm_count'] += 1
 
                     if pending['confirm_count'] >= 2 and (ts - pending['timestamp']).total_seconds() < 5:
@@ -926,28 +939,14 @@ class OrderFlowSystem:
         if exit_price >= pos['take_profit']:
             return 'take_profit'
 
-        # Flow-based exits (require min hold — 2 min)
-        if hold_sec < 120:
-            return None
-
-        net_pressure = state.features.get('net_pressure', 0)
-        bid_depth = state.features.get('bid_depth_10', 0)
-        ask_depth = state.features.get('ask_depth_10', 0)
-        hold_min = hold_sec / 60.0
-
-        # Tier 1: Pressure shift (2 min, lowered threshold)
-        if net_pressure < -0.25:
-            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.45:
-                return 'book_pressure_collapse'
-
-        # Tier 2: Moderate (5 min)
-        if hold_min >= 5 and net_pressure < -0.2:
-            if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.5:
-                return 'book_pressure_collapse_moderate'
-
-        # Tier 3: Weak (10 min)
-        if hold_min >= 10 and net_pressure < -0.1:
-            return 'book_pressure_weak'
+        # Flow-based exit — single strong condition (only after 30 min hold)
+        if hold_sec >= 1800:
+            net_pressure = state.features.get('net_pressure', 0)
+            bid_depth = state.features.get('bid_depth_10', 0)
+            ask_depth = state.features.get('ask_depth_10', 0)
+            if net_pressure < -0.5:
+                if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.3:
+                    return 'book_pressure_collapse'
 
         return None
 
