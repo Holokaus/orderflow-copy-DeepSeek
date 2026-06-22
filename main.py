@@ -64,14 +64,14 @@ class OrderFlowSystem:
 
     REGIME_STRATEGY_MAP = {
         Regime.RANGING: ["absorption", "stacked_imbalance", "value_area", "delta_divergence"],
-        Regime.ACCUMULATION: ["absorption", "stacked_imbalance", "value_area"],
-        Regime.TRENDING_UP: ["absorption", "stacked_imbalance", "delta_divergence"],
-        Regime.TRENDING_DOWN: ["value_area", "delta_divergence"],
-        Regime.BREAKOUT: ["absorption", "stacked_imbalance", "delta_divergence"],
-        Regime.HIGH_VOLATILITY: ["value_area", "delta_divergence"],
-        Regime.DISTRIBUTION: ["value_area", "absorption", "delta_divergence"],
+        Regime.ACCUMULATION: ["absorption", "stacked_imbalance", "value_area", "trend_following"],
+        Regime.TRENDING_UP: ["absorption", "stacked_imbalance", "delta_divergence", "trend_following"],
+        Regime.TRENDING_DOWN: ["value_area", "delta_divergence", "trend_following"],
+        Regime.BREAKOUT: ["absorption", "stacked_imbalance", "delta_divergence", "trend_following"],
+        Regime.HIGH_VOLATILITY: ["value_area", "delta_divergence", "trend_following"],
+        Regime.DISTRIBUTION: ["value_area", "absorption", "delta_divergence", "trend_following"],
         Regime.CRASH: [],
-        Regime.UNKNOWN: ["value_area", "delta_divergence"],
+        Regime.UNKNOWN: ["value_area", "delta_divergence", "absorption"],
     }
     
     def __init__(self, settings: Settings = None):
@@ -708,22 +708,25 @@ class OrderFlowSystem:
 
                 # Entry confirmation: require price to hold direction for 2 ticks with 0.015% favorable move within 5s
                 if signal and signal.is_actionable:
-                    # Long-only gate first
-                    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
-                        continue
-
+                    is_long = signal.signal_type in (SignalType.BUY, SignalType.STRONG_BUY)
+                    is_short = signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL)
+                    
                     if self._paper_pending_entry is None:
                         self._paper_pending_entry = {
                             'signal': signal,
                             'strat_name': strat_name,
                             'confirm_count': 0,
                             'first_mid': mid,
-                            'timestamp': ts
+                            'timestamp': ts,
+                            'is_long': is_long
                         }
                         return
 
                     pending = self._paper_pending_entry
-                    favorable_move = (mid - pending['first_mid']) / pending['first_mid']
+                    if pending['is_long']:
+                        favorable_move = (mid - pending['first_mid']) / pending['first_mid']
+                    else:
+                        favorable_move = (pending['first_mid'] - mid) / pending['first_mid']
 
                     if favorable_move > 0.00015:
                         pending['confirm_count'] += 1
@@ -731,6 +734,7 @@ class OrderFlowSystem:
                     if pending['confirm_count'] >= 2 and (ts - pending['timestamp']).total_seconds() < 5:
                         signal = pending['signal']
                         strat_name = pending['strat_name']
+                        is_long = pending['is_long']
                         self._paper_pending_entry = None
                     elif (ts - pending['timestamp']).total_seconds() >= 5:
                         self._paper_pending_entry = None
@@ -740,8 +744,12 @@ class OrderFlowSystem:
                 else:
                     continue
 
-                # Entry price (long: ask + slippage)
-                entry_price = ob.best_ask.price * (1 + self.settings.trading.slippage_estimate_pct)
+                # Entry price based on direction
+                is_long = signal.signal_type in (SignalType.BUY, SignalType.STRONG_BUY)
+                if is_long:
+                    entry_price = ob.best_ask.price * (1 + self.settings.trading.slippage_estimate_pct)
+                else:
+                    entry_price = ob.best_bid.price * (1 - self.settings.trading.slippage_estimate_pct)
 
                 # Risk check via RiskManager
                 risk_action, adjusted_signal, reason = self.risk_manager.check_signal(
@@ -772,7 +780,7 @@ class OrderFlowSystem:
 
                 logger.info(f"[{strat_name}] PAPER ENTRY @ {entry_price:.4f} | "
                            f"SL: {sig.stop_loss:.4f} | TP: {sig.take_profit:.4f} | "
-                           f"Size: {size:.4f}")
+                           f"Size: {size:.4f} | Dir: {'LONG' if is_long else 'SHORT'}")
 
                 # Store position
                 self.paper_position = {
@@ -787,7 +795,9 @@ class OrderFlowSystem:
                     'trailing_active': False,
                     'trailing_stop_price': 0.0,
                     'highest_price': entry_price,
+                    'lowest_price': entry_price,
                     'entry_fee': pos_value * self.settings.trading.fee_pct,
+                    'is_long': is_long,
                 }
                 self.paper_entry_timestamp = ts
                 self.paper_capital -= pos_value + (pos_value * self.settings.trading.fee_pct)
@@ -829,9 +839,15 @@ class OrderFlowSystem:
             return
         book = state.order_book
         mid = book.mid_price
-        mark = book.best_bid.price if book.best_bid else mid
-        pos['unrealized_pnl'] = (mark - pos['entry_price']) * pos['size']
-        pos['highest_price'] = max(pos['highest_price'], mid)
+        is_long = pos.get('is_long', True)
+        if is_long:
+            mark = book.best_bid.price if book.best_bid else mid
+            pos['unrealized_pnl'] = (mark - pos['entry_price']) * pos['size']
+            pos['highest_price'] = max(pos['highest_price'], mid)
+        else:
+            mark = book.best_ask.price if book.best_ask else mid
+            pos['unrealized_pnl'] = (pos['entry_price'] - mark) * pos['size']
+            pos['lowest_price'] = min(pos.get('lowest_price', mid), mid)
 
     def _update_paper_trailing_stop(self, state: OrderFlowState) -> None:
         """Trailing stop logic for paper position."""
@@ -840,16 +856,29 @@ class OrderFlowSystem:
             return
 
         book = state.order_book
-        mark = book.best_bid.price if book.best_bid else book.mid_price
-        move_pct = (mark - pos['entry_price']) / pos['entry_price']
-
-        if move_pct >= pos['trailing_activation']:
-            pos['trailing_active'] = True
-            trail_distance = pos['trailing_activation'] * 0.5
-            new_stop = mark * (1 - trail_distance)
-            if new_stop > pos.get('trailing_stop_price', 0):
-                pos['trailing_stop_price'] = new_stop
-                pos['stop_loss'] = max(pos['stop_loss'], new_stop)
+        is_long = pos.get('is_long', True)
+        activation = pos['trailing_activation']
+        
+        if is_long:
+            mark = book.best_bid.price if book.best_bid else book.mid_price
+            move_pct = (mark - pos['entry_price']) / pos['entry_price']
+            if move_pct >= activation:
+                pos['trailing_active'] = True
+                trail_distance = activation * 0.5
+                new_stop = mark * (1 - trail_distance)
+                if new_stop > pos.get('trailing_stop_price', 0):
+                    pos['trailing_stop_price'] = new_stop
+                    pos['stop_loss'] = max(pos['stop_loss'], new_stop)
+        else:
+            mark = book.best_ask.price if book.best_ask else book.mid_price
+            move_pct = (pos['entry_price'] - mark) / pos['entry_price']
+            if move_pct >= activation:
+                pos['trailing_active'] = True
+                trail_distance = activation * 0.5
+                new_stop = mark * (1 + trail_distance)
+                if pos.get('trailing_stop_price', 0) <= 0 or new_stop < pos['trailing_stop_price']:
+                    pos['trailing_stop_price'] = new_stop
+                    pos['stop_loss'] = min(pos['stop_loss'], new_stop)
 
     def _update_paper_breakeven_stop(self, state: OrderFlowState) -> None:
         """Move SL to breakeven + 1 pip after reaching 0.15% profit."""
@@ -857,11 +886,19 @@ class OrderFlowSystem:
         if not pos:
             return
         book = state.order_book
-        mark = book.best_bid.price if book.best_bid else book.mid_price
-        pnl_pct = (mark - pos['entry_price']) / pos['entry_price']
-        if pnl_pct >= 0.0015 and pos['stop_loss'] < pos['entry_price'] * 1.0001:
-            new_sl = pos['entry_price'] * 1.0001
-            pos['stop_loss'] = max(pos['stop_loss'], new_sl)
+        is_long = pos.get('is_long', True)
+        if is_long:
+            mark = book.best_bid.price if book.best_bid else book.mid_price
+            pnl_pct = (mark - pos['entry_price']) / pos['entry_price']
+            if pnl_pct >= 0.0015 and pos['stop_loss'] < pos['entry_price'] * 1.0001:
+                new_sl = pos['entry_price'] * 1.0001
+                pos['stop_loss'] = max(pos['stop_loss'], new_sl)
+        else:
+            mark = book.best_ask.price if book.best_ask else book.mid_price
+            pnl_pct = (pos['entry_price'] - mark) / pos['entry_price']
+            if pnl_pct >= 0.0015 and pos['stop_loss'] > pos['entry_price'] * 0.9999:
+                new_sl = pos['entry_price'] * 0.9999
+                pos['stop_loss'] = min(pos['stop_loss'], new_sl)
 
     def _paper_should_trade_today(self, state: OrderFlowState) -> bool:
         """Halt trading when market shows crash structure."""
@@ -927,25 +964,41 @@ class OrderFlowSystem:
             return None
 
         book = state.order_book
-        exit_price = book.best_bid.price if book.best_bid else book.mid_price
+        is_long = pos.get('is_long', True)
+        
+        if is_long:
+            exit_price = book.best_bid.price if book.best_bid else book.mid_price
+        else:
+            exit_price = book.best_ask.price if book.best_ask else book.mid_price
 
         hold_sec = (ts - pos['entry_time']).total_seconds()
 
         # Hard stop loss
-        if exit_price <= pos['stop_loss']:
-            return 'stop_loss'
+        if is_long:
+            if exit_price <= pos['stop_loss']:
+                return 'stop_loss'
+        else:
+            if exit_price >= pos['stop_loss']:
+                return 'stop_loss'
 
         # Take profit
-        if exit_price >= pos['take_profit']:
-            return 'take_profit'
+        if is_long:
+            if exit_price >= pos['take_profit']:
+                return 'take_profit'
+        else:
+            if exit_price <= pos['take_profit']:
+                return 'take_profit'
 
         # Flow-based exit — single strong condition (only after 30 min hold)
         if hold_sec >= 1800:
             net_pressure = state.features.get('net_pressure', 0)
             bid_depth = state.features.get('bid_depth_10', 0)
             ask_depth = state.features.get('ask_depth_10', 0)
-            if net_pressure < -0.5:
+            if is_long and net_pressure < -0.5:
                 if ask_depth > 0 and bid_depth / (ask_depth + 1e-9) < 0.3:
+                    return 'book_pressure_collapse'
+            elif not is_long and net_pressure > 0.5:
+                if bid_depth > 0 and ask_depth / (bid_depth + 1e-9) < 0.3:
                     return 'book_pressure_collapse'
 
         return None
@@ -959,12 +1012,17 @@ class OrderFlowSystem:
         book = state.order_book
         best_bid = book.best_bid.price if book.best_bid else book.mid_price
         best_ask = book.best_ask.price if book.best_ask else book.mid_price
+        is_long = pos.get('is_long', True)
 
         adverse_slip = (self.settings.trading.slippage_estimate_pct + 0.0003
                        if reason == 'stop_loss' else self.settings.trading.slippage_estimate_pct)
-        exit_price = best_bid * (1 - adverse_slip)
+        if is_long:
+            exit_price = best_bid * (1 - adverse_slip)
+            gross_pnl = (exit_price - pos['entry_price']) * pos['size']
+        else:
+            exit_price = best_ask * (1 + adverse_slip)
+            gross_pnl = (pos['entry_price'] - exit_price) * pos['size']
 
-        gross_pnl = (exit_price - pos['entry_price']) * pos['size']
         exit_value = exit_price * pos['size']
         exit_fee = exit_value * self.settings.trading.fee_pct
         net_pnl = gross_pnl - exit_fee
@@ -984,6 +1042,7 @@ class OrderFlowSystem:
             'strategy': pos['strategy'],
             'duration_seconds': duration,
             'entry_time': pos['entry_time'],
+            'is_long': is_long,
         }
         self.paper_closed_trades.append(trade_record)
 
@@ -1001,7 +1060,7 @@ class OrderFlowSystem:
         equity = self.paper_capital
         logger.info(f"[{pos['strategy']}] PAPER EXIT: {reason} | "
                    f"PnL: {net_pnl:.4f}$ ({pnl_pct*100:+.3f}%) | "
-                   f"Eq: {equity:.2f}$ | Dur: {duration:.0f}s")
+                   f"Eq: {equity:.2f}$ | Dur: {duration:.0f}s | Dir: {'LONG' if is_long else 'SHORT'}")
 
     # ==================== LIVE TRADING ====================
     

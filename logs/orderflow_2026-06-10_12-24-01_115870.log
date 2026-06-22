@@ -1,0 +1,2 @@
+2026-06-10 12:24:05.492 | INFO     | __main__:run_backtest:276 - Running backtest: absorption from 2026-06-01 00:00:00 to 2026-06-01 00:00:00
+2026-06-10 12:24:05.497 | ERROR    | __main__:run_backtest:282 - No data available for backtest period

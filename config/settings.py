@@ -35,7 +35,7 @@ class LLMProvider(str, Enum):
 
 class TradingConfig(BaseModel):
     """Core trading parameters"""
-    symbol: str = "BTC/USDT"
+    symbol: str = "ICP/USDT"
     exchange: Exchange = Exchange.BINANCE
     
     # Position limits

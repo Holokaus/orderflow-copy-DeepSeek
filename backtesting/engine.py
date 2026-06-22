@@ -178,17 +178,17 @@ class BacktestEngine:
     MAX_HOLD_SECONDS_TRENDING = 7200  # 2 hours
     MAX_HOLD_SECONDS_DEFAULT = 3600   # 1 hour
 
-    # Regime-based strategy selection
+    # Regime-based strategy selection - UPDATED with trend_following
     REGIME_STRATEGY_MAP = {
         Regime.RANGING: ["absorption", "stacked_imbalance", "value_area", "delta_divergence"],
-        Regime.ACCUMULATION: ["absorption", "stacked_imbalance", "value_area"],
-        Regime.TRENDING_UP: ["absorption", "stacked_imbalance", "delta_divergence"],
-        Regime.TRENDING_DOWN: ["value_area", "delta_divergence"],
-        Regime.BREAKOUT: ["absorption", "stacked_imbalance", "delta_divergence"],
-        Regime.HIGH_VOLATILITY: ["value_area", "delta_divergence"],
-        Regime.DISTRIBUTION: ["value_area", "absorption", "delta_divergence"],
+        Regime.ACCUMULATION: ["absorption", "stacked_imbalance", "value_area", "trend_following"],
+        Regime.TRENDING_UP: ["absorption", "stacked_imbalance", "delta_divergence", "trend_following"],
+        Regime.TRENDING_DOWN: ["value_area", "delta_divergence", "trend_following"],
+        Regime.BREAKOUT: ["absorption", "stacked_imbalance", "delta_divergence", "trend_following"],
+        Regime.HIGH_VOLATILITY: ["value_area", "delta_divergence", "trend_following"],
+        Regime.DISTRIBUTION: ["value_area", "absorption", "delta_divergence", "trend_following"],
         Regime.CRASH: [],
-        Regime.UNKNOWN: ["value_area", "delta_divergence"],
+        Regime.UNKNOWN: ["value_area", "delta_divergence", "absorption"],
     }
 
     def __init__(
@@ -578,11 +578,8 @@ class BacktestEngine:
                         continue
 
                 if signal and signal.is_actionable:
-                    # LONG-ONLY gate: reject SELL/STRONG_SELL signals
-                    if signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL):
-                        if tick_idx % equity_every == 0:
-                            self.equity_curve.append((timestamp, self._calculate_equity_fast()))
-                        continue
+                    # BIDIRECTIONAL: Allow both BUY and SELL based on regime
+                    pass
 
                     if self._is_duplicate_signal(signal, strategy, timestamp):
                         if tick_idx % equity_every == 0:
@@ -876,6 +873,12 @@ class BacktestEngine:
             if pnl_pct >= 0.0015 and self.position.stop_loss < self.position.entry_price * 1.0001:
                 new_sl = self.position.entry_price * 1.0001
                 self.position.stop_loss = max(self.position.stop_loss, new_sl)
+        else:  # SHORT
+            mark = book.best_ask.price if book.best_ask else book.mid_price
+            pnl_pct = (self.position.entry_price - mark) / self.position.entry_price
+            if pnl_pct >= 0.0015 and self.position.stop_loss > self.position.entry_price * 0.9999:
+                new_sl = self.position.entry_price * 0.9999
+                self.position.stop_loss = min(self.position.stop_loss, new_sl)
 
     # ------------------------------------------------------------------
     # Circuit breaker
@@ -1099,14 +1102,23 @@ class BacktestEngine:
         strategy: StrategyDefinition,
         risk_action: str = "ALLOW",
     ) -> None:
-        """Open a new position using best bid/ask fill model."""
+        """Open a new position using best bid/ask fill model. Supports LONG and SHORT."""
         book = state.order_book
         best_bid = book.best_bid.price if book.best_bid else book.mid_price
         best_ask = book.best_ask.price if book.best_ask else book.mid_price
 
-        # LONG-ONLY: Always go long
-        entry_price = best_ask * (1 + self.slippage_pct)
-        side = Side.BUY
+        # Determine direction from signal
+        is_long = signal.signal_type in (SignalType.BUY, SignalType.STRONG_BUY)
+        is_short = signal.signal_type in (SignalType.SELL, SignalType.STRONG_SELL)
+        
+        if is_long:
+            entry_price = best_ask * (1 + self.slippage_pct)
+            side = Side.BUY
+        elif is_short:
+            entry_price = best_bid * (1 - self.slippage_pct)
+            side = Side.SELL
+        else:
+            return  # NEUTRAL - no position
 
         position_value = self.capital * signal.position_size
         size = position_value / entry_price

@@ -1,0 +1,4 @@
+2026-06-10 12:18:55.557 | INFO     | __main__:run_backtest:276 - Running backtest: absorption from 2026-06-01 00:00:00 to 2026-06-01 00:00:00
+2026-06-10 12:18:55.560 | INFO     | __main__:_load_backtest_data:334 - Loading pre-merged data: ./data/backtests/BTCUSDT_20260601_merged.parquet
+2026-06-10 12:18:55.575 | ERROR    | __main__:_load_backtest_data:343 - Merged file not found: ./data/backtests/BTCUSDT_20260601_merged.parquet
+2026-06-10 12:18:55.575 | ERROR    | __main__:run_backtest:282 - No data available for backtest period

@@ -53,10 +53,11 @@ class FeatureConfig:
     footprint_bar_duration_sec: int = 5
     
     # Regime classifier parameters
-    regime_lookback_seconds: int = 1800  # 30 minutes
+    regime_lookback_seconds: int = 1800  # 30 minutes - current regime
+    regime_long_lookback_seconds: int = 14400  # 4 hours - daily trend
     regime_vol_low_threshold: float = 0.003
     regime_vol_high_threshold: float = 0.008
-    regime_trend_strength_threshold: float = 0.5
+    regime_trend_strength_threshold: float = 0.3  # Lowered from 0.5
     low_liquidity_spread_bps: float = 20.0
     low_liquidity_min_depth_10: float = 1.0
     high_volatility_multiplier: float = 1.5
@@ -68,10 +69,16 @@ class FeatureConfig:
 
 class RegimeClassifier:
     """
-    Expert Market Regime Classifier
+    Expert Market Regime Classifier - FIXED VERSION
     
     Evaluates volatility, trend strength, and liquidity to determine market state.
     Priority: LOW_LIQUIDITY > HIGH_VOL > BREAKOUT > TRENDING > ACCUM/DIST > RANGING
+    
+    FIXES:
+    - Lower minimum trade history from 100 to 30 (parquet rows are ticks, not trades)
+    - Use book_history for price data when trade_history is sparse
+    - Add explicit FALLBACK classification when data insufficient
+    - Compute bar_ranges_10 and recent_bars for circuit breaker
     """
     
     def __init__(self, config: FeatureConfig):
@@ -83,41 +90,57 @@ class RegimeClassifier:
         book_features: Dict[str, float],
         current_ts: datetime,
         timestamps_cache: Optional[List[datetime]] = None,
+        book_history: Optional[List[OrderBook]] = None,
     ) -> Regime:
         """Classify market regime from price action + order flow features."""
-        if len(trade_history) < 100:
-            return Regime.UNKNOWN
         
-        # Get lookback window via binary search (O(1) with cache, O(n) without)
-        cutoff = current_ts - timedelta(seconds=self.config.regime_lookback_seconds)
-        if timestamps_cache is not None and len(timestamps_cache) == len(trade_history):
-            timestamps = timestamps_cache
+        # USE BOOK HISTORY AS PRIMARY SOURCE (every tick has book snapshot)
+        # Trade history is sparse (only ticks with trades)
+        min_history = 30
+        
+        prices = []
+        timestamps = []
+        
+        # Always prefer book_history - it has every tick
+        if book_history and len(book_history) >= min_history:
+            timestamps = [b.timestamp for b in book_history]
+            prices = [b.mid_price for b in book_history if b.mid_price > 0]
+        elif len(trade_history) >= min_history:
+            # Fallback to trade history
+            if timestamps_cache is not None and len(timestamps_cache) == len(trade_history):
+                timestamps = timestamps_cache
+            else:
+                timestamps = [t.timestamp for t in trade_history]
+            prices = [t.price for t in trade_history]
         else:
-            timestamps = [t.timestamp for t in trade_history]
+            return Regime.UNKNOWN
+        
+        if len(prices) < min_history:
+            return Regime.UNKNOWN
+        
+        # Get lookback window (30 min for current regime)
+        cutoff = current_ts - timedelta(seconds=self.config.regime_lookback_seconds)
         idx = bisect.bisect_left(timestamps, cutoff)
-        window_trades = trade_history[idx:]
+        window_prices = prices[idx:]
+        window_timestamps = timestamps[idx:]
         
-        if len(window_trades) < 50:
+        if len(window_prices) < 10:
             return Regime.UNKNOWN
         
-        # Calculate volatility and trend from log returns
-        prices = [t.price for t in window_trades[:500]]  # Cap at 500 for speed
-        if len(prices) < 10:
-            return Regime.UNKNOWN
-        
+        # Calculate volatility and trend from log returns (30-min window)
         log_returns = []
-        for i in range(1, len(prices)):
-            if prices[i - 1] > 0:
-                log_returns.append(np.log(prices[i] / prices[i - 1]))
+        for i in range(1, len(window_prices)):
+            if window_prices[i - 1] > 0:
+                log_returns.append(np.log(window_prices[i] / window_prices[i - 1]))
         
-        if len(log_returns) < 10:
+        if len(log_returns) < 5:
             return Regime.UNKNOWN
         
         volatility = float(np.std(log_returns))
         
-        # Trend strength: net move / total range (0 to 1)
-        start_px, end_px = prices[0], prices[-1]
-        price_range = max(prices) - min(prices)
+        # Trend strength: net move / total range (0 to 1) - 30 min window
+        start_px, end_px = window_prices[0], window_prices[-1]
+        price_range = max(window_prices) - min(window_prices)
         net_move = abs(end_px - start_px)
         trend_strength = net_move / (price_range + 1e-9)
         price_dir = float(np.sign(end_px - start_px))
@@ -127,6 +150,11 @@ class RegimeClassifier:
         depth_10 = book_features.get("bid_depth_10", 0) + book_features.get("ask_depth_10", 0)
         net_pressure = book_features.get("net_pressure", 0)
         vol_accel = book_features.get("volume_acceleration", 1.0)
+        
+        # Get daily trend features (4-hour window) - STRONG SIGNAL OVERRIDE
+        daily_trend_dir = book_features.get("daily_trend_dir", 0)
+        daily_trend_strength = book_features.get("daily_trend_strength", 0)
+        daily_price_change = book_features.get("daily_price_change_pct", 0)
         
         cfg = self.config
         
@@ -140,28 +168,103 @@ class RegimeClassifier:
         if volatility > cfg.regime_vol_high_threshold * cfg.high_volatility_multiplier:
             return Regime.HIGH_VOLATILITY
         
-        # 3. BREAKOUT (momentum opportunity)
+        # 3. DAILY TREND OVERRIDE: Strong 4-hour trend takes precedence
+        # If daily trend is strong (>0.5 strength) and price moved >1%, classify as TRENDING
+        if daily_trend_strength > 0.5 and abs(daily_price_change) > 0.01:
+            return Regime.TRENDING_UP if daily_trend_dir > 0 else Regime.TRENDING_DOWN
+        
+        # 4. BREAKOUT (momentum opportunity)
         if (volatility >= cfg.regime_vol_low_threshold
                 and trend_strength >= cfg.breakout_trend_strength_threshold
                 and vol_accel > cfg.breakout_volume_accel_threshold):
             return Regime.BREAKOUT
         
-        # 4. TRENDING (follow the trend)
+        # 5. TRENDING (follow the trend) - LOWERED threshold from 0.5 to 0.3
         if (volatility >= cfg.regime_vol_low_threshold
-                and trend_strength >= cfg.regime_trend_strength_threshold):
+                and trend_strength >= 0.3):  # FIX: was 0.5, too strict
             return Regime.TRENDING_UP if price_dir > 0 else Regime.TRENDING_DOWN
         
-        # 5. ACCUMULATION / DISTRIBUTION (low vol, directional pressure)
+        # 6. ACCUMULATION / DISTRIBUTION (low vol, directional pressure)
         if volatility < cfg.regime_vol_low_threshold:
             if abs(net_pressure) > cfg.accum_dist_pressure_threshold:
                 return Regime.ACCUMULATION if net_pressure > 0 else Regime.DISTRIBUTION
         
-        # 6. RANGING (default for low vol, weak trend)
-        if (volatility < cfg.regime_vol_high_threshold
-                and trend_strength < cfg.regime_trend_strength_threshold):
-            return Regime.RANGING
-        
+        # 7. RANGING (default for low vol, weak trend)
         return Regime.RANGING
+
+    def compute_bar_features(
+        self,
+        book_history: List[OrderBook],
+        lookback: int = 10
+    ) -> Tuple[List[float], List[Dict]]:
+        """
+        Compute bar_ranges_10 and recent_bars from book_history.
+        FIXES: Dead code paths in circuit breaker and crash detection.
+        """
+        if len(book_history) < lookback + 1:
+            return [], []
+        
+        recent_books = book_history[-lookback:]
+        bar_ranges = []
+        recent_bars = []
+        
+        for i in range(1, len(recent_books)):
+            prev = recent_books[i-1]
+            curr = recent_books[i]
+            
+            if prev.mid_price > 0 and curr.mid_price > 0:
+                # Bar range as % of price
+                bar_range = abs(curr.mid_price - prev.mid_price) / prev.mid_price
+                bar_ranges.append(bar_range)
+                
+                # Bar OHLC from book mid prices
+                recent_bars.append({
+                    'open': prev.mid_price,
+                    'close': curr.mid_price,
+                    'high': max(prev.mid_price, curr.mid_price),
+                    'low': min(prev.mid_price, curr.mid_price),
+                })
+        
+        return bar_ranges, recent_bars
+
+    def compute_daily_trend(
+        self,
+        book_history: List[OrderBook],
+        lookback_seconds: int = 14400
+    ) -> Dict[str, float]:
+        """
+        Compute longer-term daily trend from book history.
+        Returns trend direction and strength over 4-hour window.
+        """
+        if len(book_history) < 10:
+            return {"daily_trend_dir": 0.0, "daily_trend_strength": 0.0, "daily_price_change_pct": 0.0}
+        
+        current_ts = book_history[-1].timestamp
+        cutoff = current_ts - timedelta(seconds=lookback_seconds)
+        
+        # Get prices in lookback window
+        window_prices = []
+        window_timestamps = []
+        for b in book_history:
+            if b.timestamp >= cutoff and b.mid_price > 0:
+                window_prices.append(b.mid_price)
+                window_timestamps.append(b.timestamp)
+        
+        if len(window_prices) < 10:
+            return {"daily_trend_dir": 0.0, "daily_trend_strength": 0.0, "daily_price_change_pct": 0.0}
+        
+        start_px, end_px = window_prices[0], window_prices[-1]
+        price_range = max(window_prices) - min(window_prices)
+        net_move = abs(end_px - start_px)
+        trend_strength = net_move / (price_range + 1e-9)
+        price_dir = float(np.sign(end_px - start_px))
+        price_change_pct = (end_px - start_px) / start_px
+        
+        return {
+            "daily_trend_dir": price_dir,
+            "daily_trend_strength": trend_strength,
+            "daily_price_change_pct": price_change_pct
+        }
 
 
 class FeatureEngine:
@@ -194,6 +297,11 @@ class FeatureEngine:
         self._volume_profile_cache: Optional[VolumeProfile] = None
         self._cache_timestamp: Optional[datetime] = None
         self._vp_features_cache: Optional[Dict[str, float]] = None
+        
+        # Daily trend cache
+        self._daily_trend_cache: Optional[Dict[str, float]] = None
+        self._daily_trend_cache_ts: Optional[datetime] = None
+        self._daily_trend_compute_every: int = 500  # Compute every N ticks
         
         # O(1) incremental CVD
         self._cvd: float = 0.0
@@ -320,13 +428,33 @@ class FeatureEngine:
         # Always compute composite features (critical: precomputed path skips _compute_all_features)
         state.features.update(self._compute_composite_features(state.features))
         
+        # Compute daily trend (4-hour lookback) for strategy direction bias - cached
+        # MUST be before regime classification so it can be used as override
+        if (self._daily_trend_cache is None or 
+            self._daily_trend_cache_ts is None or
+            (self._current_timestamp - self._daily_trend_cache_ts).total_seconds() > 300):  # Recompute every 5 min
+            self._daily_trend_cache = self._regime_classifier.compute_daily_trend(
+                self.book_history, 
+                self.config.regime_long_lookback_seconds
+            )
+            self._daily_trend_cache_ts = self._current_timestamp
+        state.features.update(self._daily_trend_cache)
+        
         # Classify market regime (O(log n) with precomputed timestamps)
-        state.regime = self._regime_classifier.classify(
+        # FIX: Pass book_history for fallback when trade_history is sparse
+        regime = self._regime_classifier.classify(
             self.trade_history,
             state.features,
             self._current_timestamp,
             timestamps_cache=self._trade_timestamps,
+            book_history=self.book_history,
         )
+        state.regime = regime
+        
+        # FIX: Compute bar_ranges_10 and recent_bars for circuit breaker / crash detection
+        bar_ranges, recent_bars = self._regime_classifier.compute_bar_features(self.book_history)
+        state.features["bar_ranges_10"] = bar_ranges
+        state.features["recent_bars"] = recent_bars
         
         # Store temporal snapshot (trim to prevent unbounded growth)
         self._store_feature_snapshot(order_book.timestamp, state.features)
@@ -1250,6 +1378,16 @@ class FeatureEngine:
             features["book_trade_agreement"] = 1.0
         else:
             features["book_trade_agreement"] = 0.0   # No agreement or below threshold
+        
+        # Absolute value features for regime-agnostic strategies
+        features["abs_price_change_pct_300s"] = abs(base_features.get("price_change_pct_300s", 0))
+        features["abs_price_change_pct_60s"] = abs(base_features.get("price_change_pct_60s", 0))
+        features["abs_net_pressure"] = abs(base_features.get("net_pressure", 0))
+        features["abs_vwap_deviation_300s"] = abs(base_features.get("vwap_deviation_300s", 0))
+        features["abs_vwap_deviation_60s"] = abs(base_features.get("vwap_deviation_60s", 0))
+        features["abs_delta_pct_300s"] = abs(base_features.get("delta_pct_300s", 0))
+        features["abs_delta_pct_60s"] = abs(base_features.get("delta_pct_60s", 0))
+        features["abs_depth_imbalance_10"] = abs(base_features.get("depth_imbalance_10", 0))
         
         return features
     

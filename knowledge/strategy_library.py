@@ -324,14 +324,27 @@ class StrategyDefinition:
         )
     
     def _determine_direction(self, state: OrderFlowState, score: float) -> SignalType:
-        """Determine signal direction from state using normalized features.
-        LONG-ONLY: Never returns SELL or STRONG_SELL."""
+        """
+        Determine signal direction from state using normalized features.
+        
+        REGIME-AWARE DIRECTION:
+        - TRENDING_UP: Strong bias toward BUY (absorption, momentum)
+        - TRENDING_DOWN: Strong bias toward SELL (distribution, momentum short)
+        - RANGING/ACCUMULATION/DISTRIBUTION: Direction from order flow features
+        - BREAKOUT: Direction from breakout direction
+        - HIGH_VOLATILITY: Reduce conviction, require stronger signals
+        - REVERSAL strategies (delta_divergence, value_area): Counter-trend at extremes
+        """
         features = state.features
+        regime = state.regime
+        
         delta_pct = features.get("delta_pct_60s", 0)
         imbalance = features.get("depth_imbalance_10", 0)
         pressure = features.get("net_pressure", 0)
+        price_vs_vwap = features.get("vwap_deviation_300s", 0)
+        price_change_60s = features.get("price_change_pct_60s", 0)
         
-        # Absolute features for magnitude-based scoring [FIX 1 & 2]
+        # Absolute features for magnitude-based scoring
         abs_imbalance = features.get("abs_depth_imbalance_10", 0)
         abs_delta_pct = features.get("abs_delta_pct_60s", 0)
         
@@ -343,7 +356,7 @@ class StrategyDefinition:
         if abs(imbalance) > 0.3:
             directional_score += 1 if imbalance > 0 else -1
         
-        # Absolute imbalance magnitude adds conviction [FIX 3]
+        # Absolute imbalance magnitude adds conviction
         if abs_imbalance > 0.3:
             directional_score += 1 if imbalance > 0 else -1
         
@@ -351,7 +364,7 @@ class StrategyDefinition:
         if abs(delta_pct) > 0.1:
             directional_score += 1 if delta_pct > 0 else -1
         
-        # Absolute delta magnitude adds conviction [FIX 3]
+        # Absolute delta magnitude adds conviction
         if abs_delta_pct > 0.3:
             directional_score += 1 if delta_pct > 0 else -1
         
@@ -359,11 +372,74 @@ class StrategyDefinition:
         if abs(pressure) > 50000:
             directional_score += 1 if pressure > 0 else -1
         
-        # LONG-ONLY: Never return SELL/STRONG_SELL
+        # REGIME-BASED DIRECTIONAL BIAS
+        # This overrides pure feature-based direction when regime is clear
+        if regime == Regime.TRENDING_UP:
+            # In uptrend, bias toward BUY unless features strongly disagree
+            if directional_score >= -1:  # Allow slightly negative if trend is strong
+                directional_score = max(directional_score, 1)
+        elif regime == Regime.TRENDING_DOWN:
+            # In downtrend, bias toward SELL unless features strongly disagree
+            if directional_score <= 1:  # Allow slightly positive if trend is strong
+                directional_score = min(directional_score, -1)
+        elif regime == Regime.BREAKOUT:
+            # Breakout direction from price change
+            if price_change_60s > 0.001:
+                directional_score = max(directional_score, 1)
+            elif price_change_60s < -0.001:
+                directional_score = min(directional_score, -1)
+        elif regime == Regime.HIGH_VOLATILITY:
+            # High vol: require stronger conviction
+            pass  # Use pure feature score
+        elif regime in (Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION):
+            # Mean reversion regimes: use VWAP deviation for direction
+            if abs(price_vs_vwap) > 0.002:
+                directional_score += 1 if price_vs_vwap < 0 else -1  # Fade VWAP deviation
+        
+        # STRATEGY-SPECIFIC OVERRIDES based on category
+        if self.category == StrategyCategory.MOMENTUM:
+            # Momentum strategies (absorption, stacked_imbalance, trend_following): 
+            # STRONG regime adherence - only go with the trend in TRENDING regimes
+            if regime == Regime.TRENDING_UP:
+                # Force BUY unless features EXTREMELY disagree (score <= -3)
+                if directional_score >= -2:
+                    directional_score = max(directional_score, 2)  # Force STRONG_BUY
+            elif regime == Regime.TRENDING_DOWN:
+                # Force SELL unless features EXTREMELY disagree (score >= 3)
+                if directional_score <= 2:
+                    directional_score = min(directional_score, -2)  # Force STRONG_SELL
+            elif regime == Regime.BREAKOUT:
+                # Breakout direction from price change
+                if price_change_60s > 0.001:
+                    directional_score = max(directional_score, 2)
+                elif price_change_60s < -0.001:
+                    directional_score = min(directional_score, -2)
+        
+        elif self.category == StrategyCategory.REVERSAL:
+            # Reversal strategies (delta_divergence, value_area): counter-trend at extremes
+            # If price extended but delta/book shows reversal, go counter-trend
+            if regime in (Regime.TRENDING_UP, Regime.TRENDING_DOWN):
+                # At trend extremes, reversal strategies go counter-trend
+                if regime == Regime.TRENDING_UP and price_vs_vwap > 0.003:
+                    directional_score = -1  # SELL at top
+                elif regime == Regime.TRENDING_DOWN and price_vs_vwap < -0.003:
+                    directional_score = 1   # BUY at bottom
+        elif self.category == StrategyCategory.MEAN_REVERSION:
+            # Mean reversion: always fade extremes
+            if price_vs_vwap > 0.002:
+                directional_score = -1
+            elif price_vs_vwap < -0.002:
+                directional_score = 1
+        
+        # Map directional_score to SignalType
         if directional_score >= 2:
             return SignalType.STRONG_BUY if score > self.min_score_threshold * 1.5 else SignalType.BUY
-        elif directional_score >= 0:
+        elif directional_score >= 1:
             return SignalType.BUY
+        elif directional_score <= -2:
+            return SignalType.STRONG_SELL if score > self.min_score_threshold * 1.5 else SignalType.SELL
+        elif directional_score <= -1:
+            return SignalType.SELL
         else:
             return SignalType.NEUTRAL
         
@@ -852,9 +928,13 @@ def create_stacked_imbalance_strategy() -> StrategyDefinition:
 
 def create_value_area_strategy() -> StrategyDefinition:
     """
-    Value Area Strategy
+    Value Area Strategy - FIXED
     
     Mean reversion trades at value area boundaries.
+    FIXES:
+    - Added TRENDING_DOWN to allowed_regimes (was missing, causing 0 trades on downtrend days)
+    - Relaxed price_vs_vah_pct range slightly
+    - Added TRENDING_UP for completeness (mean reversion at VAH in uptrend)
     """
     return StrategyDefinition(
         name="Value Area Mean Reversion",
@@ -869,12 +949,12 @@ def create_value_area_strategy() -> StrategyDefinition:
                 threshold=0,  # NOT breaking out = mean reversion setup
                 weight=1.5
             ),
-            # Price at VAH or VAL
+            # Price at VAH or VAL (slightly wider range)
             StrategyCondition(
                 feature="price_vs_vah_pct",
                 operator="between",
-                threshold=-0.002,
-                threshold_high=0.002,
+                threshold=-0.003,
+                threshold_high=0.003,
                 weight=2.0
             ),
             # Delta showing rejection
@@ -937,7 +1017,106 @@ def create_value_area_strategy() -> StrategyDefinition:
         base_position_pct=0.15,
         scale_with_score=True,
         max_position_pct=0.25,
-        allowed_regimes=[Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION, Regime.UNKNOWN]
+        allowed_regimes=[Regime.RANGING, Regime.ACCUMULATION, Regime.DISTRIBUTION, Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.UNKNOWN]
+    )
+
+
+def create_trend_following_strategy() -> StrategyDefinition:
+    """
+    Trend Following Strategy - REGIME-AWARE
+    
+    Explicitly captures trends in BOTH directions using:
+    - Price momentum (ABSOLUTE value - strong move in either direction)
+    - Volume confirmation (volume_acceleration)
+    - Book pressure alignment (ABSOLUTE net_pressure)
+    - VWAP deviation (not too extended)
+    - Delta confirmation (ABSOLUTE delta_pct)
+    
+    Direction is determined by _determine_direction based on regime:
+    - TRENDING_UP -> LONG
+    - TRENDING_DOWN -> SHORT
+    - BREAKOUT -> direction from price change
+    """
+    return StrategyDefinition(
+        name="Trend Following",
+        category=StrategyCategory.MOMENTUM,
+        description="Follow established trends with momentum confirmation (both directions)",
+        
+        entry_conditions=[
+            # Strong price momentum (ABSOLUTE - works both directions)
+            StrategyCondition(
+                feature="abs_price_change_pct_300s",
+                operator=">",
+                threshold=0.002,
+                weight=2.0,
+                param_key="trend__entry_mom_min"
+            ),
+            # Volume confirms momentum
+            StrategyCondition(
+                feature="volume_acceleration",
+                operator=">",
+                threshold=1.2,
+                weight=1.5,
+                param_key="trend__entry_vol_min"
+            ),
+            # Book pressure aligns (ABSOLUTE - strong pressure either way)
+            StrategyCondition(
+                feature="abs_net_pressure",
+                operator=">",
+                threshold=50000,
+                weight=1.5,
+                param_key="trend__entry_pressure_min"
+            ),
+            # Not too extended from VWAP
+            StrategyCondition(
+                feature="abs_vwap_deviation_300s",
+                operator="<",
+                threshold=0.005,
+                weight=1.0,
+                param_key="trend__entry_vwap_max"
+            ),
+            # Delta confirms (ABSOLUTE)
+            StrategyCondition(
+                feature="abs_delta_pct_300s",
+                operator=">",
+                threshold=0.1,
+                weight=1.0,
+                param_key="trend__entry_delta_min"
+            ),
+        ],
+        
+        filters=[
+            # Market filters
+            StrategyCondition(
+                feature="spread_bps",
+                operator=">",
+                threshold=15.0
+            ),
+            StrategyCondition(
+                feature="bid_depth_10",
+                operator="<",
+                threshold=5000.0
+            ),
+            StrategyCondition(
+                feature="ask_depth_10",
+                operator="<",
+                threshold=5000.0
+            ),
+        ],
+        
+        min_conditions_satisfied=2,
+        min_score_threshold=2.5,
+        sl_mult_high_vol=7.0,
+        sl_mult_low_vol=3.5,
+        sl_mult_trending=5.0,
+        tp_mult_high_vol=15.0,
+        tp_mult_low_vol=5.0,
+        tp_mult_trending=10.0,
+        trailing_stop_activation_pct=0.005,
+        base_position_pct=0.15,
+        scale_with_score=True,
+        max_position_pct=0.25,
+        allowed_regimes=[Regime.TRENDING_UP, Regime.TRENDING_DOWN, Regime.BREAKOUT, Regime.HIGH_VOLATILITY, Regime.UNKNOWN]
     )
 
 
@@ -948,6 +1127,7 @@ STRATEGY_LIBRARY = {
     "liquidity_sweep": create_liquidity_sweep_strategy,
     "stacked_imbalance": create_stacked_imbalance_strategy,
     "value_area": create_value_area_strategy,
+    "trend_following": create_trend_following_strategy,
 }
 
 

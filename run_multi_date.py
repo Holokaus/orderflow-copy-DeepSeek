@@ -20,6 +20,7 @@ from knowledge.strategy_library import (
     create_stacked_imbalance_strategy,
     create_delta_divergence_strategy,
     create_value_area_strategy,
+    create_trend_following_strategy,
 )
 
 INITIAL_CAPITAL = 100.0
@@ -30,6 +31,7 @@ STRATEGIES = [
     ("stacked_imbalance", create_stacked_imbalance_strategy),
     ("delta_divergence", create_delta_divergence_strategy),
     ("value_area", create_value_area_strategy),
+    ("trend_following", create_trend_following_strategy),
 ]
 
 def make_engine():
