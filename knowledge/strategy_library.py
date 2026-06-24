@@ -124,17 +124,50 @@ class StrategyDefinition:
         self._ml_loaded = False
 
     def _load_ml_ensemble(self) -> None:
-        """Lazy-load ML ensemble module only when accessed"""
+        """
+        Lazy-load and WIRE the ML ensemble.
+
+        [FIX 2026-06-22] Previously this method only imported the class and set
+        a boolean flag, but never instantiated MLEnsemble or assigned it to
+        self.ml_ensemble. As a result the `self.ml_ensemble is not None` gate in
+        evaluate() was always False and the entire ML branch was a no-op.
+        Now we construct the ensemble from settings.ml_ensemble.model_dir and
+        attach it. Models remain optional: MLEnsemble degrades to neutral
+        predictions when model files are absent, and the whole feature is off
+        unless settings.ml_ensemble.enabled is True (the default).
+        """
         if self._ml_loaded:
             return
         self._ml_loaded = True
         try:
+            from pathlib import Path
+            from config.settings import Settings
             from prediction.ml_ensemble import MLEnsemble
+
+            cfg = Settings().ml_ensemble
+            if not cfg.enabled:
+                self._ml_available = False
+                return
+
+            model_dir = Path(cfg.model_dir)
+            xgb_path = model_dir / "xgboost.json"
+            lgb_path = model_dir / "lightgbm.txt"
+            lstm_path = model_dir / "lstm.keras"
+            # Pass paths only if the files exist; MLEnsemble handles missing models gracefully.
+            self.ml_ensemble = MLEnsemble(
+                xgb_model_path=str(xgb_path) if xgb_path.exists() else None,
+                lgb_model_path=str(lgb_path) if lgb_path.exists() else None,
+                lstm_model_path=str(lstm_path) if lstm_path.exists() else None,
+            )
+            self.ml_min_confidence = cfg.min_confidence
             self._ml_available = True
-            logger.debug("[StrategyDefinition] ML ensemble module loaded")
+            logger.debug("[StrategyDefinition] ML ensemble wired and attached")
         except ImportError:
             self._ml_available = False
             logger.debug("[StrategyDefinition] ML ensemble module not available (optional)")
+        except Exception as e:
+            self._ml_available = False
+            logger.debug(f"[StrategyDefinition] ML ensemble unavailable: {e}")
 
     # Position sizing
     base_position_pct: float = 0.1

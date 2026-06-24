@@ -203,6 +203,10 @@ class BacktestEngine:
         suspicious_pnl_pct: float = 0.30,
         risk_limits: Optional[RiskLimits] = None,
         feature_config: Optional[FeatureConfig] = None,  # NEW: accept config
+        # [PHASE 3] Daily-trend bias filter: if set (negative fraction, e.g. -0.004),
+        # block new LONG entries once the day's price has fallen more than this from
+        # the day's open. Shorts are never blocked by this filter. Set to None to disable.
+        daily_bias_filter_threshold: Optional[float] = -0.004,
     ):
         self.initial_capital = initial_capital
         self.fee_pct = fee_pct

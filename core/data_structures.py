@@ -173,32 +173,55 @@ class VolumeProfile:
     value_area_pct: float = 0.70  # Default 70%
     
     def compute_value_area(self) -> None:
-        """Calculate POC, VAH, VAL - O(N) with numpy"""
+        """
+        Calculate POC, VAH, VAL using the standard Market Profile value-area
+        algorithm (a.k.a. "market profile" / TPO expansion from POC).
+
+        The old implementation sorted price levels by *volume* and took the
+        top-N, which could yield a VAH/VAL spanning disconnected price
+        clusters — useless for mean-reversion at a continuous value band.
+
+        Standard algorithm: start at the POC, then repeatedly expand into the
+        adjacent (higher or lower) price level with the larger volume, until
+        the accumulated volume reaches `value_area_pct` of total. VAH/VAL are
+        then the max/min of the contiguous band around the POC.
+        """
         if not self.volume_at_price:
             return
-        
-        prices = np.fromiter(self.volume_at_price.keys(), dtype=np.float64, 
-                            count=len(self.volume_at_price))
-        volumes = np.fromiter(self.volume_at_price.values(), dtype=np.float64,
-                             count=len(self.volume_at_price))
-        
-        self.total_volume = volumes.sum()
+
+        self.total_volume = sum(self.volume_at_price.values())
         if self.total_volume == 0:
             return
-        
-        # POC: argmax is O(N) in C
-        poc_idx = np.argmax(volumes)
-        self.poc = float(prices[poc_idx])
-        
-        # Value Area calculation
+
+        # POC: price level with the highest volume.
+        poc = max(self.volume_at_price, key=lambda p: self.volume_at_price[p])
+        self.poc = float(poc)
+
         target = self.total_volume * self.value_area_pct
-        sort_idx = np.argsort(volumes)[::-1]
-        cumsum = np.cumsum(volumes[sort_idx])
-        n_needed = np.searchsorted(cumsum, target) + 1
-        
-        va_prices = prices[sort_idx[:n_needed]]
-        self.vah = float(va_prices.max())
-        self.val = float(va_prices.min())
+
+        # Build a sorted-by-price view so we can look up neighbours by index.
+        sorted_prices = sorted(self.volume_at_price.keys())
+        pos = sorted_prices.index(poc)
+
+        lo = hi = pos
+        acc = self.volume_at_price[poc]
+        n = len(sorted_prices)
+
+        while acc < target and (lo > 0 or hi < n - 1):
+            # Volume of the level just below (lo-1) and just above (hi+1) the band.
+            below_vol = self.volume_at_price[sorted_prices[lo - 1]] if lo > 0 else -1.0
+            above_vol = self.volume_at_price[sorted_prices[hi + 1]] if hi < n - 1 else -1.0
+            if below_vol < 0 and above_vol < 0:
+                break
+            if above_vol >= below_vol:  # ties expand upward (convention)
+                hi += 1
+                acc += above_vol
+            else:
+                lo -= 1
+                acc += below_vol
+
+        self.vah = float(sorted_prices[hi])
+        self.val = float(sorted_prices[lo])
 
 
 @dataclass

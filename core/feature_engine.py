@@ -200,14 +200,20 @@ class RegimeClassifier:
         """
         Compute bar_ranges_10 and recent_bars from book_history.
         FIXES: Dead code paths in circuit breaker and crash detection.
+
+        [FIX 2026-06-22] Off-by-one: previously sliced `book_history[-lookback:]`
+        (10 books) and iterated 9 pairs, so the result had at most 9 entries.
+        But consumers gate on `len >= 10` (e.g. engine `_should_trade_today`),
+        which made the circuit breaker unreachable. Now slice lookback+1 books
+        so we produce exactly `lookback` consecutive-pair bars.
         """
         if len(book_history) < lookback + 1:
             return [], []
-        
-        recent_books = book_history[-lookback:]
+
+        recent_books = book_history[-(lookback + 1):]
         bar_ranges = []
         recent_bars = []
-        
+
         for i in range(1, len(recent_books)):
             prev = recent_books[i-1]
             curr = recent_books[i]
@@ -424,7 +430,15 @@ class FeatureEngine:
         
         # Always compute footprint features (critical: precomputed path skips _compute_all_features)
         state.features.update(self._compute_footprint_features())
-        
+
+        # Always compute volume profile features (critical: precomputed path skips _compute_all_features,
+        # and _compute_all_features is the only other caller of _compute_volume_profile_features).
+        # Without this bridge, poc/vah/val/in_value_area/price_vs_vah_pct/va_breakout_potential are
+        # absent from state.features whenever a precomputer is in use (which is always in the backtest
+        # engine), so any strategy referencing them (e.g. ValueArea) can never fire. VP itself is
+        # recomputed at most every VOLUME_PROFILE_EVERY_N ticks by the engine and cached for 100s here.
+        state.features.update(self._compute_volume_profile_features(use_cached=True))
+
         # Always compute composite features (critical: precomputed path skips _compute_all_features)
         state.features.update(self._compute_composite_features(state.features))
         
