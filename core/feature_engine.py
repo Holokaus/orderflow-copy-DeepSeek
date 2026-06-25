@@ -91,20 +91,31 @@ class RegimeClassifier:
         current_ts: datetime,
         timestamps_cache: Optional[List[datetime]] = None,
         book_history: Optional[List[OrderBook]] = None,
+        book_timestamps: Optional[List[datetime]] = None,
+        book_mids: Optional[List[float]] = None,
     ) -> Regime:
         """Classify market regime from price action + order flow features."""
-        
+
         # USE BOOK HISTORY AS PRIMARY SOURCE (every tick has book snapshot)
         # Trade history is sparse (only ticks with trades)
         min_history = 30
-        
+
         prices = []
         timestamps = []
-        
-        # Always prefer book_history - it has every tick
+
+        # Always prefer book_history - it has every tick.
+        # PERF: if the caller maintains incremental ts/price mirrors, use them
+        # directly instead of rebuilding two lists (up to 5000 elems) per tick.
         if book_history and len(book_history) >= min_history:
-            timestamps = [b.timestamp for b in book_history]
-            prices = [b.mid_price for b in book_history if b.mid_price > 0]
+            if (book_timestamps is not None and book_mids is not None
+                    and len(book_timestamps) == len(book_history)
+                    and len(book_mids) == len(book_history)):
+                # Fast path: O(1) aliasing, no rebuild.
+                timestamps = book_timestamps
+                prices = book_mids
+            else:
+                timestamps = [b.timestamp for b in book_history]
+                prices = [b.mid_price for b in book_history if b.mid_price > 0]
         elif len(trade_history) >= min_history:
             # Fallback to trade history
             if timestamps_cache is not None and len(timestamps_cache) == len(trade_history):
@@ -294,6 +305,13 @@ class FeatureEngine:
         self.trade_history: List[Trade] = []
         self.book_history: List[OrderBook] = []
         self.footprint_bars: List[FootprintBar] = []
+
+        # Incremental mirrors of book_history for O(1) regime classification.
+        # classify() previously rebuilt these (up to 5000 elements) EVERY tick,
+        # which was ~88% of total backtest runtime. Maintaining them here keeps
+        # classify() O(log n) on the lookback bisect instead of O(n) rebuild.
+        self._book_ts: List[datetime] = []
+        self._book_mid: List[float] = []
         
         # Tracking for pattern detection
         self.price_level_activity: Dict[float, Dict] = {}
@@ -337,6 +355,8 @@ class FeatureEngine:
         """Reset all state - call between backtest runs for clean isolation."""
         self.trade_history.clear()
         self.book_history.clear()
+        self._book_ts.clear()
+        self._book_mid.clear()
         self.footprint_bars.clear()
         self.price_level_activity.clear()
         self.potential_icebergs.clear()
@@ -376,18 +396,24 @@ class FeatureEngine:
         
         # Store history with incremental CVD
         self.book_history.append(order_book)
+        # Maintain O(1) mirrors for the regime classifier (see __init__).
+        self._book_ts.append(order_book.timestamp)
+        mid = order_book.mid_price
+        self._book_mid.append(mid if mid > 0 else 0.0)
         for trade in trades:
             self.trade_history.append(trade)
             self._trade_timestamps.append(trade.timestamp)
             self._cvd += trade.size if trade.side == Side.BUY else -trade.size
             self._update_footprint_bars(trade)
-        
+
         # Cloud memory management - trim when large (throttled to avoid O(n) per tick)
         if len(self.trade_history) > 50000:
             self.trade_history = self.trade_history[-25000:]
             self._trade_timestamps = self._trade_timestamps[-25000:]
         if len(self.book_history) > 5000:
             self.book_history = self.book_history[-2500:]
+            self._book_ts = self._book_ts[-2500:]
+            self._book_mid = self._book_mid[-2500:]
         
         # Create state
         state = OrderFlowState(
@@ -455,13 +481,17 @@ class FeatureEngine:
         state.features.update(self._daily_trend_cache)
         
         # Classify market regime (O(log n) with precomputed timestamps)
-        # FIX: Pass book_history for fallback when trade_history is sparse
+        # FIX: Pass book_history for fallback when trade_history is sparse.
+        # PERF: Pass incremental _book_ts/_book_mid mirrors so classify() does
+        # not rebuild them every tick (was ~88% of backtest runtime).
         regime = self._regime_classifier.classify(
             self.trade_history,
             state.features,
             self._current_timestamp,
             timestamps_cache=self._trade_timestamps,
             book_history=self.book_history,
+            book_timestamps=self._book_ts,
+            book_mids=self._book_mid,
         )
         state.regime = regime
         
