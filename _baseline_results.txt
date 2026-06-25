@@ -1,0 +1,16 @@
+================================================================================
+FULL BASELINE (post Step-1 speedup, glm5.2 branch)
+================================================================================
+
+### May 31 (up +3.81%): 6696 ticks ###
+  absorption           n=  3 WR=  0.0% ret= -1.343% PF=0.00 L/S=2/1 (22s)
+  stacked_imbalance    n=  7 WR= 28.6% ret= -0.462% PF=0.71 L/S=7/0 (17s)
+  delta_divergence     n= 11 WR= 36.4% ret= -0.824% PF=0.70 L/S=2/9 (15s)
+  value_area           n=  0  (17s)
+  trend_following      n= 12 WR= 41.7% ret= +0.521% PF=1.32 L/S=11/1 (15s)
+  ALL                  n= 33 WR= 33.3% ret= -2.101% L/S=22/11
+
+### Jun 1  (up +2.70%): 30879 ticks ###
+  absorption           n=  6 WR= 16.7% ret= -1.881% PF=0.07 L/S=4/2 (152s)
+  stacked_imbalance    n=  5 WR= 20.0% ret= -1.058% PF=0.17 L/S=5/0 (149s)
+  delta_divergence     n=  3 WR=  0.0% ret= -1.758% PF=0.00 L/S=1/2 (140s)
